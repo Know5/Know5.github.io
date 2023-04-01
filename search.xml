@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Upload-labs靶场(01-06)</title>
+      <link href="/2023/04/01/Upload-labs%E9%9D%B6%E5%9C%BA-01-06/"/>
+      <url>/2023/04/01/Upload-labs%E9%9D%B6%E5%9C%BA-01-06/</url>
+      
+        <content type="html"><![CDATA[<p>本博客只是自己当时做题的想法，并未涉及太深，要更深层次了解，还是需要去看看其他大佬的做题思路。</p><h1 id="Pass-01"><a href="#Pass-01" class="headerlink" title="Pass-01"></a>Pass-01</h1><p>首先会发现，如果直接上传php，会提示不让直接上传该图片<br><img src="https://img-blog.csdnimg.cn/4a9f90c282b34afbaf73900fcc83091b.png"><br>但是上传图片可以上传，所以放入BP中看看<br><img src="https://img-blog.csdnimg.cn/75c82ad687ff4f31a02830365f29cab6.png"><br>将1.png修改为1.php再发送，<br><img src="https://img-blog.csdnimg.cn/ac06f6fab79c41ed9f0f56d662b75015.png"><br>再通过靶场查询这个php，上传成功<br><img src="https://img-blog.csdnimg.cn/dfbcdf627e41420499d8de55e8940e03.png"></p><h1 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h1><h2 id="1、修改上传类型"><a href="#1、修改上传类型" class="headerlink" title="1、修改上传类型"></a>1、修改上传类型</h2><p>首先根据源代码可以看到，这是需要确认文件类型<br><img src="https://img-blog.csdnimg.cn/9d0a44a73ba141758cb6349cb256ecd2.png"><br>所以可以通过用BP去抓个php文件的包，然后将如下图标注的地方进行修改，可以将Content-Type修改为允许上传的类型image&#x2F;jpeg或image&#x2F;png或image&#x2F;gif。<br><img src="https://img-blog.csdnimg.cn/9a2973dfb3e24a219da0fb8e939aef80.png"><br>修改后发送发现上传成功。<br><img src="https://img-blog.csdnimg.cn/f952d36834dd4c24b2940928cf9b7055.png"><br>访问验证一下<br><img src="https://img-blog.csdnimg.cn/e754058ded354d869f0b67ceaf2c14ee.png"></p><h2 id="2、如Pass-1的做法"><a href="#2、如Pass-1的做法" class="headerlink" title="2、如Pass 1的做法"></a>2、如Pass 1的做法</h2><p>先上传图片，然后文件类型就已经变成图片的类型，然后再将图片后缀修改为php，发送。<br><img src="https://img-blog.csdnimg.cn/a0016ad1555647b8b5f04d89a7869264.png"><br><img src="https://img-blog.csdnimg.cn/21c302db6b424a1b8884cd4aa1ea8231.png"></p><h1 id="Pass-03"><a href="#Pass-03" class="headerlink" title="Pass-03"></a>Pass-03</h1><p>首先查看这道题的源代码，发现是黑名单验证<br><img src="https://img-blog.csdnimg.cn/b2dcc525ac4d44e38cde0b9a46c3d20f.png"><br>且不允许上传.php后缀文件，我这里是将php后缀修改成php5后上传。发现成功上传<br><img src="https://img-blog.csdnimg.cn/fc64a0b198804ba2a7804b5b06c36bac.png"><br>访问一下<br><img src="https://img-blog.csdnimg.cn/594b0a604dc54478a0528dba7fa81c16.png"><br>详情可以看这位大佬的黑名单绕过，里面不局限于php5后缀，还是有很多修改可以上传。<br><a href="https://blog.csdn.net/qq_25899635/article/details/90344198">大佬博客</a></p><h1 id="Pass-04"><a href="#Pass-04" class="headerlink" title="Pass-04"></a>Pass-04</h1><p>先查看源代码<br><img src="https://img-blog.csdnimg.cn/0c65e91f87ca4fdbb5705a1897427fd3.png"><br>发现很多后缀被禁止上传。所以需要用到.htaccess配置文件，并且在其<br>文件内部写上<br>    &lt;FileMatch”4.png”&gt;<br>    SetHandler application&#x2F;x-httpd-php<br>可以将其中4.png解析为php，在其中写入php代码就行，<br>然后通过BP抓图片包，将其在重发器中发送一下，发现上传成功，访问4.png就行了<br><img src="https://img-blog.csdnimg.cn/4458c5ee116f4ed7ae7824ded98a7340.png"><br>访问一下，因为我这个浏览器访问会黑屏，所以看源代码<br><img src="https://img-blog.csdnimg.cn/3dc62c7563554d3eb104d216f75fdfdd.png"></p><h1 id="Pass-05"><a href="#Pass-05" class="headerlink" title="Pass-05"></a>Pass-05</h1><p>从源代码来看和上题一样导致很多文件无法上传，且上题使用的.htaccess文件也被限制了<br><img src="https://img-blog.csdnimg.cn/2c6f87f594674868b9370baf01eb0274.png"><br>但其中php7文件后缀还可以使用绕过，利用BP抓包并将后缀改为php7，发现上传成功。<br><img src="https://img-blog.csdnimg.cn/12a7e77854574f8782c1bc065b68ac3d.png"><br>访问一下<br><img src="https://img-blog.csdnimg.cn/84e0be3c06c5478ba49570e01678c4f8.png"></p><h1 id="Pass-06"><a href="#Pass-06" class="headerlink" title="Pass-06"></a>Pass-06</h1><p>这道题可以通过php大小写绕过，先用BP抓住一个php后缀文件的包，然后在重发器将其后缀修改为PHP，发现上传成功<br><img src="https://img-blog.csdnimg.cn/b85a25a0cc504adaadbc59014f231a60.png"><br>访问一下验证。（不知道为什么打到6的适时候浏览网站就无法看到，显示内部浏览器错误，所以这是找的一个大佬的做的结果），其最后结果就是访问后类似这个就说明上传成功了<br><img src="https://img-blog.csdnimg.cn/8760eec517b14a6987aa1b1b9f862b58.png"></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>做这个时候发现很多自己不会的知识，也从中学习到了很多，希望能慢慢学习，不断进步。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web，靶场 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解决pythoncharm中关于Crypto的相关问题</title>
       <link href="/2023/02/08/%E8%A7%A3%E5%86%B3pythoncharm%E4%B8%AD%E5%85%B3%E4%BA%8ECrypto%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/"/>
       <url>/2023/02/08/%E8%A7%A3%E5%86%B3pythoncharm%E4%B8%AD%E5%85%B3%E4%BA%8ECrypto%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
