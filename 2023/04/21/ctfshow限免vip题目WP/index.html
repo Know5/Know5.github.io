@@ -4,9 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Upload-labs靶场(01-06), RE,Misc,Web,Cpypto等">
-    <meta name="description" content="本博客只是自己当时做题的想法，并未涉及太深，要更深层次了解，还是需要去看看其他大佬的做题思路。
-Pass-01首先会发现，如果直接上传php，会提示不让直接上传该图片但是上传图片可以上传，所以放入BP中看看将1.png修改为1.php再发送">
+    <meta name="keywords" content="ctfshow限免vip题目WP, RE,Misc,Web,Cpypto等">
+    <meta name="description" content=" 学习web时刷题，其题目确实很基础适合我这种新手入手
+一、源码泄露
+本题就是简单的查看源代码找到flag。
+
+二、前台JS绕过
+ 本题打开后显示无法打开源代码，但好像只要手动打开源代码就能看到flag，
+
+或者将本题用BP抓包就可以拿到f">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +24,7 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Upload-labs靶场(01-06) | Know5</title>
+    <title>ctfshow限免vip题目WP | Know5</title>
     <link rel="icon" type="image/png" href="/1.png">
     
     <style>
@@ -281,12 +287,12 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Upload-labs靶场(01-06)</h1>
+                    <h1 class="description center-align post-title">ctfshow限免vip题目WP</h1>
                 </div>
             </div>
         </div>
@@ -310,8 +316,8 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web%E3%80%81%E9%9D%B6%E5%9C%BA/">
-                                <span class="chip bg-color">web、靶场</span>
+                            <a href="/tags/web%E3%80%81%E7%BD%91%E5%AE%89%E3%80%81%E6%96%B0%E6%89%8B/">
+                                <span class="chip bg-color">web、网安、新手</span>
                             </a>
                         
                     </div>
@@ -326,7 +332,7 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-04-01
+                    2023-04-21
                 </div>
                 
 
@@ -347,15 +353,116 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本博客只是自己当时做题的想法，并未涉及太深，要更深层次了解，还是需要去看看其他大佬的做题思路。</p>
-<h2 id="Pass-01"><a href="#Pass-01" class="headerlink" title="Pass-01"></a>Pass-01</h2><p>首先会发现，如果直接上传php，会提示不让直接上传该图片<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211019442.png"><br>但是上传图片可以上传，所以放入BP中看看<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020395.png"><br>将1.png修改为1.php再发送，<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020908.png"><br>再通过靶场查询这个php，上传成功<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020662.png"></p>
-<h2 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h2><h3 id="1、修改上传类型"><a href="#1、修改上传类型" class="headerlink" title="1、修改上传类型"></a>1、修改上传类型</h3><p>首先根据源代码可以看到，这是需要确认文件类型<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020639.png"><br>所以可以通过用BP去抓个php文件的包，然后将如下图标注的地方进行修改，可以将Content-Type修改为允许上传的类型image&#x2F;jpeg或image&#x2F;png或image&#x2F;gif。<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020904.png"><br>修改后发送发现上传成功。<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020641.png"><br>访问验证一下<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020386.png"></p>
-<h3 id="2、如Pass-1的做法"><a href="#2、如Pass-1的做法" class="headerlink" title="2、如Pass 1的做法"></a>2、如Pass 1的做法</h3><p>先上传图片，然后文件类型就已经变成图片的类型，然后再将图片后缀修改为php，发送。<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020938.png"><br><img src="https://img-blog.csdnimg.cn/21c302db6b424a1b8884cd4aa1ea8231.png"></p>
-<h2 id="Pass-03"><a href="#Pass-03" class="headerlink" title="Pass-03"></a>Pass-03</h2><p>首先查看这道题的源代码，发现是黑名单验证<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020723.png"><br>且不允许上传.php后缀文件，我这里是将php后缀修改成php5后上传。发现成功上传<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020292.png"><br>访问一下<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020639.png"><br>详情可以看这位大佬的黑名单绕过，里面不局限于php5后缀，还是有很多修改可以上传。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25899635/article/details/90344198">大佬博客</a></p>
-<h2 id="Pass-04"><a href="#Pass-04" class="headerlink" title="Pass-04"></a>Pass-04</h2><p>先查看源代码<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211020418.png"><br>发现很多后缀被禁止上传。所以需要用到.htaccess配置文件，并且在其<br>文件内部写上<br>    &lt;FileMatch”4.png”&gt;<br>    SetHandler application&#x2F;x-httpd-php<br>可以将其中4.png解析为php，在其中写入php代码就行，<br>然后通过BP抓图片包，将其在重发器中发送一下，发现上传成功，访问4.png就行了<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021541.png"><br>访问一下，因为我这个浏览器访问会黑屏，所以看源代码<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021757.png"></p>
-<h2 id="Pass-05"><a href="#Pass-05" class="headerlink" title="Pass-05"></a>Pass-05</h2><p>从源代码来看和上题一样导致很多文件无法上传，且上题使用的.htaccess文件也被限制了<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021860.png"><br>但其中php7文件后缀还可以使用绕过，利用BP抓包并将后缀改为php7，发现上传成功。<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021342.png"><br>访问一下<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021667.png"></p>
-<h2 id="Pass-06"><a href="#Pass-06" class="headerlink" title="Pass-06"></a>Pass-06</h2><p>这道题可以通过php大小写绕过，先用BP抓住一个php后缀文件的包，然后在重发器将其后缀修改为PHP，发现上传成功<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021340.png"><br>访问一下验证。（不知道为什么打到6的适时候浏览网站就无法看到，显示内部浏览器错误，所以这是找的一个大佬的做的结果），其最后结果就是访问后类似这个就说明上传成功了<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021871.png"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>做这个时候发现很多自己不会的知识，也从中学习到了很多，希望能慢慢学习，不断进步。</p>
+                <p> 学习web时刷题，其题目确实很基础适合我这种新手入手</p>
+<h2 id="一、源码泄露"><a href="#一、源码泄露" class="headerlink" title="一、源码泄露"></a>一、源码泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211819256.png"></p>
+<p>本题就是简单的查看源代码找到flag。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211819910.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h2 id="二、前台JS绕过"><a href="#二、前台JS绕过" class="headerlink" title="二、前台JS绕过"></a>二、前台JS绕过</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211820126.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p> 本题打开后显示无法打开源代码，但好像只要手动打开源代码就能看到flag，</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211820840.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>或者将本题用BP抓包就可以拿到flag了</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211821021.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<h2 id="三、协议头信息泄露"><a href="#三、协议头信息泄露" class="headerlink" title="三、协议头信息泄露"></a>三、协议头信息泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211824129.png"></p>
+<p>打开本题也是问flag在哪里，本题要么直接BP抓包然后在重发器发送后头中找到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211825332.png"></p>
+<p>或者在浏览器的网络里找到Date，下面有着flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211826033.png"></p>
+<h2 id="四、robots后台泄露"><a href="#四、robots后台泄露" class="headerlink" title="四、robots后台泄露"></a>四、robots后台泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211826548.png"></p>
+<p>如图本题还是一样的要求，根据题目我们可以知道其跟robots有关，所以在本题网址后输入&#x2F;robots.txt，可以得到如下图的情况：<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211827220.png"></p>
+<p>再将robots.txt替换成如图的txt,得到flag。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211827270.png"></p>
+<h2 id="五、phps源码泄露"><a href="#五、phps源码泄露" class="headerlink" title="五、phps源码泄露"></a>五、phps源码泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211827658.png"></p>
+<p>根据本题题目phps源码泄露，想到了index.phps可能与其相关，输入后得到一个phps文件</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211827676.png"> 打开文件后得到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211828741.png"></p>
+<h2 id="六、源码压缩包泄露"><a href="#六、源码压缩包泄露" class="headerlink" title="六、源码压缩包泄露"></a>六、源码压缩包泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211828880.png"></p>
+<p>本题依旧是需要借题目来得到关于flag的线索</p>
+<p>根据上关源码泄露，以及本题源码压缩包泄露 ,直接访问&#x2F;<a target="_blank" rel="noopener" href="http://www.zip.一般网站的文件都在www下,所以直接访问www.zip可以得到所需压缩包,打开后里面有俩个文件/">www.zip。一般网站的文件都在www下，所以直接访问www.zip可以得到所需压缩包，打开后里面有俩个文件</a><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211828879.png"></p>
+<p>多半与第一个txt文件有关，直接在网站搜索该文件，即在网站后缀加上&#x2F;fl000g.txt。得到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211828829.png"></p>
+<h2 id="七、版本控制泄露源码"><a href="#七、版本控制泄露源码" class="headerlink" title="七、版本控制泄露源码"></a>七、版本控制泄露源码</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211829737.png">依旧是要依靠题目来得到我们所需的flag，本题题目所设计版本控制，上网搜了下版本控制系统，</p>
+<!--版本控制系统（Version Control System，VCS）是一种软件，可以帮助软件团队的开发人员协同工作，并存档他们工作的完整历史记录-->。 
+
+<p> 一般常用的有Git，VSS，SVN等版本，本题所用的便是Git，在网址后面加上&#x2F;.git就能得到flag了</p>
+<h2 id="八、版本控制泄露源码2"><a href="#八、版本控制泄露源码2" class="headerlink" title="八、版本控制泄露源码2"></a>八、版本控制泄露源码2</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211830207.png"></p>
+<p> 根据上题所知，尝试得到本题的版本控制系统是SVN,所以在网站后面加上&#x2F;.svn就可以得到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211830193.png"></p>
+<h2 id="九、vim临时文件泄露"><a href="#九、vim临时文件泄露" class="headerlink" title="九、vim临时文件泄露"></a>九、vim临时文件泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211831001.png"></p>
+<p>从题目找线索，从而来去得到flag 。当vim文件不正常退出时会生成一个.swp临时文件，从而造成文件信息泄露，一般网站编辑文件都是index.php。所以在文件后面加上&#x2F;index.php.swp得到一个swp文件，打开得到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211831994.png"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211831991.png"></p>
+<h2 id="十、cookie泄露"><a href="#十、cookie泄露" class="headerlink" title="十、cookie泄露"></a>十、cookie泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211831170.png"></p>
+<p>有题目可以得知本题是跟cookie相关的.。要么简单粗暴用BP抓包，直接可以在cookie上看到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211831219.png"></p>
+<p><strong>将%7B%7D编码后就是{}</strong> </p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211832008.png"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211832001.png"> 或者就是打开浏览器找到cookie同样可以拿到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211832059.png"></p>
+<h2 id="十一-、域名txt记录泄露"><a href="#十一-、域名txt记录泄露" class="headerlink" title="十一 、域名txt记录泄露"></a>十一 、域名txt记录泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211832670.png"></p>
+<p>找到一个在线域名解析记录检测，可以在TXT中找到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211832660.png"></p>
+<h2 id="十二、敏感信息公布"><a href="#十二、敏感信息公布" class="headerlink" title="十二、敏感信息公布"></a>十二、敏感信息公布</h2><p>打开网站是一个购物平台</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211833094.png">不知道从哪下手，然后御剑扫出一个网站+<strong>&#x2F;admin</strong>，后来发现用**&#x2F;robots.txt<strong>也能得到这个网站+</strong>&#x2F;admin**，如图</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211833426.png"></p>
+<p>打开后发现是个登录系统</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211833430.png"></p>
+<p>猜测用户名是admin，密码考虑题目敏感信息公布，猜测可能就在那个网站里，当移到最下面时发现有一串数字，</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211833951.png"></p>
+<p>重新回到登录系统，尝试后登录成功拿到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211833961.png"></p>
+<h2 id="十三、内部技术文档泄露"><a href="#十三、内部技术文档泄露" class="headerlink" title="十三、内部技术文档泄露"></a>十三、内部技术文档泄露</h2><p>本题打开后也是如十二题一样是个网站，尝试像十二题那样查询robots.txt无果，只能从这网站找线索</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211834788.png"></p>
+<p>原本一筹莫展，当翻到网址最下面，发现其”document”可以点击,从中找到线索</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211834603.png"></p>
+<p>document移到最下面的内容为下图</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211834526.png"></p>
+<p>将原本的网站加上&#x2F;system1103&#x2F;login.php进入登录界面，输入默认用户名和密码得到flag。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211834501.png"></p>
+<h2 id="十四、编辑器配置不当"><a href="#十四、编辑器配置不当" class="headerlink" title="十四、编辑器配置不当"></a>十四、编辑器配置不当</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211834819.png"></p>
+<p>打开后是跟十一、十二关那样是一个页面，但根据题目内的提示，在网站后缀加上&#x2F;editor进入一个新的页面</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211834763.png"></p>
+<p>找到上传文件的地方，进入文件空间，</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211835034.png"></p>
+<p>打开文件空间，依次点击**&#x2F;var&#x2F;www&#x2F;html&#x2F;nothinghere**,从而发现藏在其中的txt文件，</p>
+<p>然后通过在主网址上加上**&#x2F;nothinghere&#x2F;fl000g.txt**找到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211835023.png"></p>
+<h2 id="十五、密码逻辑脆弱"><a href="#十五、密码逻辑脆弱" class="headerlink" title="十五、密码逻辑脆弱"></a>十五、密码逻辑脆弱</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211835198.png"></p>
+<p>仍然是网页，放进御剑里扫一扫，扫出一个admin</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211835060.png"></p>
+<p>进入一看是登录页面，猜测用户名应该是admin，但是密码未知</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211835055.png"></p>
+<p>发现有个忘记密码的按钮，点进去后需要回答密保问题才能得到密码</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211835064.png"></p>
+<blockquote>
+<p>再结合本题所给的提示：公开的信息比如邮箱，可能造成信息泄露，产生严重后果</p>
+</blockquote>
+<p> 返回主网站，找到邮箱，</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211836434.png"></p>
+<p>然后登录自己qq查询该账号，发现其人在西安，返回回答问题，得到密码</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211836432.png"> 然后输入用户名和密码得到flag</p>
+<h2 id="十六、探针泄露"><a href="#十六、探针泄露" class="headerlink" title=" 十六、探针泄露"></a><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211836206.png"> 十六、探针泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211836281.png"> 打开页面就是一个元素周期表，没有任何线索，但是根据题目所给提示，考虑与探针相关</p>
+<blockquote>
+<p>对于测试用的探针，使用完毕后要及时删除，可能会造成信息泄露</p>
+</blockquote>
+<p> 所以在网站后面加上**&#x2F;tz.php**</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211837626.png"></p>
+<p>点击后可以从里面找到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211837606.png"></p>
+<h2 id="十七、CDN穿透"><a href="#十七、CDN穿透" class="headerlink" title="十七、CDN穿透"></a>十七、CDN穿透</h2><p>这题应该是坏了，直接提示把答案发出来了</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211837837.png"> 如果查这个网站的IP地址提交上去的是错误的。</p>
+<h2 id="十八、js敏感信息泄露"><a href="#十八、js敏感信息泄露" class="headerlink" title="十八、js敏感信息泄露"></a>十八、js敏感信息泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211837089.png"></p>
+<p>本题打开后发现是一个小游戏，一般网站小游戏考虑达到一定的分数给出flag，所以查询源代码来看看是否有满足分数条件给flag的代码。发现当分数大于100时会给出一串十六进制编码。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211837045.png"> 将这十六进制编码进行ascii转换，</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211838810.png"> 所以在主网站的后面加上&#x2F;110.php。得到flag</p>
+<h2 id="十九、前端密钥泄露"><a href="#十九、前端密钥泄露" class="headerlink" title=" 十九、前端密钥泄露"></a><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211838224.png"> 十九、前端密钥泄露</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211838181.png"> 打开后是一个登录页面，查看源代码可以发现一个post<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211838188.png"> 然后在火狐浏览器或者BP中POST传参，得到flag</p>
+<h2 id="二十、数据库恶意下载"><a href="#二十、数据库恶意下载" class="headerlink" title=" 二十、数据库恶意下载"></a><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211838323.png"> 二十、数据库恶意下载</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211838285.png"> 根据题目提示</p>
+<blockquote>
+<p>mdb文件是早期asp+access构架的数据库文件，文件泄露相当于数据库被脱裤了。 </p>
+</blockquote>
+<p>所以在网站后面加入&#x2F;db&#x2F;db.mdb得到一个下载的文件</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211839148.png"></p>
+<p>用notepad++打开查找”flag”找到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211839136.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>重写一遍还是受益良多的</p>
 
                 
             </div>
@@ -382,7 +489,7 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://know5.github.io/2023/04/01/Upload-labs%E9%9D%B6%E5%9C%BA-01-06/">https://know5.github.io/2023/04/01/Upload-labs%E9%9D%B6%E5%9C%BA-01-06/</a>
+                    <a href="https://know5.github.io/2023/04/21/ctfshow%E9%99%90%E5%85%8Dvip%E9%A2%98%E7%9B%AEWP/">https://know5.github.io/2023/04/21/ctfshow%E9%99%90%E5%85%8Dvip%E9%A2%98%E7%9B%AEWP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -420,8 +527,8 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web%E3%80%81%E9%9D%B6%E5%9C%BA/">
-                                    <span class="chip bg-color">web、靶场</span>
+                                <a href="/tags/web%E3%80%81%E7%BD%91%E5%AE%89%E3%80%81%E6%96%B0%E6%89%8B/">
+                                    <span class="chip bg-color">web、网安、新手</span>
                                 </a>
                             
                         </div>
@@ -500,9 +607,10 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/04/21/ctfshow%E9%99%90%E5%85%8Dvip%E9%A2%98%E7%9B%AEWP/">
                     <div class="card-image">
@@ -520,9 +628,9 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -531,6 +639,7 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -549,13 +658,13 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/08/%E8%A7%A3%E5%86%B3pythoncharm%E4%B8%AD%E5%85%B3%E4%BA%8ECrypto%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+                <a href="/2023/04/01/Upload-labs%E9%9D%B6%E5%9C%BA-01-06/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="解决pythoncharm中关于Crypto的相关问题">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Upload-labs靶场(01-06)">
                         
-                        <span class="card-title">解决pythoncharm中关于Crypto的相关问题</span>
+                        <span class="card-title">Upload-labs靶场(01-06)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -566,7 +675,7 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-01
                             </span>
                         <span class="publish-author">
                             
@@ -579,8 +688,8 @@ Pass-01首先会发现，如果直接上传php，会提示不让直接上传该�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%A7%81%E8%A7%A3%EF%BC%8C%E5%8F%82%E8%80%83%EF%BC%8C%E5%AD%A6%E4%B9%A0%E3%80%82/">
-                        <span class="chip bg-color">见解，参考，学习。</span>
+                    <a href="/tags/web%E3%80%81%E9%9D%B6%E5%9C%BA/">
+                        <span class="chip bg-color">web、靶场</span>
                     </a>
                     
                 </div>
