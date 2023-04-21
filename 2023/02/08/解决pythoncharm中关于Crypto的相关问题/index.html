@@ -356,9 +356,9 @@ from Crypto.Util.number import *ImportError: No module named Crypto">
 <blockquote>
 </blockquote>
 <p>pip : 无法将“pip”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确， 然后再试一次。 所在位置 行:1 字符: 1 + pip ins</p>
-<p>于是我又上网查询一下解决出现这种问题的方法。解决方式如下：<br>一般来说，让我们下载PythonCharm时，pip也已经下载好了，可以通过打开PythonCharm左上角的 文件&#x2F;设置&#x2F;项目&#x2F;Python解释器 找到它。如图：<br><img src="https://img-blog.csdnimg.cn/d9c8d22214234eccad3df9c76d864883.png"><br>但是如果直接在PythonCharm的终端里面打出:<br>     <code>pip install crypto</code></p>
+<p>于是我又上网查询一下解决出现这种问题的方法。解决方式如下：<br>一般来说，让我们下载PythonCharm时，pip也已经下载好了，可以通过打开PythonCharm左上角的 文件&#x2F;设置&#x2F;项目&#x2F;Python解释器 找到它。如图：<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021780.png"><br>但是如果直接在PythonCharm的终端里面打出:<br>     <code>pip install crypto</code></p>
 <p>就会出现上面我所说的报错， 就是虽然下载了pip，但并未在PythonCharm中配置pip环境，所以无法使用，所以我们需要对pip进行环境配置，第一步是直接在PythonCharm内部进行pip的环境配置，有的人在第一步后就可以使用pip了，但是有的还是会出现pip的报错(比如我)，所以我们还需要对系统进行环境配置，下面是第一步的步骤：</p>
-<p>首先还是打开PythonCharm，找到左上角的  文件&#x2F;设置&#x2F;项目  找到如图所在的位置，并点击红圈标记的地方<br><img src="https://img-blog.csdnimg.cn/fabba330e6ce41e484970a43ba2e1848.png"><br>然后进入环境变量界面，点击 “ + ” <br><img src="https://img-blog.csdnimg.cn/6dab5115bf9a407787a0cbeddb119d12.png"><br>名称：Path  值：复制下图中的位置部分<br><img src="https://img-blog.csdnimg.cn/f68a1a3d4a4b443b968798305a772041.png"><br>应用后重启PythonCharm，然后打开PythonCharm中的终端输入pip，看是否出现如下图的情况<br><img src="https://img-blog.csdnimg.cn/a643c301522f47b2a87cca104a504262.png"><br>如果出现，则说明pip配置成功，如果没有出现该图情况，则进行第二步，对系统环境进行配置，找到电脑中的高级系统设置，点击红圈标注的位置<br><img src="https://img-blog.csdnimg.cn/7ebafd2181054992b385c88439991cb3.png"><br>找到系统变量（就是点进去后下面那一处）然后找到其中为Path的变量，双击后点击新建，将刚才复制的地址粘贴上去，然后再次打开PythonCharm就可以使用pip的功能了。</p>
+<p>首先还是打开PythonCharm，找到左上角的  文件&#x2F;设置&#x2F;项目  找到如图所在的位置，并点击红圈标记的地方<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021253.png"><br>然后进入环境变量界面，点击 “ + ” <br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021497.png"><br>名称：Path  值：复制下图中的位置部分<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021820.png"><br>应用后重启PythonCharm，然后打开PythonCharm中的终端输入pip，看是否出现如下图的情况<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021717.png"><br>如果出现，则说明pip配置成功，如果没有出现该图情况，则进行第二步，对系统环境进行配置，找到电脑中的高级系统设置，点击红圈标注的位置<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211021146.png"><br>找到系统变量（就是点进去后下面那一处）然后找到其中为Path的变量，双击后点击新建，将刚才复制的地址粘贴上去，然后再次打开PythonCharm就可以使用pip的功能了。</p>
 <p>接下来是关于Crypto的问题，当我输入<br><code>pip install crypto</code>并运行后<br>出现下面的情况</p>
 <blockquote>
 <p>from Crypto.Util.number import *<br>ModuleNotFoundError: No module named ‘Crypto’</p>
@@ -366,7 +366,7 @@ from Crypto.Util.number import *ImportError: No module named Crypto">
 <p>上网搜寻原因是因为crypto这个库过时了，现在都是下载pycryptodome<br>下载它的代码是<br><code>pip install crypto pycryptodome</code><br>​<br>详情可以参考这位大佬的CSDN博客<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Ahuuua/article/details/108800712">​https://blog.csdn.net/Ahuuua/article/details/108800712<br>​</a></p>
 <p>总结</p>
 <p>以上便是我解决这些问题中所做的行为，虽然解决了我的问题，但是不能保证解决大家的问题，仅供参考，很多大佬写的远比我这详细，也希望能给大家带来一些帮助。</p>
-<p>​<br>​​</p>
+<p>​​</p>
 
                 
             </div>
