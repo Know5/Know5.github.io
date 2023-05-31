@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>php中json_decode函数</title>
+      <link href="/2023/05/31/php%E4%B8%ADjson-decode%E5%87%BD%E6%95%B0/"/>
+      <url>/2023/05/31/php%E4%B8%ADjson-decode%E5%87%BD%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="JSON函数"><a href="#JSON函数" class="headerlink" title="JSON函数"></a>JSON函数</h2><h3 id="json-decode函数"><a href="#json-decode函数" class="headerlink" title="json_decode函数"></a>json_decode函数</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202305311939562.png" alt="image-20230531193906486"></p><p>JSON 字符串 ：</p><p>JSON 中的字符串必须用双引号包围。</p><p>例如       {“ctf”:”play”}    俩字符串用:隔开</p><p>JSON 数字 ：</p><p>JSON 中的数字必须是整数或浮点数。</p><p>例如        {“ctf”:100}</p><p>在 JSON 中，值必须是以下数据类型之一：字符串，数字，对象(json对象)，数组，布尔，null</p><p>不可以为以下数据类型之一： 函数，日期，undefined</p><h3 id="json-decode"><a href="#json-decode" class="headerlink" title="json_decode"></a>json_decode</h3><p>在PHP中   json_decode() 函数用于对 JSON 格式的字符串进行解码，并转换为 PHP 变量。</p><p>代码</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>`</span><br><span class="line">`<span class="variable">$json</span> = <span class="string">&#x27;&#123;&quot;ctfer&quot;:&quot;sanmao&quot;,&quot;ctf&quot;:&quot;misc&quot;,&quot;age&quot;:18,&quot;bisai&quot;:14,&quot;champion&quot;:5&#125;&#x27;</span>;`</span><br><span class="line"></span><br><span class="line">`<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">json_decode</span>(<span class="variable">$json</span>));`</span><br><span class="line">`<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">json_decode</span>(<span class="variable">$json</span>, <span class="literal">true</span>));`</span><br><span class="line">`<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>实例演示</p><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202305311948136.png" alt="image-20230531194822083"></p><h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h3 id="SWPUCTF-2021-新生赛-jicao"><a href="#SWPUCTF-2021-新生赛-jicao" class="headerlink" title="[[SWPUCTF 2021 新生赛] jicao]"></a>[[SWPUCTF 2021 新生赛] jicao]</h3><p>源代码</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line"><span class="variable">$id</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line"><span class="variable">$json</span>=<span class="title function_ invoke__">json_decode</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;json&#x27;</span>],<span class="literal">true</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$id</span>==<span class="string">&quot;wllmNB&quot;</span>&amp;&amp;<span class="variable">$json</span>[<span class="string">&#x27;x&#x27;</span>]==<span class="string">&quot;wllm&quot;</span>)</span><br><span class="line">&#123;<span class="keyword">echo</span> <span class="variable">$flag</span>;&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>本题需要进行一个post传参，一个get传参，post传参很简单，在Max HackBar或者在BP里传入 id&#x3D;wllmNB</p><p>但是get传参则需要通过调用 PHP 内置函数 json_decode()，将字符串解析为一个关联数组，第二个参数 true 表示将解析结果以数组形式返回。最终将解析得到的数组赋值给变量 $json，可以在后续的代码中使用。</p><p>即构造 url+&#x2F;?json&#x3D;{“x”:”wllm”}   即上面所学json对字符串的值</p><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202305311954553.png" alt="image-20230531195408409"></p><p>即可得到flag</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> php基础，代码审计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>BUUWeb刷题记录</title>
       <link href="/2023/04/23/BUUWeb%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
       <url>/2023/04/23/BUUWeb%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
