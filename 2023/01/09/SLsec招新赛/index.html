@@ -1,0 +1,1028 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SLsec招新赛, RE,Misc,Web,Cpypto等">
+    <meta name="description" content="MISC一、熊曰从题目看到是一串不知道什么的什么，但根据题目名字，考虑到与熊论道所以通过网上搜寻与熊论道，得到答案 链接：熊曰解密
+二、这个皮卡丘有点矮打开题目得到一个附件是一张皮卡丘图片通过图片，考虑到可能是考察图片长短，所以可以通过01">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SLsec招新赛 | Know5</title>
+    <link rel="icon" type="image/png" href="/1.png">
+    
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/avatar.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Know5</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/avatar.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Know5</div>
+        <div class="logo-desc">
+            
+            注重于代码学习，网安学习，分享经验，分享知识。
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SLsec招新赛</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%96%B0%E6%89%8B%E3%80%81%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">新手、网安学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-01-09
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-04-21
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.1k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h2 id="一、熊曰"><a href="#一、熊曰" class="headerlink" title="一、熊曰"></a>一、熊曰</h2><p>从题目看到是一串不知道什么的什么，但根据题目名字，考虑到与熊论道<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010239.png"><br>所以通过网上搜寻与熊论道，得到答案<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010589.png"><br> 链接：<a target="_blank" rel="noopener" href="http://hi.pcmoe.net/">熊曰解密</a></p>
+<h2 id="二、这个皮卡丘有点矮"><a href="#二、这个皮卡丘有点矮" class="headerlink" title="二、这个皮卡丘有点矮"></a>二、这个皮卡丘有点矮</h2><p>打开题目得到一个附件是一张皮卡丘图片<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010243.png">通过图片，考虑到可能是考察图片长短，所以可以通过010改变图片长短来找到答案<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010696.png"><br>最终得到flag，就在皮卡丘的脚下<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010268.png"></p>
+<h2 id="三、vivo50"><a href="#三、vivo50" class="headerlink" title="三、vivo50"></a>三、vivo50</h2><p>本题所给附件是一个pdf文件，打开后发现是一张图片，没有线索，不过可以通过pdf文件中的，如下图找到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010815.png"></p>
+<h2 id="四、你是lsp吗"><a href="#四、你是lsp吗" class="headerlink" title="四、你是lsp吗"></a>四、你是lsp吗</h2><p>本题附件是一张图片，通过010查询没有什么问题，通过stegsolve中的data extract发现里面还有一张图片，得到一张二维码<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010214.png"><br>通过扫描二维码得到一串base字符<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010712.png"><br>通过base32解密得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010130.png"><br>base32解密链接：<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/base32">base32</a></p>
+<h2 id="五、起风了"><a href="#五、起风了" class="headerlink" title="五、起风了"></a>五、起风了</h2><p>本题附件图片是一串看不懂的字符，拖到010试试<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010918.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211010333.png"><br>得到一串代码，看着像base解密，通过base解密得到一句英语<img src="https://img-blog.csdnimg.cn/a81ea7619c214581b692e34ae5354921.png"><br>网上英语翻译知道其意思<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011195.png">上网搜索提瓦特解密得到以下内容<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011911.png"><br>得到flag：SLsec{yuanlainishiop}</p>
+<h2 id="六、你会相信PDD吗？"><a href="#六、你会相信PDD吗？" class="headerlink" title="六、你会相信PDD吗？"></a>六、你会相信PDD吗？</h2><p>打开压缩包发现图片被加密了，<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011817.png"><br>考虑到没有任何密码提示，有可能是压缩包伪加密，通过010修改得到图片<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011334.png"><br>发现是一张二维码但缺失一个定位角，下面有俩种方法。第一种方法、通过ps技术找到一个二维码定位角角补齐二维码通过扫描得到答案。第二种方法、通过CQR得到二维码藏的东西<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011084.png"><br>通过内容考虑栅栏密码，得到flag<img src="https://img-blog.csdnimg.cn/abad0cd0fd40457ab72fde28014e82c9.png"></p>
+<h2 id="七、情报员CPU"><a href="#七、情报员CPU" class="headerlink" title="七、情报员CPU"></a>七、情报员CPU</h2><p>打开附件发现是一个加密压缩包，<br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011626.png"><br>打开passwd1<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011887.png"><br>可以考虑干支解密，通过<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011509.png"><br>对照得到密码，打开第二个压缩包也是加密的，打开passwd2<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011994.png"><br>看出是核心价值观编码<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011069.png"><br>打开第二个压缩包得到一张图片<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011889.png"><br>得到CPU带来的秘密图片通过010看到藏着一串数字，考虑ascii码加密<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011979.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011956.png">得到flag，结果用SLsec{}包装<br>链接:<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/cvecode">核心价值观编码</a></p>
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h2 id="一、签到"><a href="#一、签到" class="headerlink" title="一、签到"></a>一、签到</h2><p>通过网页捕获找到这个flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011984.png"><br>再通过保存图片，通过网上图片文字提取得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211011958.png"></p>
+<h2 id="二、Robots"><a href="#二、Robots" class="headerlink" title="二、Robots"></a>二、Robots</h2><p>通过robots网上可得知爬虫协议，即将网站后面加上&#x2F;robots，如图<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012570.png"><br>再通过此修改得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012048.png"></p>
+<h2 id="三、PHP01"><a href="#三、PHP01" class="headerlink" title="三、PHP01"></a>三、PHP01</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012230.png"><br>根据对此分析得到get应传的参，如图所示，得到flag。<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012518.png"></p>
+<h2 id="四、PHP02"><a href="#四、PHP02" class="headerlink" title="四、PHP02"></a>四、PHP02</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012693.png">首先这题提示只要访问flag.php就能得到答案，但是如果你单纯输出flag.php会出现如下图的情况<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012756.png">所以可以从中得到规律，进行以下的修改，得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012269.png"></p>
+<h2 id="CPYPTO"><a href="#CPYPTO" class="headerlink" title="CPYPTO"></a>CPYPTO</h2><h2 id="一、base家族"><a href="#一、base家族" class="headerlink" title="一、base家族"></a>一、base家族</h2><p>打开附件得到一串码，根据题目，考虑base解密<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012305.png"><br>考虑到可能是base的层层加密<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012449.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012170.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012548.png"><br>工具链接:<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tools">https://ctf.bugku.com/tools</a></p>
+<h2 id="二、O欢迎来到SLsec！，ok"><a href="#二、O欢迎来到SLsec！，ok" class="headerlink" title="二、O欢迎来到SLsec！，ok"></a>二、O欢迎来到SLsec！，ok</h2><p>打开文本得到一堆重复乱码，<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012161.png"><br>根据题目考虑到ook解密，将SLsec改成Ook后得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013162.png"><br>ook解密链接:<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/brainfuck">https://ctf.bugku.com/tool/brainfuck</a></p>
+<h2 id="三、小兔兔找朋友"><a href="#三、小兔兔找朋友" class="headerlink" title="三、小兔兔找朋友"></a>三、小兔兔找朋友</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012922.png"><br>此题要根据题目来做，首先是小兔子过生日，当天为光棍节，所以密钥为1111，通过兔兔想到兔子解密，兔子解密后栅栏数为三的栅栏解密以及最后的凯撒解密得到答案，步骤如下<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012392.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012918.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013703.png"><br>RABBIT解密链接:<a target="_blank" rel="noopener" href="https://www.codeeeee.com/encrypt/rabbit.html">https://www.codeeeee.com/encrypt/rabbit.html</a></p>
+<h2 id="四、MD5解密"><a href="#四、MD5解密" class="headerlink" title="四、MD5解密"></a>四、MD5解密</h2><p>该题是通过一串代码得到的答案，<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013584.png"><br>再用SLsec包装即是答案。</p>
+<p>源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">#print hashlib.md5(s).hexdigest().upper()`</span><br><span class="line">k = &#x27;SLsec&#123;md5&amp;zd&amp;mj&amp;m&#125;&#x27;</span><br><span class="line">for i in range(26):</span><br><span class="line">    temp1 = k.replace(&#x27;&amp;&#x27;,str(chr(97+i)),1) #用ascii开始，从A开始查</span><br><span class="line">    for j in range(26):</span><br><span class="line">        temp2 = temp1.replace(&#x27;&amp;&#x27;,chr(97+j),1)</span><br><span class="line">        for n in range(26):``</span><br><span class="line">            temp3 = temp2.replace(&#x27;&amp;&#x27;,chr(97+n),1)</span><br><span class="line">            s = hashlib.md5(temp3.encode(&#x27;utf8&#x27;)).hexdigest().upper()#注意大小写</span><br><span class="line">            if s[:32] == &#x27;D1ABA2C785779AFFFBEC56422DBF23F2&#x27;:#检查元素</span><br><span class="line">                print(temp3)</span><br></pre></td></tr></table></figure>
+<p>源代码链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/emmmk_suibian/article/details/123693217">https://blog.csdn.net/emmmk_suibian&#x2F;article&#x2F;details&#x2F;123693217</a></p>
+<h2 id="RESERVE"><a href="#RESERVE" class="headerlink" title="RESERVE"></a>RESERVE</h2><h2 id="一、re签到"><a href="#一、re签到" class="headerlink" title="一、re签到"></a>一、re签到</h2><p>将附件放入ida就能找到答案<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013050.png"></p>
+<h2 id="二、JustCaesar"><a href="#二、JustCaesar" class="headerlink" title="二、JustCaesar"></a>二、JustCaesar</h2><p>第二题同样是exe文件，所以通过ida打开这个压缩包<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013701.png"><br>得到一串代码，通过题目提示凯撒，所以进行凯撒解密得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013803.png"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Know5</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://know5.github.io/2023/01/09/SLsec%E6%8B%9B%E6%96%B0%E8%B5%9B/">https://know5.github.io/2023/01/09/SLsec%E6%8B%9B%E6%96%B0%E8%B5%9B/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Know5</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%96%B0%E6%89%8B%E3%80%81%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">新手、网安学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/02/08/%E8%A7%A3%E5%86%B3pythoncharm%E4%B8%AD%E5%85%B3%E4%BA%8ECrypto%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="解决pythoncharm中关于Crypto的相关问题">
+                        
+                        <span class="card-title">解决pythoncharm中关于Crypto的相关问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Know5
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%A7%81%E8%A7%A3%EF%BC%8C%E5%8F%82%E8%80%83%EF%BC%8C%E5%AD%A6%E4%B9%A0%E3%80%82/">
+                        <span class="chip bg-color">见解，参考，学习。</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/01/07/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Know5
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">Know5</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Know5" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2012989586@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2012989586" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2012989586" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.5'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
