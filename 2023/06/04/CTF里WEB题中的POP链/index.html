@@ -5,7 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="CTF里WEB题中的POP链, RE,Misc,Web,Cpypto等">
-    <meta name="description" content="">
+    <meta name="description" content="再解释源代码之前，我们需要先了解一下这个php的魔术方法
+
+
+__construct()，类的构造函数
+__destruct()，类的析构函数
+__call()，在对象中调用一个不可访问方法时调用
+__callStatic()，用静态方式中">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -307,9 +313,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/WEB-POP%E9%93%BE/">
+                                <span class="chip bg-color">WEB POP链</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -328,14 +338,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-04
+                    2023-07-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.1k
                 </div>
                 
 
@@ -357,7 +367,53 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>再解释源代码之前，我们需要先了解一下这个php的魔术方法</p>
+<blockquote>
+<ol>
+<li>__construct()，类的构造函数</li>
+<li>__destruct()，类的析构函数</li>
+<li>__call()，在对象中调用一个不可访问方法时调用</li>
+<li>__callStatic()，用静态方式中调用一个不可访问方法时调用</li>
+<li>__get()，获得一个类的成员变量时调用</li>
+<li>__set()，设置一个类的成员变量时调用</li>
+<li>__isset()，当对不可访问属性调用isset()或empty()时调用</li>
+<li>__unset()，当对不可访问属性调用unset()时被调用。</li>
+<li>__sleep()，执行serialize()时，先会调用这个函数</li>
+<li>__wakeup()，执行unserialize()时，先会调用这个函数</li>
+<li>__toString()，类被当成字符串时的回应方法</li>
+<li>__invoke()，调用函数的方式调用一个对象时的回应方法</li>
+<li>__set_state()，调用var_export()导出类时，此静态方法会被调用。</li>
+<li>__clone()，当对象复制完成时调用</li>
+<li>__autoload()，尝试加载未定义的类</li>
+<li>__debugInfo()，打印所需调试信息</li>
+</ol>
+</blockquote>
+<p>然后再来看源代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;./xxxiscc.php&quot;</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">boy</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="variable">$like</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;能请你喝杯奶茶吗？&lt;br&gt;&quot;</span>;</span><br><span class="line">    @<span class="variable language_">$this</span>-&gt;like-&gt;<span class="title function_ invoke__">make_friends</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;拱火大法好&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;like-&gt;<span class="keyword">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">girl</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="variable">$boyname</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$func</span>, <span class="variable">$args</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;我害羞羞&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;boyname-&gt;name); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">helper</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="variable">$name</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="variable">$string</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$string</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="keyword">string</span> = <span class="variable">$string</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__isset</span>(<span class="params"><span class="variable">$val</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;僚机上线&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$name</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;僚机不懈努力&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="variable">$var</span> = <span class="variable language_">$this</span>-&gt;<span class="variable">$name</span>;</span><br><span class="line">    <span class="variable">$var</span>[<span class="variable">$name</span>]();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">love_story</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">love</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;爱情萌芽&lt;br&gt;&quot;</span>;</span><br><span class="line">    <span class="title function_ invoke__">array_walk</span>(<span class="variable">$this</span>, function(<span class="variable">$make</span>, <span class="variable">$colo</span>)&#123;</span><br><span class="line">      <span class="keyword">echo</span> <span class="string">&quot;坠入爱河，给你爱的密码&lt;br&gt;&quot;</span>;</span><br><span class="line">      <span class="keyword">if</span> (<span class="variable">$make</span>[<span class="number">0</span>] === <span class="string">&quot;girl_and_boy&quot;</span> &amp;&amp; <span class="variable">$colo</span> === <span class="string">&quot;fall_in_love&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;iscc&quot;</span>])) &#123;</span><br><span class="line">  <span class="variable">$a</span>=<span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;iscc&#x27;</span>]);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当这个php代码开始走的时候，先是__destruct()魔术方法被触发，然后echo出句子，当进行到</p>
+<p><strong>$this-&gt;like-&gt;make_friends();</strong>  发现它调用了一个make_friends方法，但是这个方法不存在，所以触发call()魔术方法，在__call()中,echo出句子后，进行**isset($this-&gt;boyname-&gt;name);**会发现其触发了____isset()魔术方法</p>
+<p>因为我们可以从代码里看到这俩个属性都是私有的，不可访问。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922222.png" alt="image-20230514203223563"></p>
+<p>那么我们继续走，当进行isset()魔术方法时，echo出它的句子，然后发现其**echo $this-&gt;name;**发现name前没加$，意思为name被当成字符串，所以会发现其触发__toString()魔术方法</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922283.png" alt="image-20230514203653686"></p>
+<p>echo出句子，然后进行<strong>return $this-&gt;like-&gt;string;</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922390.png" alt="image-20230514203808378"></p>
+<p>string是类helper里的成员变量。所以触发了__get()魔术方法。echo出句子后</p>
+<p>   $var &#x3D; $this-&gt;$name;<br>    $var 【$name](); 从当前对象实例中获取一个变量，使用$name变量中指定的变量名称。然后，它尝试调用检索到的变量上的方法，使用相同的$name值作为方法名。（还是有点不太清楚）然后就是往下走类。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922316.png" alt="image-20230514205018486"></p>
+<p>满足$colo强等于”fall_in_love”,且数组[0]&#x3D;”girl_and_boy”;</p>
+<p>所以就可以构建出一个链表并以此来写出PHP代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">boy</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$like</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">girl</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$boyname</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">helper</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$string</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="keyword">string</span>=<span class="keyword">array</span>(<span class="string">&quot;string&quot;</span>=&gt;<span class="keyword">array</span>(<span class="keyword">new</span> <span class="title function_ invoke__">love_story</span>(),<span class="string">&quot;love&quot;</span>));</span><br><span class="line">    &#125;<span class="comment">//这是一个公共函数构造器（__construct），它需要一个字符串作为参数。在函数内部，将传入的字符串赋值给类的属性 $this-&gt;string。其中包含一个名为 &quot;string&quot; 的属性，它是一个数组，该数组包含了一个新的 love_story 对象和一个字符串 &quot;love&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">love_story</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$fall_in_love</span>=<span class="keyword">array</span>(<span class="number">0</span>=&gt;<span class="string">&#x27;girl_and_boy&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上半部分就是将类进行书写。以及满足love_story类中的条件。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$b1</span> = <span class="keyword">new</span> <span class="title function_ invoke__">boy</span>();</span><br><span class="line"><span class="variable">$b</span> = <span class="keyword">new</span> <span class="title function_ invoke__">boy</span>();</span><br><span class="line"><span class="variable">$g</span> = <span class="keyword">new</span> <span class="title function_ invoke__">girl</span>();</span><br><span class="line"><span class="variable">$h1</span> = <span class="keyword">new</span> <span class="title function_ invoke__">helper</span>();</span><br><span class="line"><span class="variable">$h</span> = <span class="keyword">new</span> <span class="title function_ invoke__">helper</span>();</span><br><span class="line"><span class="variable">$l</span> = <span class="keyword">new</span> <span class="title function_ invoke__">love_story</span>();</span><br><span class="line"><span class="variable">$h</span>-&gt;<span class="keyword">string</span>=<span class="keyword">array</span>(<span class="string">&quot;string&quot;</span>=&gt;<span class="keyword">array</span>(<span class="keyword">new</span> <span class="title function_ invoke__">love_story</span>(),<span class="string">&quot;love&quot;</span>));</span><br><span class="line"><span class="variable">$b</span>-&gt;like=<span class="variable">$h</span>;</span><br><span class="line"><span class="variable">$h1</span>-&gt;name=<span class="variable">$b</span>;</span><br><span class="line"><span class="variable">$g</span>-&gt;boyname=<span class="variable">$h1</span>;</span><br><span class="line"><span class="variable">$b1</span>-&gt;like=<span class="variable">$g</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$b1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>下半函数就是我们的链表，也就是上面我所说的按照那个顺序一步一步走，最后到达</p>
+<p>$h-&gt;string&#x3D;array(“string”&#x3D;&gt;array(new love_story(),”love”)); 然后get传参iscc&#x3D;序列化后的结果，得到线索</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300923309.png" alt="image-20230514205953377"></p>
+<p>从这些被echo的句子也能看出链表。</p>
+
                 
             </div>
             <hr/>
@@ -420,7 +476,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/WEB-POP%E9%93%BE/">
+                                    <span class="chip bg-color">WEB POP链</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -497,18 +557,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/06/04/CTF%E9%87%8CWEB%E9%A2%98%E4%B8%AD%E7%9A%84POP%E9%93%BE/">
+                <a href="/2023/07/30/Pikachu%E9%9D%B6%E5%9C%BA%E5%85%A8%E9%80%9A%E5%85%B3%E6%80%9D%E8%B7%AF/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CTF里WEB题中的POP链">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Pikachu靶场全通关思路">
                         
-                        <span class="card-title">CTF里WEB题中的POP链</span>
+                        <span class="card-title">Pikachu靶场全通关思路</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -518,9 +577,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -529,7 +588,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WEB-%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
+                        <span class="chip bg-color">WEB,十大常见漏洞,学习心得</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>

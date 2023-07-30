@@ -1,0 +1,1260 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Pikachu靶场全通关思路, RE,Misc,Web,Cpypto等">
+    <meta name="description" content="暴力破解一、基于表单的暴力破解本题打开后为一个简单的登录界面
+
+无论是用户名还是密码我们都是无从知晓的，所以需要通过BP来爆破出其各自的值
+先随便输入用户名和密码通过BP抓包
+
+然后发送给BP的Intruder(测试器)，利用其中的Clus">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Pikachu靶场全通关思路 | Know5</title>
+    <link rel="icon" type="image/png" href="/1.png">
+    
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/avatar.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Know5</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/avatar.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Know5</div>
+        <div class="logo-desc">
+            
+            注重于代码学习，网安学习，分享经验，分享知识。
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Pikachu靶场全通关思路</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/WEB-%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
+                                <span class="chip bg-color">WEB,十大常见漏洞,学习心得</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-07-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-07-30
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.9k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h1><h2 id="一、基于表单的暴力破解"><a href="#一、基于表单的暴力破解" class="headerlink" title="一、基于表单的暴力破解"></a>一、基于表单的暴力破解</h2><p>本题打开后为一个简单的登录界面</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730093615973.png" alt="image-20230730093615973"></p>
+<p>无论是用户名还是密码我们都是无从知晓的，所以需要通过BP来爆破出其各自的值</p>
+<p>先随便输入用户名和密码通过BP抓包</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730094120190.png" alt="image-20230730094120190"></p>
+<p>然后发送给BP的Intruder(测试器)，利用其中的Clusterbomb(集束炸弹)分别对用户名和密码进行爆破，得到用户名和密码分别为admin&#x2F;123456</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730095134475.png" alt="image-20230730095134475"></p>
+<p>不过本题也不只这一个用户名和密码。</p>
+<h2 id="二、验证码绕过-on-server"><a href="#二、验证码绕过-on-server" class="headerlink" title="二、验证码绕过(on server)"></a>二、验证码绕过(on server)</h2><p>本题在原本的用户名和密码上多了一个验证码，同样的先用BP进行抓包，</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730095501786.png" alt="image-20230730095501786"></p>
+<p>通过抓包重发，发现只要验证码可以重复使用，即当第一次验证码输对以后，只需要去爆破用户名和密码即可，为方便即默认用户名为admin(也可以选择和第一题一样)，</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730095858320.png" alt="image-20230730095858320"></p>
+<p>得到密码为123456，登录成功</p>
+<h2 id="三、验证码绕过-on-client"><a href="#三、验证码绕过-on-client" class="headerlink" title="三、验证码绕过(on client)"></a>三、验证码绕过(on client)</h2><p>先进行BP抓包，</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100132417.png" alt="image-20230730100132417"></p>
+<p>由于本题是前端验证，所以即使我们将vcode那一处给删除掉，回显仍然判断为用户名和密码不存在</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100226995.png" alt="image-20230730100226995"></p>
+<p>所以接下来只需要去爆破出密码即可</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100313886.png" alt="image-20230730100313886"></p>
+<h2 id="四、token防爆破"><a href="#四、token防爆破" class="headerlink" title="四、token防爆破"></a>四、token防爆破</h2><p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100508526.png" alt="image-20230730100508526"></p>
+<p>发现当修改密码再发送时会出现另一种回显</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100550322.png" alt="image-20230730100550322"></p>
+<p>即每个数据包都被添加了token验证机制，尝试使用Intruder(测试器)中的Pitchfork(音叉)</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100749257.png" alt="image-20230730100749257"></p>
+<p>然后在选项中进行修改</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100821191.png" alt="image-20230730100821191"></p>
+<p>找到Grep-Extract进行添加</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100853471.png" alt="image-20230730100853471"></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730100929935.png" alt="image-20230730100929935"></p>
+<p>即从 <strong>value:”</strong> 开始到 <strong>“ &#x2F;&gt;\n\n                <label></strong> 结束</p>
+<p>然后再重定向中选择 <strong>总是</strong></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730101115776.png" alt="image-20230730101115776"></p>
+<p>转到有效载荷，有效负载集为1时即为爆破密码</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730101244127.png" alt="image-20230730101244127"></p>
+<p>有效负载集选为2，并在有效载荷类型中选择    Recursive grep(递归搜索) </p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730101417521.png" alt="image-20230730101417521"></p>
+<p>开始攻击</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730101536591.png" alt="image-20230730101536591"></p>
+<h1 id="Cross-Site-Scripting-（XSS）"><a href="#Cross-Site-Scripting-（XSS）" class="headerlink" title="Cross-Site Scripting （XSS）"></a>Cross-Site Scripting （XSS）</h1><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><blockquote>
+<p>Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：<br>                          1.反射性XSS;<br>                          2.存储型XSS;<br>                          3.DOM型XSS;</p>
+<p>​                        XSS漏洞一直被评估为web漏洞中危害较大的漏洞，在OWASP TOP10的排名中一直属于前三的江湖地位。<br>​                        XSS是一种发生在前端浏览器端的漏洞，所以其危害的对象也是前端用户。<br>​                        形成XSS漏洞的主要原因是程序对输入和输出没有做合适的处理，导致“精心构造”的字符输出在前端时被浏览器当作有效代码解析执行从而产生危害。<br>​                        因此在XSS漏洞的防范上，一般会采用“对输入进行过滤”和“输出进行转义”的方式进行处理:<br>​                         输入过滤：对输入进行过滤，不允许可能导致XSS攻击的字符输入;<br>​                         输出转义：根据输出点的位置对输出到前端的内容进行适当转义;</p>
+</blockquote>
+<h2 id="二、反射型xss-get"><a href="#二、反射型xss-get" class="headerlink" title="二、反射型xss(get)"></a>二、反射型xss(get)</h2><p>本题有着长度限制，不过可以通过F12进行修改，或者先随便输入</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730102009003.png" alt="image-20230730102009003"></p>
+<p>然后通过上方url中的message构成XSS恶意语句，得到弹窗</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730102130155.png" alt="image-20230730102130155"></p>
+<h2 id="三、反射性xss-post"><a href="#三、反射性xss-post" class="headerlink" title="三、反射性xss(post)"></a>三、反射性xss(post)</h2><p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730102216212.png" alt="image-20230730102216212"></p>
+<p>首先他想让你登录，不过用户名和密码就是暴力破解时得到的，登录成功后，直接在输入框中构造XSS恶意语句</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730102336371.png" alt="image-20230730102336371"></p>
+<p>或者 输入此构造伪链接 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">javascript:alert(/我是弹窗/)</span>&gt;</span>别点我没结果<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730103308825.png" alt="image-20230730103308825"></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730103351520.png" alt="image-20230730103351520"></p>
+<h2 id="四、存储型xss"><a href="#四、存储型xss" class="headerlink" title="四、存储型xss"></a>四、存储型xss</h2><p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730102656196.png" alt="image-20230730102656196"></p>
+<p>本题直接在留言版上写下XSS恶意语句，然后每次点开后就会出现弹窗</p>
+<script>alert('我是弹窗')</script>
+
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730102758315.png" alt="image-20230730102758315"></p>
+<p>千万不要在留言板上写这个</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> &gt;</span><span class="language-javascript"><span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>=<span class="string">&quot;http://www.baidu.com&quot;</span>;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>不然后面你每次点开存储型XSS就会自动跳转百度</p>
+<h2 id="五、DOM型xss"><a href="#五、DOM型xss" class="headerlink" title="五、DOM型xss"></a>五、DOM型xss</h2><p>在源码中我们可以找到这个语句</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;dom&quot;).innerHTML = &quot;<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#x27;&quot;+str+&quot;&#x27;</span>&gt;</span>what do you see?<span class="tag">&lt;/<span class="name">a</span>&gt;</span>&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>即我们输入框中的内容就是str，所以我们需要在输入框中输入一个内容，使之达到闭合，以此出现弹窗</p>
+<p>构造语句 <strong>‘onclick&#x3D;alert(‘我是弹窗’)&gt;</strong></p>
+<p>构造后的语句为 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#x27;&#x27;</span><span class="attr">onclick</span>=<span class="string">alert(</span>&#x27;<span class="attr">我是弹窗</span>&#x27;)&gt;</span>&#x27;&gt;what do you see?<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730104611502.png" alt="image-20230730104611502"></p>
+<p>点击下方蓝体，得到弹窗</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730104631561.png" alt="image-20230730104631561"></p>
+<h2 id="六、DOM型xss-x"><a href="#六、DOM型xss-x" class="headerlink" title="六、DOM型xss-x"></a>六、DOM型xss-x</h2><p>和第五题一样，在输入框中输入 <strong>‘onclick&#x3D;alert(‘我是弹窗’)&gt;</strong></p>
+<p>然后下面出现的蓝体文字多点几下就出弹窗了</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730105008555.png" alt="image-20230730105008555"></p>
+<h2 id="七、xss之盲打"><a href="#七、xss之盲打" class="headerlink" title="七、xss之盲打"></a>七、xss之盲打</h2><p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730105105790.png" alt="image-20230730105105790"></p>
+<p>有框你不打？</p>
+<script>alert('我是弹窗')</script>
+
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730105325857.png" alt="image-20230730105325857"></p>
+<p>然后本题有着后台登录地址，登录进去看看</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730105422257.png" alt="image-20230730105422257"></p>
+<p>然后就会被弹了</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730105605983.png" alt="image-20230730105605983"></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730105623266.png" alt="image-20230730105623266"></p>
+<p>盲打的本意就是我们也不知道这个是否会触发，而当管理员打开后台后自动执行xss出现这个弹窗这说明盲打成功</p>
+<h2 id="八、xss之过滤"><a href="#八、xss之过滤" class="headerlink" title="八、xss之过滤"></a>八、xss之过滤</h2><blockquote>
+<p>xss过滤绕过技巧</p>
+<p>1、改变大小写</p>
+<p>2、关闭标签</p>
+<p>3、使用hex编码绕过</p>
+<p>4、绕过magic_quotes_gpc</p>
+<p>5、利用&lt;&gt;标记注射Html&#x2F;Javascript</p>
+<p>6、利用HTML标签属性值执行XSS</p>
+<p>7、空格&#x2F;回车&#x2F;Tab</p>
+<p>8、对标签属性值进行转码</p>
+<p>9、产生自己的事件</p>
+<p>10、利用CSS跨站剖析<br>这里不做赘述，如果想要了解，可以访问[大佬博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/free_xiaochen/article/details/82289316">XSS篇——XSS过滤绕过技巧_xss &lt;被过滤了怎么构造命令_free_xiaochen的博客-CSDN博客</a>)</p>
+</blockquote>
+<p>本题经过尝试是字母大小写绕过</p>
+<Script>alert('我是弹窗')</Script>
+
+<p>这样修改一下就可以触发弹窗</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730112714926.png" alt="image-20230730112714926"></p>
+<h2 id="九、xss之htmlspecialchars"><a href="#九、xss之htmlspecialchars" class="headerlink" title="九、xss之htmlspecialchars"></a>九、xss之htmlspecialchars</h2><p><strong>htmlspecialchars定义和用法</strong></p>
+<blockquote>
+<p>htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。</p>
+<p>预定义的字符是：</p>
+<ul>
+<li>&amp; （和号）成为 &amp;</li>
+<li>“ （双引号）成为 &quot;</li>
+<li>‘ （单引号）成为 ‘</li>
+<li>&lt; （小于）成为 &lt;</li>
+<li>&gt; （大于）成为 &gt;</li>
+</ul>
+<p><strong>提示：</strong>要把特殊的 HTML 实体转换回字符，请使用 <a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-htmlspecialchars-decode.html">htmlspecialchars_decode()</a> 函数。</p>
+</blockquote>
+<p>所以当我们输入xss恶意语句时，会发现被转换为实体符号</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730113247554.png" alt="image-20230730113247554"></p>
+<p>所以我们需要构造如下的语句</p>
+<p><strong>‘οnclick&#x3D;’alert(“我是弹窗”)’</strong>  or  <strong>‘onclick&#x3D;’alert(&#x2F;htmlspecialchars&#x2F;)’</strong></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730113605666.png" alt="image-20230730113605666"></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730113711846.png" alt="image-20230730113711846"></p>
+<h2 id="十、xss之href输出"><a href="#十、xss之href输出" class="headerlink" title="十、xss之href输出"></a>十、xss之href输出</h2><p>本题中如果仍使用正常的xss恶意语句，虽可以得到蓝字回显，但点进去却只是403，经测试无论是双写绕过还是大小写等都不可，这里就可以使用另一种方法，js伪协议绕过</p>
+<p>构造  <strong>javascript:alert(“我是弹窗”)</strong></p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730115126993.png" alt="image-20230730115126993"></p>
+<h2 id="十一、xss之js输出"><a href="#十一、xss之js输出" class="headerlink" title="十一、xss之js输出"></a>十一、xss之js输出</h2><p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730115425548.png" alt="image-20230730115425548"></p>
+<p>先随便输入，得到回显，然后通过源代码找到这一处位置</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $ms=<span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>($ms.<span class="property">length</span> != <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>($ms == <span class="string">&#x27;tmac&#x27;</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#fromjs&#x27;</span>).<span class="title function_">text</span>(<span class="string">&#x27;tmac确实厉害,看那小眼神..&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//            alert($ms);</span></span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#fromjs&#x27;</span>).<span class="title function_">text</span>(<span class="string">&#x27;无论如何不要放弃心中所爱..&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以得知$ms即是我们在文本框写入的内容， 且此内容在js标签内，所以我们需要闭合一下</p>
+<p>构造  <strong></script><script>alert("我是弹窗")</script></strong></p>
+<p>得到弹窗</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730115624235.png" alt="image-20230730115624235"></p>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="一、概述-1"><a href="#一、概述-1" class="headerlink" title="一、概述"></a>一、概述</h2><blockquote>
+<p>CSRF(跨站请求伪造)概述</p>
+<p>​                        Cross-site request forgery  简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。所以CSRF攻击也成为”one click”攻击。很多人搞不清楚CSRF的概念，甚至有时候会将其和XSS混淆,更有甚者会将其和越权问题混为一谈,这都是对原理没搞清楚导致的。<br>​      <strong>CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。</strong>                    </p>
+<p>​      因此，网站如果要防止CSRF攻击，则需要对敏感信息的操作实施对应的安全措施，防止这些操作出现被伪造的情况，从而导致CSRF。比如：<br>​                        –对敏感信息的操作增加安全的token；<br>​                        –对敏感信息的操作增加安全的验证码；<br>​                        –对敏感信息的操作实施安全的逻辑流程，比如修改密码时，需要先校验旧密码等。</p>
+</blockquote>
+<h2 id="二、CSRF-get"><a href="#二、CSRF-get" class="headerlink" title="二、CSRF(get)"></a>二、CSRF(get)</h2><p>根据提示，得到了几个用户，我们如概述那般，先登录vince用户</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730120834385.png" alt="image-20230730120834385"></p>
+<p>修改vince用户的个人信息并利用BP抓包<img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730123945640.png" alt="image-20230730123945640"></p>
+<p>发现没有token验证，然后将add修改为chain80</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730130406025.png" alt="image-20230730130406025"></p>
+<p>然后复制url <strong>&#x2F;pikachu&#x2F;vul&#x2F;csrf&#x2F;csrfget&#x2F;csrf_get_edit.php?sex&#x3D;boy&amp;phonenum&#x3D;18626545453&amp;add&#x3D;chain80&amp;email&#x3D;vince%40pikachu.com&amp;submit&#x3D;submit</strong></p>
+<p>我们再登录kobe用户</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730130553431.png" alt="image-20230730130553431"></p>
+<p>修改url，kobe的信息被修改</p>
+<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730130630531.png" alt="image-20230730130630531"></p>
+<h2 id="三、CSRF-POST"><a href="#三、CSRF-POST" class="headerlink" title="三、CSRF(POST)"></a>三、CSRF(POST)</h2><p>与上题差不多，不过此题是以post传参，我们先登一个lili用户</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301456781.png" alt="image-20230730145629656"></p>
+<p>然后利用BP抓包修改一下</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301457290.png" alt="image-20230730145732199"></p>
+<p>因为post无法像get那般，所以我们需要自己创建一个恶意站点，在pikachu文件夹vul&#x2F;csrf&#x2F;csrfpost下创建一个html文件，使被攻击用户点击</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;postsubmit&quot;</span>).<span class="title function_">click</span>();</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&quot;csrf_post_edit.php&quot;</span>&gt;</span>  //这一处因人而异</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;girl&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;phonenum&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;phonenum&quot;</span> <span class="attr">value</span>=<span class="string">&quot;18656565545&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;add&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;add&quot;</span> <span class="attr">value</span>=<span class="string">&quot;US&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;email&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">value</span>=<span class="string">&quot;lili@pikachu.com&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;postsubmit&quot;</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后我们登录vince用户</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301503808.png" alt="image-20230730150302739"></p>
+<p>访问这个html文件</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301509363.png" alt="image-20230730150957285"></p>
+<h2 id="四、CSRF-Token"><a href="#四、CSRF-Token" class="headerlink" title="四、CSRF(Token)"></a>四、CSRF(Token)</h2><p>由于token回显在每次发送请求都是不一样且完全随机的，且后台会对每次生成的token进行验证， 故我们无法通过伪造URL使被攻击者遭到CSRF攻击，以本人目前能力，无法复现</p>
+<p>由此也可见。token保护是一个很好防御CSRF的方法。</p>
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><h2 id="一、概述-2"><a href="#一、概述-2" class="headerlink" title="一、概述"></a>一、概述</h2><blockquote>
+<p>SQL注入漏洞主要形成的原因是在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到SQL语句中后，被当作SQL语句的一部分执行。从而导致数据库受损（被脱裤、被删除、甚至整个服务器权限沦陷）。       </p>
+<p>​                 在构建代码时，一般会从如下几个方面的策略来防止SQL注入漏洞：<br>​                    1.对传进SQL语句里面的变量进行过滤，不允许危险字符传入；<br>​                    2.使用参数化（Parameterized Query 或 Parameterized Statement）；<br>​                    3.还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了”拼接”的方式,所以使用时需要慎重!                    </p>
+</blockquote>
+<h2 id="二、数字型注入-post"><a href="#二、数字型注入-post" class="headerlink" title="二、数字型注入(post)"></a>二、数字型注入(post)</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301520325.png" alt="image-20230730152032243"></p>
+<p>数字分别代表的就是CSRF中那六个用户，我们直接抓包拼接sql语句</p>
+<p>因为只是数字型，直接联合查询就好</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301523787.png" alt="image-20230730152319704"></p>
+<h2 id="三、字符型注入（get）"><a href="#三、字符型注入（get）" class="headerlink" title="三、字符型注入（get）"></a>三、字符型注入（get）</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301524891.png" alt="image-20230730152431846"></p>
+<p>我们需要判断是单引号闭合还是双引号闭合，</p>
+<p>当我们输入双引号时</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301526744.png" alt="image-20230730152641706"></p>
+<p>当我们输入单引号时</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301527016.png" alt="image-20230730152714960"></p>
+<p>构造语句      <strong>1’ union select username,password from pikachu.users#</strong></p>
+<p>得到回显</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301528761.png" alt="image-20230730152802661"></p>
+<h2 id="四、搜索型注入"><a href="#四、搜索型注入" class="headerlink" title="四、搜索型注入"></a>四、搜索型注入</h2><p>本次注入，就是你还需要去判断一下有几个列</p>
+<p>当我们判断它有三个列时</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301530849.png" alt="image-20230730153059804"></p>
+<p>判断它有四个列时</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301531100.png" alt="image-20230730153124039"></p>
+<p>所以本题有三个列，则 在第三题的基础上再加修改</p>
+<p>构造语句  <strong>1’ union select username,password,3 from pikachu.users#</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301532817.png" alt="image-20230730153236765"></p>
+<h2 id="五、xx型注入"><a href="#五、xx型注入" class="headerlink" title="五、xx型注入"></a>五、xx型注入</h2><p>根据提示，这题就是不管他是什么型，使你所写的sql语句能闭合上，</p>
+<p>即构造 <strong>1’) union select username,password from pikachu.users#</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301544492.png" alt="image-20230730154408441"></p>
+<h2 id="六、”insert-x2F-update”注入"><a href="#六、”insert-x2F-update”注入" class="headerlink" title="六、”insert&#x2F;update”注入"></a>六、”insert&#x2F;update”注入</h2><p>我们需要先注册一个账号</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301545889.png" alt="image-20230730154536831"></p>
+<p>而根据本题题目 insert和update其实都是sql语句的一种，前者用于添加，后者用于修改</p>
+<p>进行BP抓包</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301547592.png" alt="image-20230730154752520"></p>
+<p>然后构造语句进行报错注入，此时不能再在语句后加入注释符</p>
+<p><strong>know5’ or updatexml(1,concat(0x7e,database()),0) or ‘</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301553046.png" alt="image-20230730155307882"></p>
+<p>修改个人信息也是如此</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301554840.png" alt="image-20230730155443758"></p>
+<h2 id="七、”delete注入”"><a href="#七、”delete注入”" class="headerlink" title="七、”delete注入”"></a>七、”delete注入”</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301555856.png" alt="image-20230730155557809"></p>
+<p>点击删除后抓包</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301556185.png" alt="image-20230730155648065"></p>
+<p>由于本题编码问题，所以我们需要用+替换空格，与上题一样，利用报错注入</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301559576.png" alt="image-20230730155904492"></p>
+<h2 id="八、http头注入"><a href="#八、http头注入" class="headerlink" title="八、http头注入"></a>八、http头注入</h2><p>即http头的某个值带入sql语句使其注入</p>
+<p>进行BP抓包</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301628554.png" alt="image-20230730162836490"></p>
+<p>单引号出现报错，所以构造报错注入</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301629597.png" alt="image-20230730162918532"></p>
+<h2 id="九、布尔盲注"><a href="#九、布尔盲注" class="headerlink" title="九、布尔盲注"></a>九、布尔盲注</h2><p>利用substr构造语句，结合我们在刚才注入时已知的那几个用户，可以通过此语句查询到他们的信息</p>
+<p>lili’ and ascii(substr(database(),1,1))&#x3D;112#</p>
+<p>意思就是判断数据库名称的第一个字符是否等于小写字母<code>p</code>，如果相等，则返回True（即条件成立），否则返回False（即条件不成立）。。</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301636136.png" alt="image-20230730163636090"></p>
+<h2 id="十、时间盲注"><a href="#十、时间盲注" class="headerlink" title="十、时间盲注"></a>十、时间盲注</h2><p>时间盲注一般通过if语句，通过延迟的信息进行判断</p>
+<p><strong>1’ and if(substr(database(),1,1)&#x3D;’p’,sleep(5),null)#</strong> 即<code>substr(database(), 1, 1)</code> 是函数 <code>database()</code> 截取第一个字符   **if(substr(database(),1,1)&#x3D;’p’,sleep(5),null)# ** 如果第一个字符是 ‘p’，则执行 <code>sleep(5)</code> 延迟5秒；反之则返回null</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301648294.png" alt="image-20230730164812235"></p>
+<p><strong>lili’ and if ((substr(database(),1,1))&#x3D;’p’,sleep&#x3D;(5),null)#</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301648804.png" alt="image-20230730164854722"></p>
+<h2 id="十一、宽字节注入"><a href="#十一、宽字节注入" class="headerlink" title="十一、宽字节注入"></a>十一、宽字节注入</h2><p>使用BP抓包</p>
+<p>由于魔术引号的存在，需要在其前面加一个%df</p>
+<p>即构造如下语句 <strong>1%df’ union select username,password from pikachu.users#</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301655472.png" alt="image-20230730165539373"></p>
+<h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h2 id="一、概述-3"><a href="#一、概述-3" class="headerlink" title="一、概述"></a>一、概述</h2><blockquote>
+<p><strong>远程系统命令执行</strong><br>        一般出现这种漏洞，是因为应用系统从设计上需要给用户提供指定的远程命令操作的接口<br>         比如我们常见的路由器、防火墙、入侵检测等设备的web管理界面上，一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。而如果设计者在完成该功能时，没有做严格的安全控制，则可能会导致攻击者通过该接口提交“意想不到”的命令，从而让后台进行执行，从而控制整个后台服务器。现在很多的甲方企业都开始实施自动化运维,大量的系统操作会通过”自动化运维平台”进行操作。在这种平台上往往会出现远程系统命令执行的漏洞,不信的话现在就可以找你们运维部的系统测试一下,会有意想不到的”收获”-_-                    </p>
+<p>  <strong>远程代码执行</strong><br>                        同样的道理,因为需求设计,后台有时候也会把用户的输入作为代码的一部分进行执行,也就造成了远程代码执行漏洞。                   </p>
+<p>​                        不管是使用了代码执行的函数,还是使用了不安全的反序列化等等。                    </p>
+<p>​                        因此，如果需要给前端用户提供操作类的API接口，一定需要对接口输入的内容进行严格的判断，比如实施严格的白名单策略会是一个比较好的方法。                    </p>
+</blockquote>
+<h2 id="二、exec-“ping”"><a href="#二、exec-“ping”" class="headerlink" title="二、exec “ping”"></a>二、exec “ping”</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301659965.png" alt="image-20230730165932879"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301700292.png" alt="image-20230730170053239"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301702635.png" alt="image-20230730170250549"></p>
+<p>在后面加上 &amp;whoaimi  就可以执行whoami指令</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301701854.png" alt="image-20230730170132779"></p>
+<h2 id="三、exec-“eval”"><a href="#三、exec-“eval”" class="headerlink" title="三、exec “eval”"></a>三、exec “eval”</h2><p>在上输入phpinfo();指令 得到回显</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301734866.png" alt="image-20230730173426729"></p>
+<h1 id="File-Inclusion（文件包含）"><a href="#File-Inclusion（文件包含）" class="headerlink" title="File Inclusion（文件包含）"></a>File Inclusion（文件包含）</h1>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Know5</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://know5.github.io/2023/07/30/Pikachu%E9%9D%B6%E5%9C%BA%E5%85%A8%E9%80%9A%E5%85%B3%E6%80%9D%E8%B7%AF/">https://know5.github.io/2023/07/30/Pikachu%E9%9D%B6%E5%9C%BA%E5%85%A8%E9%80%9A%E5%85%B3%E6%80%9D%E8%B7%AF/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Know5</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/WEB-%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
+                                    <span class="chip bg-color">WEB,十大常见漏洞,学习心得</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/07/30/Pikachu%E9%9D%B6%E5%9C%BA%E5%85%A8%E9%80%9A%E5%85%B3%E6%80%9D%E8%B7%AF/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Pikachu靶场全通关思路">
+                        
+                        <span class="card-title">Pikachu靶场全通关思路</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Know5
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WEB-%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
+                        <span class="chip bg-color">WEB,十大常见漏洞,学习心得</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/06/04/CTF%E9%87%8CWEB%E9%A2%98%E4%B8%AD%E7%9A%84POP%E9%93%BE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CTF里WEB题中的POP链">
+                        
+                        <span class="card-title">CTF里WEB题中的POP链</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Know5
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WEB-POP%E9%93%BE/">
+                        <span class="chip bg-color">WEB POP链</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">Know5</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Know5" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2012989586@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2012989586" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2012989586" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.5'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
