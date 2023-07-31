@@ -394,14 +394,14 @@ __callStatic()，用静态方式中">
 <p>当这个php代码开始走的时候，先是__destruct()魔术方法被触发，然后echo出句子，当进行到</p>
 <p><strong>$this-&gt;like-&gt;make_friends();</strong>  发现它调用了一个make_friends方法，但是这个方法不存在，所以触发call()魔术方法，在__call()中,echo出句子后，进行**isset($this-&gt;boyname-&gt;name);**会发现其触发了____isset()魔术方法</p>
 <p>因为我们可以从代码里看到这俩个属性都是私有的，不可访问。</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922222.png" alt="image-20230514203223563"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922222.png"></p>
 <p>那么我们继续走，当进行isset()魔术方法时，echo出它的句子，然后发现其**echo $this-&gt;name;**发现name前没加$，意思为name被当成字符串，所以会发现其触发__toString()魔术方法</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922283.png" alt="image-20230514203653686"></p>
 <p>echo出句子，然后进行<strong>return $this-&gt;like-&gt;string;</strong></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922390.png" alt="image-20230514203808378"></p>
 <p>string是类helper里的成员变量。所以触发了__get()魔术方法。echo出句子后</p>
 <p>   $var &#x3D; $this-&gt;$name;<br>    $var 【$name](); 从当前对象实例中获取一个变量，使用$name变量中指定的变量名称。然后，它尝试调用检索到的变量上的方法，使用相同的$name值作为方法名。（还是有点不太清楚）然后就是往下走类。</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922316.png" alt="image-20230514205018486"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922316.png"></p>
 <p>满足$colo强等于”fall_in_love”,且数组[0]&#x3D;”girl_and_boy”;</p>
 <p>所以就可以构建出一个链表并以此来写出PHP代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">boy</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$like</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">girl</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$boyname</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">helper</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$string</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="keyword">string</span>=<span class="keyword">array</span>(<span class="string">&quot;string&quot;</span>=&gt;<span class="keyword">array</span>(<span class="keyword">new</span> <span class="title function_ invoke__">love_story</span>(),<span class="string">&quot;love&quot;</span>));</span><br><span class="line">    &#125;<span class="comment">//这是一个公共函数构造器（__construct），它需要一个字符串作为参数。在函数内部，将传入的字符串赋值给类的属性 $this-&gt;string。其中包含一个名为 &quot;string&quot; 的属性，它是一个数组，该数组包含了一个新的 love_story 对象和一个字符串 &quot;love&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">love_story</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$fall_in_love</span>=<span class="keyword">array</span>(<span class="number">0</span>=&gt;<span class="string">&#x27;girl_and_boy&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -411,7 +411,7 @@ __callStatic()，用静态方式中">
 
 <p>下半函数就是我们的链表，也就是上面我所说的按照那个顺序一步一步走，最后到达</p>
 <p>$h-&gt;string&#x3D;array(“string”&#x3D;&gt;array(new love_story(),”love”)); 然后get传参iscc&#x3D;序列化后的结果，得到线索</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300923309.png" alt="image-20230514205953377"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300923309.png"></p>
 <p>从这些被echo的句子也能看出链表。</p>
 
                 
