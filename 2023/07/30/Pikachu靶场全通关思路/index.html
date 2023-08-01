@@ -337,7 +337,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-31
+                    2023-08-01
                 </div>
                 
 
@@ -416,27 +416,22 @@
 <p>首先他想让你登录，不过用户名和密码就是暴力破解时得到的，登录成功后，直接在输入框中构造XSS恶意语句</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312142921.png"></p>
 <p>或者 输入此构造伪链接 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=javascript:alert(/我是弹窗/)&gt;别点我没结果&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
+<p><code>&lt;a href=javascript:alert(/我是弹窗/)&gt;别点我没结果&lt;/a&gt;</code></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312142923.png"></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312142497.png"></p>
 <h3 id="四、存储型xss"><a href="#四、存储型xss" class="headerlink" title="四、存储型xss"></a>四、存储型xss</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312142139.png"></p>
 <p>本题直接在留言版上写下XSS恶意语句，然后每次点开后就会出现弹窗</p>
-<script>alert('我是弹窗')</script>
-
+<p><code>//          &lt;script&gt;alert(&#39;我是弹窗&#39;)&lt;/script&gt;</code></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312143961.png"></p>
 <p>千万不要在留言板上写这个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; &gt;window.location.href=&quot;http://www.baidu.com&quot;;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
+<p><code>//  &lt;script type=&quot;text/javascript&quot; &gt;window.location.href=&quot;http://www.baidu.com&quot;;&lt;/script&gt;</code></p>
 <p>不然后面你每次点开存储型XSS就会自动跳转百度</p>
 <h3 id="五、DOM型xss"><a href="#五、DOM型xss" class="headerlink" title="五、DOM型xss"></a>五、DOM型xss</h3><p>在源码中我们可以找到这个语句</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&quot;dom&quot;).innerHTML = &quot;&lt;a href=&#x27;&quot;+str+&quot;&#x27;&gt;what do you see?&lt;/a&gt;&quot;;</span><br></pre></td></tr></table></figure>
-
+<p><code>document.getElementById(&quot;dom&quot;).innerHTML = &quot;&lt;a href=&#39;&quot;+str+&quot;&#39;&gt;what do you see?&lt;/a&gt;&quot;;</code></p>
 <p>即我们输入框中的内容就是str，所以我们需要在输入框中输入一个内容，使之达到闭合，以此出现弹窗</p>
 <p>构造语句 <strong>‘onclick&#x3D;alert(‘我是弹窗’)&gt;</strong></p>
 <p>构造后的语句为 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&#x27;&#x27;onclick=alert(&#x27;我是弹窗&#x27;)&gt;&#x27;&gt;what do you see?&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
+<p><code>&lt;a href=&#39;&#39;onclick=alert(&#39;我是弹窗&#39;)&gt;&#39;&gt;what do you see?&lt;/a&gt;</code></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312143436.png"></p>
 <p>点击下方蓝体，得到弹窗</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312143114.png"></p>
@@ -445,8 +440,7 @@
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312143667.png"></p>
 <h3 id="七、xss之盲打"><a href="#七、xss之盲打" class="headerlink" title="七、xss之盲打"></a>七、xss之盲打</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312143034.png"></p>
 <p>有框你不打？</p>
-<script>alert('我是弹窗')</script>
-
+<p><code>//   &lt;script&gt;alert(&#39;我是弹窗&#39;)&lt;/script&gt;</code></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312143091.png"></p>
 <p>然后本题有着后台登录地址，登录进去看看</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144578.png"></p>
@@ -468,8 +462,7 @@
 <p>10、利用CSS跨站剖析<br>这里不做赘述，如果想要了解，可以访问[大佬博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/free_xiaochen/article/details/82289316">XSS篇——XSS过滤绕过技巧_xss &lt;被过滤了怎么构造命令_free_xiaochen的博客-CSDN博客</a>)</p>
 </blockquote>
 <p>本题经过尝试是字母大小写绕过</p>
-<Script>alert('我是弹窗')</Script>
-
+<p><code>  &lt;Script&gt;alert(&#39;我是弹窗&#39;)&lt;/Script&gt;</code></p>
 <p>这样修改一下就可以触发弹窗</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144494.png"></p>
 <h3 id="九、xss之htmlspecialchars"><a href="#九、xss之htmlspecialchars" class="headerlink" title="九、xss之htmlspecialchars"></a>九、xss之htmlspecialchars</h3><p><strong>htmlspecialchars定义和用法</strong></p>
@@ -486,20 +479,20 @@
 <p><strong>提示：</strong>要把特殊的 HTML 实体转换回字符，请使用 <a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-htmlspecialchars-decode.html">htmlspecialchars_decode()</a> 函数。</p>
 </blockquote>
 <p>所以当我们输入xss恶意语句时，会发现被转换为实体符号</p>
-<p><img src="C:\Users\HXY\AppData\Roaming\Typora\typora-user-images\image-20230730113247554.png" alt="image-20230730113247554"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308012136704.png"></p>
 <p>所以我们需要构造如下的语句</p>
-<p><strong>‘οnclick&#x3D;’alert(“我是弹窗”)’</strong>  or  <strong>‘onclick&#x3D;’alert(&#x2F;htmlspecialchars&#x2F;)’</strong></p>
+<p><code>**&#39;οnclick=&#39;alert(&quot;我是弹窗&quot;)&#39;**  or  **&#39;onclick=&#39;alert(/htmlspecialchars/)&#39;**</code></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144582.png"></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144485.png"></p>
 <h3 id="十、xss之href输出"><a href="#十、xss之href输出" class="headerlink" title="十、xss之href输出"></a>十、xss之href输出</h3><p>本题中如果仍使用正常的xss恶意语句，虽可以得到蓝字回显，但点进去却只是403，经测试无论是双写绕过还是大小写等都不可，这里就可以使用另一种方法，js伪协议绕过</p>
-<p>构造  <strong>javascript:alert(“我是弹窗”)</strong></p>
+<p>构造  <code>**javascript:alert(&quot;我是弹窗&quot;)**</code></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144368.png"></p>
 <h3 id="十一、xss之js输出"><a href="#十一、xss之js输出" class="headerlink" title="十一、xss之js输出"></a>十一、xss之js输出</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144286.png"></p>
 <p>先随便输入，得到回显，然后通过源代码找到这一处位置</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    $ms=<span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span>($ms.<span class="property">length</span> != <span class="number">0</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>($ms == <span class="string">&#x27;tmac&#x27;</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#fromjs&#x27;</span>).<span class="title function_">text</span>(<span class="string">&#x27;tmac确实厉害,看那小眼神..&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;<span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript"><span class="comment">//            alert($ms);</span></span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#fromjs&#x27;</span>).<span class="title function_">text</span>(<span class="string">&#x27;无论如何不要放弃心中所爱..&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>我们可以得知$ms即是我们在文本框写入的内容， 且此内容在js标签内，所以我们需要闭合一下</p>
-<p>构造  <strong></script><script>alert("我是弹窗")</script></strong></p>
+<p>构造  <code>&lt;/script&gt;&lt;script&gt;alert(&quot;我是弹窗&quot;)&lt;/script&gt;</code></p>
 <p>得到弹窗</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312145532.png"></p>
 <h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><h3 id="一、概述-1"><a href="#一、概述-1" class="headerlink" title="一、概述"></a>一、概述</h3><blockquote>
