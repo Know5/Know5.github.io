@@ -337,14 +337,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-01
+                    2023-08-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    5.3k
                 </div>
                 
 
@@ -636,7 +636,75 @@ document<span class="token punctuation">.</span><span class="token function">get
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301701854.png"></p>
 <h3 id="三、exec-“eval”"><a href="#三、exec-“eval”" class="headerlink" title="三、exec “eval”"></a>三、exec “eval”</h3><p>在上输入phpinfo();指令 得到回显，不局限于这个指令，你system(“ipconfig”)也能在上面回显出内容</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301734866.png"></p>
-<h2 id="File-Inclusion（文件包含）"><a href="#File-Inclusion（文件包含）" class="headerlink" title="File Inclusion（文件包含）"></a>File Inclusion（文件包含）</h2>
+<h2 id="File-Inclusion（文件包含）"><a href="#File-Inclusion（文件包含）" class="headerlink" title="File Inclusion（文件包含）"></a>File Inclusion（文件包含）</h2><h3 id="一、概述-4"><a href="#一、概述-4" class="headerlink" title="一、概述"></a>一、概述</h3><blockquote>
+<p>文件包含，是一个功能。在各种开发语言中都提供了内置的文件包含函数，其可以使开发人员在一个代码文件中直接包含（引入）另外一个代码文件。比如 在PHP中，提供了：<br> include(),include_once()<br> require(),require_once()<br>            这些文件包含函数，这些函数在代码设计中被经常使用到。<br>            大多数情况下，文件包含函数中包含的代码文件是固定的，因此也不会出现安全问题。                        但是，有些时候，文件包含的代码文件被写成了一个变量，且这个变量可以由前端用户传进来，这种情况下，如果没有做足够的安全考虑，则可能会引发文件包含漏洞。攻击着会指定一个“意想不到”的文件让包含函数去执行，从而造成恶意操作。</p>
+<p>​            根据不同的配置环境，文件包含漏洞分为如下两种情况：<br>​                        <strong>1.本地文件包含漏洞：</strong>仅能够对服务器本地的文件进行包含，由于服务器上的文件并不是攻击者所能够控制的，因此该情况下，攻击着更多的会包含一些固定的系统配置文件，从而读取系统敏感信息。很多时候本地文件包含漏洞会结合一些特殊的文件上传漏洞，从而形成更大的威力。<br>​                        <strong>2.远程文件包含漏洞：</strong>能够通过url地址对远程的文件进行包含，这意味着攻击者可以传入任意的代码，这种情况没啥好说的，准备挂彩。                    </p>
+<p>​             因此，在web应用系统的功能设计上尽量不要让前端用户直接传变量给包含函数，如果非要这么做，也一定要做严格的白名单策略进行过滤。                                        </p>
+</blockquote>
+<h3 id="二、File-Inclusion-local"><a href="#二、File-Inclusion-local" class="headerlink" title="二、File Inclusion(local)"></a>二、File Inclusion(local)</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061119220.png"></p>
+<p>随便点一个提交发现得到回显，</p>
+<p>从上面url我们可以发现文件名  <strong>file5.php</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061241190.png"></p>
+<p>这些文件一般都是后台存在的文件，但此题是本地文件包含漏洞，我们可以通过修改上方的url来访问</p>
+<p>可以通过在前面多个**..&#x2F;**来跳转到根目录</p>
+<p>类似于  <strong>..&#x2F;..&#x2F;..&#x2F;Windows&#x2F;System32&#x2F;drivers&#x2F;etc&#x2F;hosts</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061256539.png"></p>
+<p>按此路径也可以找到文件</p>
+<p>或者在pikachu靶场里的<strong>include</strong>文件夹找到这几个回显出来的php文件</p>
+<p>我们在里面建立一个txt文件可以成功访问</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061259377.png"></p>
+<h3 id="三、File-Inclusion-remote"><a href="#三、File-Inclusion-remote" class="headerlink" title="三、File Inclusion(remote)"></a>三、File Inclusion(remote)</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061259481.png"></p>
+<p>我们先去php.ini文件将<strong>allow_url_include</strong>改成<strong>On</strong></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061524150.png"></p>
+<p>打开后和第一题一样的回显</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061525195.png"></p>
+<p>不过可以在url上看到include</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061526309.png"></p>
+<p>然后我们可以就此修改去访问另一个网站的文件，比如</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061531014.png"></p>
+<p>访问成功</p>
+<h2 id="Unsafe-Filedownload（不安全的文件下载）"><a href="#Unsafe-Filedownload（不安全的文件下载）" class="headerlink" title="Unsafe Filedownload（不安全的文件下载）"></a>Unsafe Filedownload（不安全的文件下载）</h2><h3 id="一、概述-5"><a href="#一、概述-5" class="headerlink" title="一、概述"></a>一、概述</h3><blockquote>
+<p>文件下载功能在很多web系统上都会出现，一般我们当点击下载链接，便会向后台发送一个下载请求，一般这个请求会包含一个需要下载的文件名称，后台在收到请求后会开始执行下载代码，将该文件名对应的文件response给浏览器，从而完成下载。</p>
+<p>如果后台在收到请求的文件名后,将其直接拼进下载文件的路径中而不对其进行安全判断的话，则可能会引发不安全的文件下载漏洞。此时如果 攻击者提交的不是一个程序预期的的文件名，而是一个精心构造的路径(比如..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd),则很有可能会直接将该指定的文件下载下来。从而导致后台敏感信息(密码文件、源代码等)被下载。                     </p>
+<p>所以，在设计文件下载功能时，如果下载的目标文件是由前端传进来的，则一定要对传进来的文件进行安全考虑。切记：所有与前端交互的数据都是不安全的，不能掉以轻心！                                    </p>
+</blockquote>
+<h3 id="二、Unsafe-Filedownload"><a href="#二、Unsafe-Filedownload" class="headerlink" title="二、Unsafe Filedownload"></a>二、Unsafe Filedownload</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061533745.png"></p>
+<p>如Notice所说，如果点击图片下方名字即会下载图片，其他无线索，所以我们先点击一个图片，然后通过BP抓包</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061539296.png">然后将<strong>filename</strong>后面的值修改为 <strong>..&#x2F;test.php</strong>（这个php文件是我自己创的并放在上级目录) </p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061543372.png"></p>
+<p>然后成功下载</p>
+<h2 id="Unsafe-Fileupload（文件上传漏洞）"><a href="#Unsafe-Fileupload（文件上传漏洞）" class="headerlink" title="Unsafe Fileupload（文件上传漏洞）"></a>Unsafe Fileupload（文件上传漏洞）</h2><h3 id="一、概述-6"><a href="#一、概述-6" class="headerlink" title="一、概述"></a>一、概述</h3><blockquote>
+<p>文件上传功能在web应用系统很常见，比如很多网站注册的时候需要上传头像、上传附件等等。当用户点击上传按钮后，后台会对上传的文件进行判断比如是否是指定的类型、后缀名、大小等等，然后将其按照设计的格式进行重命名后存储在指定的目录。如果说后台对上传的文件没有进行任何的安全判断或者判断条件不够严谨，则攻击着可能会上传一些恶意的文件，比如一句话木马，从而导致后台服务器被webshell。                    </p>
+<p> 所以，在设计文件上传功能时，一定要对传进来的文件进行严格的安全考虑。比如：<br>              –验证文件类型、后缀名、大小;<br>              –验证文件的上传方式;<br>              –对文件进行一定复杂的重命名;<br>              –不要暴露文件上传后的路径;<br>              –等等…</p>
+</blockquote>
+<h3 id="二、client-check-客户端check"><a href="#二、client-check-客户端check" class="headerlink" title="二、client check(客户端check)"></a>二、client check(客户端check)</h3><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><p>先上传一个jpg图片里面写着phpinfo()函数，然后点击的一瞬间通过BP抓包</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061605727.png"></p>
+<p>将jpg后缀修改为php后缀并发送</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061605976.png"></p>
+<p>然后访问该地址，得到回显</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061606856.png"></p>
+<h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><p>用F12打开代码页面将<strong>onchange</strong>删除</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061608603.png"></p>
+<p>然后直接上传php文件</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061609890.png"></p>
+<p>访问得到与上题一样的回显</p>
+<h3 id="三、MIME-type"><a href="#三、MIME-type" class="headerlink" title="三、MIME type"></a>三、MIME type</h3><p>本题即是利用将php文件通过BP抓包上传后，改变文件类型为图片类型以此来达到上传目的</p>
+<p>我们先BP抓包一个php文件</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061612615.png"></p>
+<p>即将此修改为 <strong>image&#x2F;jpeg</strong>    然后上传成功</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061617198.png"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061614928.png"></p>
+<p>访问一下</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061615338.png" alt="image-20230806161554268"></p>
+<p>上传成功</p>
+<h3 id="四、getimagesize"><a href="#四、getimagesize" class="headerlink" title="四、getimagesize()"></a>四、getimagesize()</h3><blockquote>
+<p>getimagesize() 函数用于获取图像大小及相关信息，成功返回一个数组，失败则返回 FALSE 并产生一条 E_WARNING 级的错误信息。</p>
+</blockquote>
+<p>我们先通过本机制作一个图片马</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061635241.png"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061635731.png"></p>
+<p>然后上传该图片</p>
+
                 
             </div>
             <hr/>
@@ -780,18 +848,17 @@ document<span class="token punctuation">.</span><span class="token function">get
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/07/30/Pikachu%E9%9D%B6%E5%9C%BA%E5%85%A8%E9%80%9A%E5%85%B3%E6%80%9D%E8%B7%AF/">
+                <a href="/2023/08/11/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%A4%8D%E7%8E%B0-%E9%99%84%E5%B8%A6win7%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Pikachu靶场全通关思路">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="永恒之蓝复现(附带win7虚拟机安装教程)">
                         
-                        <span class="card-title">Pikachu靶场全通关思路</span>
+                        <span class="card-title">永恒之蓝复现(附带win7虚拟机安装教程)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -801,9 +868,9 @@ document<span class="token punctuation">.</span><span class="token function">get
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -812,12 +879,11 @@ document<span class="token punctuation">.</span><span class="token function">get
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/WEB-%E5%8D%81%E5%A4%A7%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
-                        <span class="chip bg-color">WEB,十大常见漏洞,学习心得</span>
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%EF%BC%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                        <span class="chip bg-color">漏洞，虚拟机</span>
                     </a>
                     
                 </div>
