@@ -337,14 +337,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-09-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    5.4k
                 </div>
                 
 
@@ -695,15 +695,16 @@ document<span class="token punctuation">.</span><span class="token function">get
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061617198.png"></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061614928.png"></p>
 <p>访问一下</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061615338.png" alt="image-20230806161554268"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061615338.png"></p>
 <p>上传成功</p>
 <h3 id="四、getimagesize"><a href="#四、getimagesize" class="headerlink" title="四、getimagesize()"></a>四、getimagesize()</h3><blockquote>
 <p>getimagesize() 函数用于获取图像大小及相关信息，成功返回一个数组，失败则返回 FALSE 并产生一条 E_WARNING 级的错误信息。</p>
 </blockquote>
-<p>我们先通过本机制作一个图片马</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061635241.png"></p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308061635731.png"></p>
-<p>然后上传该图片</p>
+<p><code>getimagesize()</code>函数会通过读取文件头部的几个字符串(即文件头), 来判断是否为正常图片的头部</p>
+<p>所以我们可以通过文件幻术头来进行图片上传</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202309052028233.png"></p>
+<p>利用文件包含漏洞解析此图片木马: <code>http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/2023/09/05/29522464f71e89dc8e3484901611.jpg&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2</code></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202309052035495.png"></p>
 
                 
             </div>
@@ -1356,6 +1357,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-miku"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>

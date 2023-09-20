@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="CTF里WEB题中的POP链, RE,Misc,Web,Cpypto等">
     <meta name="description" content="再解释源代码之前，我们需要先了解一下这个php的魔术方法
+在解释源代码之前，我们需要先了解一下这个php的魔术方法
 
 
 __construct()，类的构造函数
 __destruct()，类的析构函数
-__call()，在对象中调用一个不可访问方法时调用
-__callStatic()，用静态方式中">
+__call()，在对象中调用一个不可">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -338,14 +338,14 @@ __callStatic()，用静态方式中">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-01
+                    2023-09-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -371,6 +371,7 @@ __callStatic()，用静态方式中">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>再解释源代码之前，我们需要先了解一下这个php的魔术方法</p>
+<p>在解释源代码之前，我们需要先了解一下这个php的魔术方法</p>
 <blockquote>
 <ol>
 <li>__construct()，类的构造函数</li>
@@ -454,7 +455,7 @@ highlight_file(__FILE__);
 <p>因为我们可以从代码里看到这俩个属性都是私有的，不可访问。</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922222.png"></p>
 <p>那么我们继续走，当进行isset()魔术方法时，echo出它的句子，然后发现其**echo $this-&gt;name;**发现name前没加$，意思为name被当成字符串，所以会发现其触发__toString()魔术方法</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922283.png" alt="image-20230514203653686"></p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922283.png"></p>
 <p>echo出句子，然后进行<strong>return $this-&gt;like-&gt;string;</strong></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307300922390.png" alt="image-20230514203808378"></p>
 <p>string是类helper里的成员变量。所以触发了__get()魔术方法。echo出句子后</p>
@@ -1149,6 +1150,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-miku"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>
