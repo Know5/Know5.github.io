@@ -358,9 +358,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
@@ -382,7 +379,18 @@
 <h2 id="三、小兔兔找朋友"><a href="#三、小兔兔找朋友" class="headerlink" title="三、小兔兔找朋友"></a>三、小兔兔找朋友</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012922.png"><br>此题要根据题目来做，首先是小兔子过生日，当天为光棍节，所以密钥为1111，通过兔兔想到兔子解密，兔子解密后栅栏数为三的栅栏解密以及最后的凯撒解密得到答案，步骤如下<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012392.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211012918.png"><br><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013703.png"><br>RABBIT解密链接:<a target="_blank" rel="noopener" href="https://www.codeeeee.com/encrypt/rabbit.html">https://www.codeeeee.com/encrypt/rabbit.html</a></p>
 <h2 id="四、MD5解密"><a href="#四、MD5解密" class="headerlink" title="四、MD5解密"></a>四、MD5解密</h2><p>该题是通过一串代码得到的答案，<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013584.png"><br>再用SLsec包装即是答案。</p>
 <p>源代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">#print hashlib.md5(s).hexdigest().upper()`</span><br><span class="line">k = &#x27;SLsec&#123;md5&amp;zd&amp;mj&amp;m&#125;&#x27;</span><br><span class="line">for i in range(26):</span><br><span class="line">    temp1 = k.replace(&#x27;&amp;&#x27;,str(chr(97+i)),1) #用ascii开始，从A开始查</span><br><span class="line">    for j in range(26):</span><br><span class="line">        temp2 = temp1.replace(&#x27;&amp;&#x27;,chr(97+j),1)</span><br><span class="line">        for n in range(26):``</span><br><span class="line">            temp3 = temp2.replace(&#x27;&amp;&#x27;,chr(97+n),1)</span><br><span class="line">            s = hashlib.md5(temp3.encode(&#x27;utf8&#x27;)).hexdigest().upper()#注意大小写</span><br><span class="line">            if s[:32] == &#x27;D1ABA2C785779AFFFBEC56422DBF23F2&#x27;:#检查元素</span><br><span class="line">                print(temp3)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">import hashlib
+#print hashlib.md5(s).hexdigest().upper()&#96;
+k &#x3D; &#39;SLsec&#123;md5&amp;zd&amp;mj&amp;m&#125;&#39;
+for i in range(26):
+    temp1 &#x3D; k.replace(&#39;&amp;&#39;,str(chr(97+i)),1) #用ascii开始，从A开始查
+    for j in range(26):
+        temp2 &#x3D; temp1.replace(&#39;&amp;&#39;,chr(97+j),1)
+        for n in range(26):&#96;&#96;
+            temp3 &#x3D; temp2.replace(&#39;&amp;&#39;,chr(97+n),1)
+            s &#x3D; hashlib.md5(temp3.encode(&#39;utf8&#39;)).hexdigest().upper()#注意大小写
+            if s[:32] &#x3D;&#x3D; &#39;D1ABA2C785779AFFFBEC56422DBF23F2&#39;:#检查元素
+                print(temp3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>源代码链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/emmmk_suibian/article/details/123693217">https://blog.csdn.net/emmmk_suibian&#x2F;article&#x2F;details&#x2F;123693217</a></p>
 <h2 id="RESERVE"><a href="#RESERVE" class="headerlink" title="RESERVE"></a>RESERVE</h2><h2 id="一、re签到"><a href="#一、re签到" class="headerlink" title="一、re签到"></a>一、re签到</h2><p>将附件放入ida就能找到答案<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013050.png"></p>
 <h2 id="二、JustCaesar"><a href="#二、JustCaesar" class="headerlink" title="二、JustCaesar"></a>二、JustCaesar</h2><p>第二题同样是exe文件，所以通过ida打开这个压缩包<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013701.png"><br>得到一串代码，通过题目提示凯撒，所以进行凯撒解密得到flag<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202304211013803.png"></p>
@@ -620,9 +628,6 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
