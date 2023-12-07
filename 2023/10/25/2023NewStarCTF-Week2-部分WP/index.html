@@ -344,7 +344,7 @@ include 0。0
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    660
                 </div>
                 
 
@@ -417,13 +417,13 @@ include 0。0
 <p>再通过GitHack工具去获取源码</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310252029377.png"></p>
 <p>打开bo0g1pop.php文件，内容为</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
-highlight_file(__FILE__);
-if (&#39;;&#39; &#x3D;&#x3D;&#x3D; preg_replace(&#39;&#x2F;[^\W]+\((?R)?\)&#x2F;&#39;, &#39;&#39;, $_GET[&#39;star&#39;])) &#123;
-    if(!preg_match(&#39;&#x2F;high|get_defined_vars|scandir|var_dump|read|file|php|curent|end&#x2F;i&#39;,$_GET[&#39;star&#39;]))&#123;
-        eval($_GET[&#39;star&#39;]);
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
+<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
+<span class="keyword">if</span> (<span class="string">&#x27;;&#x27;</span> === <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$_GET</span>[<span class="string">&#x27;star&#x27;</span>])) {
+    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/high|get_defined_vars|scandir|var_dump|read|file|php|curent|end/i&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;star&#x27;</span>])){
+        <span class="keyword">eval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;star&#x27;</span>]);
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>根据**’;’ &#x3D;&#x3D;&#x3D; preg_replace(‘&#x2F;[^\W]+((?R)?)&#x2F;‘, ‘’, $_GET[‘star’]**知晓其为无参数rce命令执行</p>
 <p>然后接下来过滤了一些常用的用于无参数命令执行的 php 方法，但过滤不全，</p>
@@ -434,15 +434,15 @@ if (&#39;;&#39; &#x3D;&#x3D;&#x3D; preg_replace(&#39;&#x2F;[^\W]+\((?R)?\)&#x2F;
 <p>执行中就User-Agent的回显，所以在User-Agent的头上写着命令执行的指令，从而得到flag</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310252041358.png"></p>
 <h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="WebShell的利用"><a href="#WebShell的利用" class="headerlink" title="WebShell的利用"></a>WebShell的利用</h3><p>本题按官方wp进行复现</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;?php
-$shell&#x3D;&quot;eval(str_rot13(convert_uudecode(str_rot13(base64_decode(&#39;编码太长，省略一下&#39;)))));&quot;;
-for($i&#x3D;0; $i&lt;50; $i++) &#123;    
-    if(preg_match(&quot;&#x2F;base64&#x2F;&quot;,$shell)) &#123;        
-        $tmp &#x3D; preg_replace(&quot;&#x2F;eval&#x2F;&quot;,&quot;return &quot;,$shell);        
-        $shell &#x3D; eval($tmp);    &#125;
-    else&#123;        
-        break;    &#125;
-&#125;
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext"><?php
+$shell="eval(str_rot13(convert_uudecode(str_rot13(base64_decode(&#x27;编码太长，省略一下&#x27;)))));";
+for($i=0; $i<50; $i++) {    
+    if(preg_match("/base64/",$shell)) {        
+        $tmp = preg_replace("/eval/","return ",$shell);        
+        $shell = eval($tmp);    }
+    else{        
+        break;    }
+}
 echo $shell;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>将其运行后可以得到<strong>get参和post参</strong></p>
@@ -452,121 +452,121 @@ echo $shell;<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 <h3 id="base"><a href="#base" class="headerlink" title="base!"></a>base!</h3><p>本题打开后就是一个里面充满着base64的txt文件</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310291904062.png"></p>
 <p>将Base64解密出来就是一些诗的句子，考虑为Base64隐写，所以通过python代码解密可以得到flag</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import base64
-path &#x3D; input(&quot;请输入加密文件路径:&quot;)
-file &#x3D; open(path)
-a &#x3D; &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+&#x2F;&quot;
-aaa &#x3D; &#39;&#39;
-while True:
-    text &#x3D; file.readline()  # 只读取一行内容
-    # 判断是否读取到内容
-    text &#x3D; text.replace(&quot;\n&quot;, &quot;&quot;)
-    if not text:
-        break
-    if text.count(&#39;&#x3D;&#39;) &#x3D;&#x3D; 1:
-        aaa &#x3D; aaa + \
-            str(&#39;&#123;:02b&#125;&#39;.format((a.find(text[len(text)-2])) % 4))
-    if text.count(&#39;&#x3D;&#39;) &#x3D;&#x3D; 2:
-        aaa &#x3D; aaa + \
-            str(&#39;&#123;:04b&#125;&#39;.format((a.find(text[len(text)-3])) % 16))
+<pre class="line-numbers language-highlight python"><span class="keyword"><code class="language-highlight python"><span class="keyword">import</span> base64
+path = <span class="built_in">input</span>(<span class="string">"请输入加密文件路径:"</span>)
+file = <span class="built_in">open</span>(path)
+a = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>
+aaa = <span class="string">&#x27;&#x27;</span>
+<span class="keyword">while</span> <span class="literal">True</span>:
+    text = file.readline()  <span class="comment"># 只读取一行内容</span>
+    <span class="comment"># 判断是否读取到内容</span>
+    text = text.replace(<span class="string">"\n"</span>, <span class="string">""</span>)
+    <span class="keyword">if</span> <span class="keyword">not</span> text:
+        <span class="keyword">break</span>
+    <span class="keyword">if</span> text.count(<span class="string">&#x27;=&#x27;</span>) == <span class="number">1</span>:
+        aaa = aaa + \
+            <span class="built_in">str</span>(<span class="string">&#x27;{:02b}&#x27;</span>.<span class="built_in">format</span>((a.find(text[<span class="built_in">len</span>(text)-<span class="number">2</span>])) % <span class="number">4</span>))
+    <span class="keyword">if</span> text.count(<span class="string">&#x27;=&#x27;</span>) == <span class="number">2</span>:
+        aaa = aaa + \
+            <span class="built_in">str</span>(<span class="string">&#x27;{:04b}&#x27;</span>.<span class="built_in">format</span>((a.find(text[<span class="built_in">len</span>(text)-<span class="number">3</span>])) % <span class="number">16</span>))
 file.close()
-t &#x3D; &quot;&quot;
-ttt &#x3D; len(aaa)
-ttt &#x3D; ttt&#x2F;&#x2F;8*8
-for i in range(0,ttt,8):
-    t &#x3D; t + chr(int( aaa[i:i+8],2))
-print(t)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+t = <span class="string">""</span>
+ttt = <span class="built_in">len</span>(aaa)
+ttt = ttt//<span class="number">8</span>*<span class="number">8</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,ttt,<span class="number">8</span>):
+    t = t + <span class="built_in">chr</span>(<span class="built_in">int</span>( aaa[i:i+<span class="number">8</span>],<span class="number">2</span>))
+<span class="built_in">print</span>(t)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310291906217.png"></p>
 <p>再将其值通过base58解密可以得到flag</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310291908539.png"></p>
 <h3 id="1-序章"><a href="#1-序章" class="headerlink" title="1-序章"></a>1-序章</h3><p>本题通过复现官方WP所得，其所考的为SQL日志分析</p>
 <p>从文件我们可以得到Web请求日志</p>
-<pre class="line-numbers language-none"><code class="language-none">-1%20or%20if(ascii(substr((select%20group_concat(username,password)%20from%20user),1,1))&#x3D;40,sleep(1),1)--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">-1%20or%20if(ascii(substr((select%20group_concat(username,password)%20from%20user),1,1))=40,sleep(1),1)--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>当其注入某一正确字符时会停止爆破，进入下一位的注入，例如下图中的109，110·····，</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310291914795.png"></p>
 <p>通过python脚本来跑出flag</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import re
-import urllib.parse
+<pre class="line-numbers language-highlight python"><span class="keyword"><code class="language-highlight python"><span class="keyword">import</span> re
+<span class="keyword">import</span> urllib.parse
 
-# 打开文件并读取数据
-with open(&#39;access.log&#39;, &#39;r&#39;) as f:
-    lines &#x3D; f.readlines()
+<span class="comment"># 打开文件并读取数据</span>
+<span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;access.log&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:
+    lines = f.readlines()
 
-datas &#x3D; []
+datas = []
 
-# 解码URL并存储到datas列表中
-for line in lines:
-    t &#x3D; urllib.parse.unquote(line)
+<span class="comment"># 解码URL并存储到datas列表中</span>
+<span class="keyword">for</span> line <span class="keyword">in</span> lines:
+    t = urllib.parse.unquote(line)
     datas.append(t)
 
-flag_ascii &#x3D; &#123;&#125;
+flag_ascii = {}
 
-# 使用正则表达式匹配数据并提取信息
-for data in datas:
-    matchObj &#x3D; re.search(r&#39;user\),(.*?),1\)\)&#x3D;(.*?),sleep&#39;, data)
-    if matchObj:
-        key &#x3D; int(matchObj.group(1))
-        value &#x3D; int(matchObj.group(2))
-        flag_ascii[key] &#x3D; value
+<span class="comment"># 使用正则表达式匹配数据并提取信息</span>
+<span class="keyword">for</span> data <span class="keyword">in</span> datas:
+    matchObj = re.search(<span class="string">r&#x27;user\),(.*?),1\)\)=(.*?),sleep&#x27;</span>, data)
+    <span class="keyword">if</span> matchObj:
+        key = <span class="built_in">int</span>(matchObj.group(<span class="number">1</span>))
+        value = <span class="built_in">int</span>(matchObj.group(<span class="number">2</span>))
+        flag_ascii[key] = value
 
-flag &#x3D; &#39;&#39;
+flag = <span class="string">&#x27;&#x27;</span>
 
-# 构建flag字符串
-for value in flag_ascii.values():
-    flag +&#x3D; chr(value)
+<span class="comment"># 构建flag字符串</span>
+<span class="keyword">for</span> value <span class="keyword">in</span> flag_ascii.values():
+    flag += <span class="built_in">chr</span>(value)
 
-print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="built_in">print</span>(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202310291916118.png"></p>
-<h2 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h2><h3 id="滴啤"><a href="#滴啤" class="headerlink" title="滴啤"></a>滴啤</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">from Crypto.Util.number import *
+<h2 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h2><h3 id="滴啤"><a href="#滴啤" class="headerlink" title="滴啤"></a>滴啤</h3><pre class="line-numbers language-highlight python"><span class="keyword">from</span> Crypto.Util.number <span class="keyword"><code class="language-highlight python"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *
 
-n &#x3D; 93172788492926438327710592564562854206438712390394636149385608321800134934361353794206624031396988124455847768883785503795521389178814791213054124361007887496351504099772757164211666778414800698976335767027868761735533195880182982358937211282541379697714874313863354097646233575265223978310932841461535936931
+n = <span class="number">93172788492926438327710592564562854206438712390394636149385608321800134934361353794206624031396988124455847768883785503795521389178814791213054124361007887496351504099772757164211666778414800698976335767027868761735533195880182982358937211282541379697714874313863354097646233575265223978310932841461535936931</span>
 
-dp &#x3D; 307467153394842898333761625034462907680907310539113349710634557900919735848784017007186630645110812431448648273172817619775466967145608769260573615221635
+dp = <span class="number">307467153394842898333761625034462907680907310539113349710634557900919735848784017007186630645110812431448648273172817619775466967145608769260573615221635</span>
 
-c &#x3D; 52777705692327501332528487168340175436832109866218597778822262268417075157567880409483079452903528883040715097136293765188858187142103081639134055997552543213589467751037524482578093572244313928030341356359989531451789166815462417484822009937089058352982739611755717666799278271494933382716633553199739292089
+c = <span class="number">52777705692327501332528487168340175436832109866218597778822262268417075157567880409483079452903528883040715097136293765188858187142103081639134055997552543213589467751037524482578093572244313928030341356359989531451789166815462417484822009937089058352982739611755717666799278271494933382716633553199739292089</span>
 
-e &#x3D; 65537
+e = <span class="number">65537</span>
 
-r &#x3D; getPrime(64)
+r = getPrime(<span class="number">64</span>)
 
-pp &#x3D; pow(r, e*dp, n) - r
+pp = <span class="built_in">pow</span>(r, e*dp, n) - r
 
-p &#x3D; GCD(n, pp)
+p = GCD(n, pp)
 
-q &#x3D; n &#x2F;&#x2F; p
+q = n // p
 
-d &#x3D; inverse(e, (p-1)*(q-1))
+d = inverse(e, (p-<span class="number">1</span>)*(q-<span class="number">1</span>))
 
-m &#x3D; pow(c, d, n)
+m = <span class="built_in">pow</span>(c, d, n)
 
-print(long_to_bytes(m))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="built_in">print</span>(long_to_bytes(m))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>对于任意的小于p的非负自然数r, 有 r &#x3D; r^(e<em>dp) (mod p)   故 r^(e</em>dp) - r &#x3D; k*p,</strong></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311011937323.png"></p>
 <h3 id="rotate-xor"><a href="#rotate-xor" class="headerlink" title="rotate_xor"></a>rotate_xor</h3><p>原题</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311011939697.png"></p>
 <p>解密代码</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from z3 import *
-from Crypto.Util.number import *
-from pwn import xor
-ROUND &#x3D; 12
-s &#x3D; Solver()
-ciphertext &#x3D; b&#39;\x8dSyy\xd2\xce\xe2\xd2\x98\x0fth\x9a\xc6\x8e\xbc\xde&#96;zl\xc0\x85\xe0\xe4\xdfQlc&#39;
-enc_k1 &#x3D; BitVecVal(7318833940520128665, 64)
-k2 &#x3D; BitVecVal(9982833494309156947, 64)
-k1 &#x3D; BitVec(&#39;k1&#39;, 64)
-def encrypt_key(key):
-  for _ in range(ROUND):
-      key &#x3D; RotateLeft(key, 3) ^ k2
-  return key
-s.add(enc_k1 &#x3D;&#x3D; encrypt_key(k1))
+<pre class="line-numbers language-highlight python"><span class="keyword">from</span> z3 <span class="keyword"><code class="language-highlight python"><span class="keyword">from</span> z3 <span class="keyword">import</span> *
+<span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *
+<span class="keyword">from</span> pwn <span class="keyword">import</span> xor
+ROUND = <span class="number">12</span>
+s = Solver()
+ciphertext = <span class="string">b&#x27;\x8dSyy\xd2\xce\xe2\xd2\x98\x0fth\x9a\xc6\x8e\xbc\xde`zl\xc0\x85\xe0\xe4\xdfQlc&#x27;</span>
+enc_k1 = BitVecVal(<span class="number">7318833940520128665</span>, <span class="number">64</span>)
+k2 = BitVecVal(<span class="number">9982833494309156947</span>, <span class="number">64</span>)
+k1 = BitVec(<span class="string">&#x27;k1&#x27;</span>, <span class="number">64</span>)
+<span class="keyword">def</span> <span class="title function_">encrypt_key</span>(<span class="params">key</span>):
+  <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(ROUND):
+      key = RotateLeft(key, <span class="number">3</span>) ^ k2
+  <span class="keyword">return</span> key
+s.add(enc_k1 == encrypt_key(k1))
 s.check()
-k1 &#x3D; s.model()[k1].as_long()
-flag &#x3D; xor(ciphertext, long_to_bytes(k1))
-print(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+k1 = s.model()[k1].as_long()
+flag = xor(ciphertext, long_to_bytes(k1))
+<span class="built_in">print</span>(flag)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311011941508.png"></p>
 

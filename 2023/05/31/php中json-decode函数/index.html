@@ -346,7 +346,7 @@ JSON 中的数字必须是整数或浮点数。
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    375
+                    284
                 </div>
                 
 
@@ -379,24 +379,24 @@ JSON 中的数字必须是整数或浮点数。
 <p>不可以为以下数据类型之一： 函数，日期，undefined</p>
 <h3 id="json-decode"><a href="#json-decode" class="headerlink" title="json_decode"></a>json_decode</h3><p>在PHP中   json_decode() 函数用于对 JSON 格式的字符串进行解码，并转换为 PHP 变量。</p>
 <p>代码</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
-$json &#x3D; &#39;&#123;&quot;ctfer&quot;:&quot;sanmao&quot;,&quot;ctf&quot;:&quot;misc&quot;,&quot;age&quot;:18,&quot;bisai&quot;:14,&quot;champion&quot;:5&#125;&#39;;
+<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
+<span class="variable">$json</span> = <span class="string">&#x27;{"ctfer":"sanmao","ctf":"misc","age":18,"bisai":14,"champion":5}&#x27;</span>;
 
-var_dump(json_decode($json));&#96;
-var_dump(json_decode($json, true));&#96;
-?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">json_decode</span>(<span class="variable">$json</span>));`
+<span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">json_decode</span>(<span class="variable">$json</span>, <span class="literal">true</span>));`
+<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>实例演示</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202305311948136.png"></p>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h3 id="SWPUCTF-2021-新生赛-jicao"><a href="#SWPUCTF-2021-新生赛-jicao" class="headerlink" title="[[SWPUCTF 2021 新生赛] jicao]"></a>[[SWPUCTF 2021 新生赛] jicao]</h3><p>源代码</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
-highlight_file(&#39;index.php&#39;);
-include(&quot;flag.php&quot;);
-$id&#x3D;$_POST[&#39;id&#39;];
-$json&#x3D;json_decode($_GET[&#39;json&#39;],true);
-if ($id&#x3D;&#x3D;&quot;wllmNB&quot;&amp;&amp;$json[&#39;x&#39;]&#x3D;&#x3D;&quot;wllm&quot;)
-&#123;echo $flag;&#125;
-?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
+<span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;index.php&#x27;</span>);
+<span class="keyword">include</span>(<span class="string">"flag.php"</span>);
+<span class="variable">$id</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;id&#x27;</span>];
+<span class="variable">$json</span>=<span class="title function_ invoke__">json_decode</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;json&#x27;</span>],<span class="literal">true</span>);
+<span class="keyword">if</span> (<span class="variable">$id</span>==<span class="string">"wllmNB"</span>&&<span class="variable">$json</span>[<span class="string">&#x27;x&#x27;</span>]==<span class="string">"wllm"</span>)
+{<span class="keyword">echo</span> <span class="variable">$flag</span>;}
+<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>本题需要进行一个post传参，一个get传参，post传参很简单，在Max HackBar或者在BP里传入 id&#x3D;wllmNB</p>
 <p>但是get传参则需要通过调用 PHP 内置函数 json_decode()，将字符串解析为一个关联数组，第二个参数 true 表示将解析结果以数组形式返回。最终将解析得到的数组赋值给变量 $json，可以在后续的代码中使用。</p>

